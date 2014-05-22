@@ -4,7 +4,7 @@ text-align: center;
 margin-top: 50px;
 ">Inserir Roteiro</h1>
 
-<script src="ckeditor/ckeditor.js"></script>
+<script src="../ckeditor/ckeditor.js"></script>
 
 
 
