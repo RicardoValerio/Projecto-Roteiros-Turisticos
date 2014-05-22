@@ -1,1 +1,1 @@
-Trabalho de Tecnologias Web I - Universidade Europeia 2014
+Projeto de Tecnologias Web I - Universidade Europeia 2014
