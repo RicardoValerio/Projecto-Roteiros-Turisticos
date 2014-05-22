@@ -612,6 +612,7 @@ select[name="oQueFazer"] {
     float: left;
     width: 239px;
     height: 291px;
+    position: relative;
 }
 
 .mainContent .listaRoteiro:nth-child(n+4) {
@@ -624,7 +625,10 @@ select[name="oQueFazer"] {
 }
 
 .listaRoteiro div {
-    padding: 24px 0px 17px 0px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding-top: 24px;
 }
 
 .listaRoteiro h2, .listaRoteiro h3 {
@@ -640,6 +644,11 @@ select[name="oQueFazer"] {
 .listaRoteiro h3 {
     font-size: 13px;
     color: #b2b2b2;
+}
+
+.listaRoteiro img {
+    position: absolute;
+    top: 83px;
 }
 
 #sidebar .separador {
@@ -984,7 +993,7 @@ span#classificacaoEstrelas {
 ******************************************************************/
 div#mainProcura {
         width: 603px;
-	margin: -163px auto 0px auto;
+	margin: -154px auto 10px auto;
 }
 .title {
 	line-height: 1.2em;
@@ -1018,15 +1027,12 @@ input#search:hover, input#search:focus {
 }
 h4#results-text {
 	display: none;
-	margin-top: 22px;
-	margin-bottom: 15px;
-	text-align: right;
+	margin: 32px 0px 15px 15px;
+	text-align: left;
 }
 ul#results {
 	width: 603px;
-	margin-top: 10px;
-	margin-left: 7px;
-	margin-top: 4px;
+	margin: 10px 0px 0px 7px;
 	border: 1px solid #ababab;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;

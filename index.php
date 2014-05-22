@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once 'includes/config.php';
-require_once 'includes/funcoes.php';
+require_once 'includes/funcoes_areas.php';
+require_once 'includes/funcoes_email.php';
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,26 +12,28 @@ require_once 'includes/funcoes.php';
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title><?php echo verificaAreaIndex('titulo'); ?></title>
         <meta name="viewport" content="width=device-width">
-        <link href="css/estilos.css" rel="stylesheet" type="text/css">
+
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link href="css/estilos.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <!-- Jquery para usar offline -->
-        <!--<script type="text/javascript" src="js/jquery.js"></script>-->
-        <!-- end Jquery para usar offline -->
         <script type="text/javascript" src="js/jquery.validate.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-        
+
+        <script type="text/javascript" src="js/newsletter.js"></script>
         <script type="text/javascript" src="js/search.js"></script>
         <script type="text/javascript" src="js/slideshow.js"></script>
-        
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
     </head>
 
     <body>
         <div id="all">
 
             <div class="clearfix" id="header">
-                <?php include 'includes/header.php'; ?>
+                <?php include 'header.php'; ?>
             </div>
 
 
@@ -62,21 +65,21 @@ require_once 'includes/funcoes.php';
             </div>-->
 
             <div id="info" class="clearfix">
-                <?php include 'includes/info.php'; ?>
+                <?php include 'info.php'; ?>
             </div>
 
             <div id="footer">
-                <?php include 'includes/footer.php'; ?>
+                <?php include 'footer.php'; ?>
             </div>
 
         </div>
 
         <div id="lightboxLogin" class="lightboxInativo">
-            <?php include 'includes/login.php'; ?>
+            <?php include 'login.php'; ?>
         </div>
 
         <div id="lightboxRegisto" class="lightboxInativo">
-            <?php include 'includes/registo.php'; ?>
+            <?php include 'registo.php'; ?>
         </div>
 
     </body>
