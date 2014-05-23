@@ -29,7 +29,7 @@ require_once 'includes/funcoes_email.php';
         <script type="text/javascript" src="js/slideshow.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/plugin.tags.js"></script>
-        
+
         <script src="ckeditor/ckeditor.js"></script>
 
     </head>
