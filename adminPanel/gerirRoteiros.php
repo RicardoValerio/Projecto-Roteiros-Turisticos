@@ -5,12 +5,12 @@
 		<table id="example" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Position</th>
-					<th>Office</th>
-					<th>Age</th>
-					<th>Start date</th>
-					<th>Salary</th>
+					<th class="sorting">Name</th>
+					<th class="sorting">Position</th>
+					<th class="sorting">Office</th>
+					<th class="sorting">Age</th>
+					<th class="sorting">Start date</th>
+					<th class="sorting">Salary</th>
 				</tr>
 			</thead>
 
