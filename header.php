@@ -10,7 +10,7 @@
                 <li><a href="adminPanel/">Zona Admin</a></li>
             <?php } else { ?>
                 <li style="color: yellow;">Olá <?php echo utf8_encode($_SESSION['nome']); ?></li>
-                <li><a href="adminPanel/">Zona Admin</a></li>
+                <li><a href="index.php?area=inserir_roteiro">Inserir Roteiro</a></li>
             <?php } ?>
 
             <li><a href="logout.php">Logout</a></li>

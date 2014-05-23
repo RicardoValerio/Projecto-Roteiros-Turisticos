@@ -38,6 +38,11 @@ function verificaAreaIndex($elem) {
                 $areaEscolhida = 'area_termos_condicoes.php';
                 $bannerEscolhido = 'banner.php';
             } break;
+        case 'inserir_roteiro': {
+                $tituloEscolhido = 'Inserir Roteiro | ' . NOME_EMPRESA;
+                $areaEscolhida = 'area_inserir_roteiro.php';
+                $bannerEscolhido = 'banner.php';
+            } break;
         case 'inicio':
         default: {
                 $tituloEscolhido = NOME_EMPRESA;

@@ -99,11 +99,11 @@ if (!is_numeric($get_parametro)) {
             ?>
 
             <div style="text-align: center;" id="detalheRoteiro" class="mainContent dir">
-                <h1><?php echo $row['titulo']; ?></h1>
+                <h1><?php echo utf8_decode($row['titulo']); ?></h1>
                 <h2><?php echo $row['categoria']; ?></h2>
                 <!-- <h2><?php echo $row['regiao']; ?></h2> -->
-                <img src="<?php echo $row['imagem']; ?>" />
-		<p><?php echo $row['descricao']; ?></p>
+                <img src="<?php echo utf8_decode($row['imagem']); ?>" />
+		<p><?php echo utf8_decode($row['descricao']); ?></p>
                 <div style="margin-top: 10px;" id="tabs">
                     <ul>
                         <li><a href="#tabs-1">Sobre</a></li>
@@ -113,19 +113,19 @@ if (!is_numeric($get_parametro)) {
                         <li><a href="#tabs-5">Autor</a></li>
                     </ul>
                     <div id="tabs-1">
-                        <p><?php echo $row['sobre']; ?></p>
+                        <p><?php echo utf8_decode($row['sobre']); ?></p>
                     </div>
                     <div id="tabs-2">
-                        <p><?php echo $row['informacoes_uteis']; ?></p>
+                        <p><?php echo utf8_decode($row['informacoes_uteis']); ?></p>
                     </div>
                     <div id="tabs-3">
-                        <p><?php echo $row['como_chegar']; ?></p>
+                        <p><?php echo utf8_decode($row['como_chegar']); ?></p>
                     </div>
                     <div id="tabs-4">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, qui, deleniti, provident, repellendus officiis corrupti nisi unde laudantium delectus dolorem dignissimos assumenda voluptas optio illo quasi voluptates iure fugiat distinctio.</p>
                     </div>
                     <div id="tabs-5">
-                        <p><?php echo $row['autor']; ?></p>
+                        <p><?php echo utf8_decode($row['autor']); ?></p>
                     </div>
                 </div>
                 <?php

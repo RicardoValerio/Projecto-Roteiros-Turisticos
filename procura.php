@@ -1,17 +1,5 @@
 <?php
-
-/* * **********************************************
- * TODO:
- * 		fazer o include do ficheiro config.php e passar todas as funções
- * 	de base de dados para a forma procedimental mais deprecated (mysql_*)
- *
- * 	formatar rigorosamente o output do html
- *
- * ******************************************* */
-
-/* * **********************************************
-  Search Functionality
- * ********************************************** */
+require 'includes/config.php';
 
 // Define Output HTML Formating
 $html = '';
@@ -19,7 +7,7 @@ $html .= '<li class="result">';
 $html .= '<a target="_blank" href="urlString">';
 $html .= '<h3>tituloString</h3>';
 $html .= '<h3>categoriaString | regiaoString | </h3>';
-$html .= '<h4>sobreString</h4>';
+$html .= '<h4>descricaoString</h4>';
 $html .= '<h6>palavraChaveString</h6>';
 $html .= '</a>';
 $html .= '</li>';
@@ -35,53 +23,45 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
     // Build Query
 
     $query = 'SELECT
-                        roteiro.id,
-                        roteiro.titulo,
-                        roteiro.sobre,
-                        categoria.nome as "categoria",
-                        regiao.nome as "regiao",
-                        palavra_chave.palavra
-                    FROM
-                        ((roteiro LEFT JOIN palavra_chave ON roteiro.id = id_roteiro)
-                        LEFT JOIN regiao ON roteiro.id_regiao = regiao.id)
-                            LEFT JOIN
-                        categoria ON roteiro.id_categoria = categoria.id
-                    WHERE
-                        titulo LIKE "%' . $search_string . '%"
-                            OR roteiro.sobre LIKE "%' . $search_string . '%"
-                            OR categoria.nome LIKE "%' . $search_string . '%"
-                            OR regiao.nome LIKE "%' . $search_string . '%"
-                            OR palavra_chave.palavra LIKE "%' . $search_string . '%"
-                    GROUP BY roteiro.id';
-
-
+            roteiro.id,
+            roteiro.titulo,
+            roteiro.descricao,
+            categoria.nome as "categoria",
+            regiao.nome as "regiao",
+            palavra_chave.palavra
+        FROM
+            ((roteiro LEFT JOIN palavra_chave ON roteiro.id = id_roteiro)
+            LEFT JOIN regiao ON roteiro.id_regiao = regiao.id)
+            LEFT JOIN categoria ON roteiro.id_categoria = categoria.id
+        WHERE
+            titulo LIKE "%' . $search_string . '%"
+            OR categoria.nome LIKE "%' . $search_string . '%" 
+            OR roteiro.descricao LIKE "%' . $search_string . '%" 
+            OR regiao.nome LIKE "%' . $search_string . '%" 
+            OR palavra_chave.palavra LIKE "%' . $search_string . '%" 
+        GROUP BY roteiro.id';
+    
     // Do Search
     $result = mysql_query($query);
-    if ($result) {
-        while ($results = mysql_fetch_array($result)) {
-            $result_array[] = $results;
-        }
-    }
+    
+    
+    if(mysql_num_rows($result)) {
+        while($row =  mysql_fetch_assoc($result)) {
+            $displayTitulo = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['titulo']));
 
+            $displayCategoria = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['categoria']));
 
-    // Check If We Have Results
-    if (isset($result_array)) {
-        foreach ($result_array as $result) {
-            $displayTitulo = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", $result['titulo']);
+            $displayRegiao = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['regiao']));
 
-            $displayCategoria = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", $result['categoria']);
+            $displayDescricao = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['descricao']));
 
-            $displayRegiao = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", $result['regiao']);
+            $displayPalavraChave = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['palavra']));
 
-            $displaySobre = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", $result['sobre']);
-
-            $displayPalavraChave = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", $result['palavra']);
-
-            $display_url = 'detalheRoteiro.php?id=' . urlencode($result['id']);
+            $display_url = 'index.php?area=destinos&roteiro=' . $row['id'];
 
 
             // Insert Name
-            $output = str_replace('sobreString', $displaySobre, $html);
+            $output = str_replace('descricaoString', $displayDescricao, $html);
 
             // Insert Function
             $output = str_replace('tituloString', $displayTitulo, $output);
@@ -97,7 +77,6 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
             echo($output);
         }
     } else {
-
         // Format No Results Output
 
         $output = '<li class="result">';
@@ -110,5 +89,6 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
         // Output
         echo($output);
     }
+
 }
 ?>
