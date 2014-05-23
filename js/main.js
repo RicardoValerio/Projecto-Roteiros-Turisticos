@@ -97,6 +97,7 @@ function formPlaceholder(selector, defaultText) {
     }).blur(function() {
         if (($.trim($(this).val())) == "") {
             $(this).val(defaultText);
+            if (selector == 'input[name="subscrever"]') $("#newsletterForm .error").html('');
         } else {
             $(this).val($(this).val());
         }
