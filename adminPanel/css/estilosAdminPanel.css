@@ -1,0 +1,204 @@
+body{
+    font-family: 'Alegreya Sans', sans-serif;
+    background-color: #CFCECE;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.right{
+    width: 70%;
+    float: right;
+    margin-right: 60px;
+}
+
+.left{
+    float: left;
+    width: 25%;
+    overflow: auto;
+    height: 100%;
+    position: fixed;
+    background-color: #1F2228;
+}
+
+.left ul{
+    margin-right: 40px;
+    margin-bottom: 30px;
+    /*margin-left: -33px;*/
+}
+
+#ultimaUl{
+    margin-bottom: 100px;
+}
+
+.left a{
+    text-decoration: none;
+}
+
+.left ul li{
+    list-style-type: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+    height: 20px;
+    border: 1px solid white;
+    padding:5px;
+}
+
+
+dt{
+    font-weight: bold;
+    text-transform: capitalize;
+    color:red;
+    font-size: 2em;
+}
+
+dd{
+    text-indent: 15px;
+    border: 2px dashed orange;
+    padding:10px;
+    margin-bottom: 40px;
+    font-size: 1.2em;
+    color:white;
+}
+
+.verde{
+    color:#18AB1D;
+    font-weight: bolder;
+}
+
+.amarelo{
+    color:#E6E41A;
+    font-weight: bolder;
+}
+
+.roxo:first-line{
+    color:#E43BBD;
+    font-weight: bolder;
+}
+
+.azul:first-line{
+    color:#249DE4;
+    font-weight: bold;
+}
+
+dd li{
+    border: 1px dashed gray;
+}
+
+* a{
+    color: white;
+}
+
+.duvida{
+    background-color: #D75555;
+}
+
+.percebido{
+    background-color: #57D05C;
+}
+.assim-assim{
+    background-color: #E4D93B;
+}
+
+.topFixedBar{
+    background-color: #FFFF00;
+    height: 50px;
+}
+
+.topFixedBar ul{
+    float: right;
+    margin-right: 50px;
+}
+
+.topFixedBar ul li{
+    display: inline;
+    margin-right: 50px;
+}
+
+
+/*******************************************************************
+*       TABLE - adminPanel/gerirRoteiros.php
+*******************************************************************/
+
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;
+}
+
+.zebra{
+    margin: 120px 25px;
+}
+
+/*----------------------*/
+
+.zebra td, .zebra th {
+    padding: 10px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.zebra tbody tr:nth-child(even) {
+    background: #ECE7E7;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+}
+
+.zebra th {
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    border-bottom: 1px solid #ccc;
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#eee));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #eee);
+    background-image:    -moz-linear-gradient(top, #f5f5f5, #eee);
+    background-image:     -ms-linear-gradient(top, #f5f5f5, #eee);
+    background-image:      -o-linear-gradient(top, #f5f5f5, #eee);
+    background-image:         linear-gradient(top, #f5f5f5, #eee);
+}
+
+.zebra th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.zebra th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.zebra th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.zebra tfoot td {
+    border-bottom: 0;
+    border-top: 1px solid #fff;
+    background-color: #f1f1f1;
+}
+
+.zebra tfoot td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.zebra tfoot td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+.zebra tfoot td:only-child{
+    -moz-border-radius: 0 0 6px 6px;
+    -webkit-border-radius: 0 0 6px 6px
+    border-radius: 0 0 6px 6px
+}
+
+

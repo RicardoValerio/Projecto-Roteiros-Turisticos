@@ -32,7 +32,7 @@ require_once 'includes/funcoes_email.php';
         <script type="text/javascript" src="js/newsletter.js"></script>
         <script type="text/javascript" src="js/search.js"></script>
         <script type="text/javascript" src="js/slideshow.js"></script>
-        
+
         <script src="ckeditor/ckeditor.js"></script>
 
     </head>
