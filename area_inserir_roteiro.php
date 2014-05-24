@@ -1,3 +1,5 @@
+<?php require_once 'verificaSession.php'; ?>
+
 <h1 style="font-size: 3em;
     color:#D3109F;
     text-align: center;

@@ -1,6 +1,12 @@
-<?php require_once 'includes/config.php';
+<?php 
+session_start();
+require_once 'includes/config.php';
 
 $email = mysql_real_escape_string($_POST['email']);
+
+$post = (isset($_SESSION['url'])) ? mysql_real_escape_string($_SESSION['url']) : 'index.php';
+if(!strlen(trim($post))) $post = 'index.php';
+    
 $password = hash('sha512', mysql_real_escape_string($_POST['password']));
 
 $tableName = "utilizador";
@@ -19,9 +25,7 @@ if (mysql_num_rows($result)) {
     $_SESSION['tipo_utilizador'] = ($row['id_tipo_utilizador'] == 1) ? 'user' : 'admin';
     $_SESSION['id_utilizador'] = $row['id'];
 
-    // ::TODO::
-    //manter no mesmo local
-    header("Location: index.php");
+    header("Location: $post");
     exit;
 } else {
 

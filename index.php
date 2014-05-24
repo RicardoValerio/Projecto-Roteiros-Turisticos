@@ -3,7 +3,10 @@ session_start();
 require_once 'includes/config.php';
 require_once 'includes/funcoes_areas.php';
 require_once 'includes/funcoes_email.php';
+require_once 'includes/funcoes.php';
 
+
+$_SESSION['url'] = devolveUrlActual();
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -51,7 +54,7 @@ require_once 'includes/funcoes_email.php';
             <!-- AREAS -->
             <?php include(verificaAreaIndex('linkNavegacao')); ?>
 
-
+            
             <!--<div class="separador">
                  <hr />
                 <img src="img/separador_certo.jpg" alt="" />
