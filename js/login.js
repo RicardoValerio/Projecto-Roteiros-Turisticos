@@ -18,12 +18,20 @@ $(document).ready(function() {
                 type: form.method,
                 url: form.action,
                 data: $(form).serialize(),
+                dataType: "json",
                 success: function(response) {
-                    dialogMessageNormal('#dialog_mensage', 'Login');
-                    $('#dialog_text').html(response);
+                    
+                    if (response.Erro) {
+                        dialogMessageNormal('#dialog_mensage', 'Login');
+                        $('#dialog_text').html(response.Mensagem);
+                    } else {
+                        window.location.href = response.Mensagem;
+                    }
+
                 }
             });
-            return false;
+            //return false;
+            return true;
         }
     });
 });

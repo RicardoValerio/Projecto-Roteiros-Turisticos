@@ -30,12 +30,15 @@ $(document).ready(function() {
     scrollCenter();
 
     validarFormInserirRoteiro();
-    
-    $('.loginRegistoBox').click(function(){
-        return false;
-    });
-    $('.loginRegistoBox').mouseover(function(){
-        return false;
+
+
+    $('.loginRegistoBox').click(function(localClicked) {
+            var button = $('input[type="submit"]');
+            if (button.is(localClicked.target)) {
+                return true;
+            } else {
+                return false;
+            }
     });
 
 });
@@ -57,7 +60,8 @@ function formPlaceholder(selector, defaultText) {
     }).blur(function() {
         if (($.trim($(this).val())) == "") {
             $(this).val(defaultText);
-            if (selector == 'input[name="subscrever"]') $("#newsletterForm .error").html('');
+            if (selector == 'input[name="subscrever"]')
+                $("#newsletterForm .error").html('');
         } else {
             $(this).val($(this).val());
         }
@@ -66,12 +70,10 @@ function formPlaceholder(selector, defaultText) {
 
 function centraLoginRegisto(element) {
     var windowSize = $(window).outerHeight();
-    var boxSize = $('.loginRegistoBox').outerHeight(true);
-    var titleSize = $(element + ' h1').outerHeight(true);
-    var formSize = $(element + ' form').outerHeight(true);
+    var boxSize = $(element + ' .loginRegistoBox').outerHeight(true);
 
-    var margemTop = (windowSize - (boxSize + formSize + titleSize)) / 2;
-    $('.loginRegistoBox').css('marginTop', margemTop);
+    var margemTop = (windowSize - boxSize) / 2;
+    $(element + ' .loginRegistoBox').css('marginTop', margemTop);
 }
 
 function manipulaEstrelasVotacao(elem) {

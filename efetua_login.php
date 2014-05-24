@@ -25,15 +25,18 @@ if (mysql_num_rows($result)) {
     $_SESSION['tipo_utilizador'] = ($row['id_tipo_utilizador'] == 1) ? 'user' : 'admin';
     $_SESSION['id_utilizador'] = $row['id'];
 
-    echo header("Location: $post");
-    exit;
+    echo json_encode(array("erro"=>false, "mensagem"=>"esqueceu-se da password ou ainda não se registou..."));
+    exit();
+    
 } else {
 
     // ::TODO::
     // dados de login incorretos
     // recuperar a password ou registar-se pela primeira vez...
 
-    echo "esqueceu-se da password ou ainda não se registou...";
-    exit;
+    //echo "esqueceu-se da password ou ainda não se registou...";
+    echo json_encode(array("erro"=>true, "mensagem"=>"esqueceu-se da password ou ainda não se registou..."));
+    exit();
+    
 }
 ?>
