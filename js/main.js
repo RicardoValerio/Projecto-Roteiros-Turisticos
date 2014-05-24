@@ -30,15 +30,19 @@ $(document).ready(function() {
     scrollCenter();
 
     validarFormInserirRoteiro();
-
+    validarFormRecuperarPassword();
 
     $('.loginRegistoBox').click(function(localClicked) {
-            var button = $('input[type="submit"]');
-            if (button.is(localClicked.target)) {
-                return true;
-            } else {
-                return false;
-            }
+        var button = $('input[type="submit"]');
+        if (button.is(localClicked.target)) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    $('#recuperaPassword').click(function() {
+        dialogMensageForm();
     });
 
 });
@@ -131,6 +135,41 @@ function validarFormRegisto() {
             nome: "Por favor preencha o seu nome.",
             email: "Por favor preencha o seu email.",
             password: "Por favor preencha a sua password."
+        }
+    });
+}
+
+function validarFormRecuperarPassword() {
+    $("#recuperarPassword").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            email: "Por favor preencha o seu email."
+        },
+        submitHandler: function(form) {
+            $.ajax({
+                type: form.method,
+                url: form.action,
+                data: $(form).serialize(),
+                dataType: "json",
+                success: function(response) {
+                    if (response.erro) {
+                        $('#dialog_mensage_form .error').html(response.mensagem);
+                        $('#dialog_mensage_form .error').css({
+                            display: "block"
+                        });
+                    } else {
+                        $('#dialog_mensage_form').dialog("close");
+                        dialogMessageNormal('#dialog_mensage', 'Recuperar Password');
+                        $('#dialog_text').html(response.mensagem);
+                    }
+                }
+            });
+            return false;
         }
     });
 }

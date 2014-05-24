@@ -1,3 +1,9 @@
+var dialogMessageStatus = false;
+
+$(document).ready(function() {
+    
+});
+
 function dialogMessageNormal(elem, title) {
     $(elem).dialog({
         modal: true,
@@ -30,6 +36,40 @@ function dialogMessageNormal(elem, title) {
     $(window).scroll(function() {
         if (dialogMessageStatus) {
             $(elem).dialog({
+                position: {my: "center", at: "center", of: window}
+            });
+        }
+    });
+}
+
+function dialogMensageForm() {
+    $('#dialog_mensage_form').dialog({
+        modal: true,
+        draggable: false,
+        resizable: false,
+        width: "460px",
+        closeOnEscape: true,
+        open: function() {
+            dialogMessageStatus = true;
+            $('.dialog').css({
+                display: "block"
+            });
+        },
+        close: function() {
+            dialogMessageStatus = false;
+            $('.dialog').css({
+                display: "none"
+            });
+        }
+    });
+
+    $(".dialog_mensage_form_button").click(function() {
+        dialog("close");
+    });
+
+    $(window).scroll(function() {
+        if (dialogMessageStatus) {
+            $('#dialog_mensage_form').dialog({
                 position: {my: "center", at: "center", of: window}
             });
         }

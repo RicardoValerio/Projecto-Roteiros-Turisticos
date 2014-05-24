@@ -20,18 +20,15 @@ $(document).ready(function() {
                 data: $(form).serialize(),
                 dataType: "json",
                 success: function(response) {
-                    
-                    if (response.Erro) {
+                    if (response.erro) {
                         dialogMessageNormal('#dialog_mensage', 'Login');
-                        $('#dialog_text').html(response.Mensagem);
+                        $('#dialog_text').html(response.mensagem);
                     } else {
-                        window.location.href = response.Mensagem;
+                        window.location.href = response.mensagem;
                     }
-
                 }
             });
-            //return false;
-            return true;
+            return false;
         }
     });
 });

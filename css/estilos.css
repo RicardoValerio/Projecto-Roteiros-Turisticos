@@ -948,10 +948,32 @@ span#classificacaoEstrelas {
     cursor: default;
 }
 
+#lightboxLogin #formrecuperaPassword {
+    padding-top: 0px !important;
+    text-align: center;
+}
+
+#recuperaPassword {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#recuperaPassword p {
+    text-decoration: underline;
+    font-size: 10px;
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.loginRegistoBox input[type="submit"] {
+    cursor: pointer;
+}
+
 #lightboxLogin h1, #lightboxRegisto  h1{
     color: #fff;
     text-transform: uppercase;
-    z-index: 100;
+    z-index: 1001;
 }
 
 #lightboxLogin label, #lightboxRegisto label {
@@ -964,7 +986,7 @@ span#classificacaoEstrelas {
 
 #lightboxLogin form, #lightboxRegisto form {
     padding: 50px;
-    z-index: 100;
+    z-index: 1001;
 }
 
 #lightboxLogin input, #lightboxRegisto input {
@@ -973,17 +995,6 @@ span#classificacaoEstrelas {
     padding-left: 15px;
     margin: 10px 0px;
     width: 480px;
-}
-
-#recuperarPassword {
-    margin-top: 10px;
-    text-align: center;
-}
-
-#recuperarPassword  a{
-    color: #fff;
-    text-decoration: underline;
-    font-size: 10px;
 }
 
 /* end Registo e Login */

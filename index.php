@@ -22,6 +22,7 @@ $_SESSION['url'] = devolveUrlActual();
         <link rel="stylesheet" type="text/css" href="css/plugin.tags.css" />
 
         <link href="css/estilos.css" rel="stylesheet" type="text/css">
+        <link href="css/dialogStyle.css" rel="stylesheet" type="text/css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>
@@ -89,21 +90,14 @@ $_SESSION['url'] = devolveUrlActual();
         <?php
         if (isset($_GET['log'])) {
             if ($_GET['log'] == 'login') {
-                ?>
-                <a href="<?php echo strstr(devolveUrlActual(), '&log=login', true); ?>" id="lightboxLogin" >
-                    <?php include 'login.php'; ?>
-                </a>
-                <?php
+                include 'login.php';
             } else if ($_GET['log'] == 'registo') {
-                ?>
-                <a href="<?php echo strstr(devolveUrlActual(), '&log=registo', true); ?>" id="lightboxRegisto" >
-                    <?php include 'registo.php'; ?>
-                </a>
-                <?php
+                include 'registo.php';
             }
         }
 
         include 'includes/dialogMessage.php';
+        include 'includes/formRecuperarPassword.php';
         ?>
     </body>
 </html>

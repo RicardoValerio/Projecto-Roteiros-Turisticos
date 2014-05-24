@@ -1,0 +1,75 @@
+/* div mensagem - dialog */
+
+.dialog {
+    display: none;
+}
+                
+.ui-id-1 {
+    font-size: 16px !important;
+}
+
+#ui-icon-alert {
+    float: left;
+    margin: 0 7px 1px 0;
+}
+
+.dialog p {
+    padding: 20px 0px;
+    font-size: 15px !important;
+}
+
+#dialog_text_registo_cliente {
+    font-size: 15px !important;
+}
+
+.dialog form {
+    padding-top: 20px;
+}
+.dialog label {
+    color: black;
+    text-transform: none;
+    margin: 0px 0px 10px 5%;
+    font-size: 15px !important;
+}
+
+.dialog form div {
+    margin-top: 30px !important;
+}
+
+.dialog input[type="email"] {
+    margin: 15px 0px 0px 5%;
+    width: 90%;
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.dialog input[type="submit"] {
+    float: right;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.ui-button-text {
+    font-size: 14px !important;
+}
+
+.ui-widget-header {
+    border-top: 1px solid #cccccc;
+    background: #313d45; /* old browsers */
+    background: -webkit-gradient(linear, left top, left bottom, from(#696969), to(#313d45));
+    background: -webkit-linear-gradient(top, #696969, #313d45);
+    background: -moz-linear-gradient(top, #696969, #313d45);
+    background: -ms-linear-gradient(top, #696969, #313d45);
+    background: -o-linear-gradient(top, #696969, #313d45);  
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.ui-dialog-buttonset button, .ui-dialog-buttonset button:focus {
+    padding: 0px;
+    color: #ffffff !important;
+}
+
+.ui-dialog-buttonset button:active {
+    padding: 0px;
+}
