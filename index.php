@@ -24,10 +24,10 @@ require_once 'includes/funcoes_email.php';
         <script type="text/javascript" src="js/jquery.validate.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
 
-        
+
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/plugin.tags.js"></script>
-        
+
         <script type="text/javascript" src="js/dialogMessage.js"></script>
         <script type="text/javascript" src="js/newsletter.js"></script>
         <script type="text/javascript" src="js/search.js"></script>

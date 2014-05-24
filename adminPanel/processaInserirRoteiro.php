@@ -1,5 +1,5 @@
 ﻿<?php
-include_once 'includes/config.php';
+include_once '../includes/config.php';
 
 print_r($_POST);
 print_r($_FILES);

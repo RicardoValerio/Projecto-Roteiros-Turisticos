@@ -90,7 +90,7 @@
                 <?php while ($row_percurso = @mysql_fetch_assoc($result_percursos)) { ?>
                     <label for="<?php echo utf8_encode($row_percurso['tipo']); ?>">
                         <?php echo utf8_encode($row_percurso['tipo']); ?>
-                        <input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['id']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>">
+                        <input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['tipo']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>">
                     </label>
                 <?php } ?>
             </p>
