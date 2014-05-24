@@ -33,28 +33,7 @@ require_once 'verificaSessionsAdminPanel.php';
     <script type="text/javascript" language="javascript" src="js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" language="javascript" src="js/shCore.js"></script>
     <script type="text/javascript" language="javascript" src="js/demo.js"></script>
-    <script type="text/javascript" language="javascript" class="init">
 
-
-$(document).ready(function() {
-    $('#example').dataTable( {
-        "columnDefs": [
-            {
-                // The `data` parameter refers to the data for the cell (defined by the
-                // `data` option, which defaults to the column being worked with, in
-                // this case `data: 0`.
-                "render": function ( data, type, row ) {
-                    return data +' ('+ row[3]+')';
-                },
-                "targets": 0
-            },
-            { "visible": false,  "targets": [ 3 ] }
-        ]
-    } );
-} );
-
-
-    </script>
     <script src="../ckeditor/ckeditor.js"></script>
 
 </head>
@@ -83,22 +62,23 @@ margin-top: 25px;
 </div>
 
 <div class="left">
-            <!--
+<!--
                     <div style="height: 300px;
                                             margin: 60px auto;
                                             width: 300px;
                                             ">
                             <img src="http://png-1.findicons.com/files/icons/1072/face_avatars/300/i04.png" alt="avatar">
                     </div>
+ -->
+
+               <!--  <ul style="margin-top: 110px;">
+                        <a href="index.php"><li>Meus Roteiros</li></a>
+
+                        <a href="#"><li>Meus Comentários</li></a>
+                    </ul>
                 -->
+
                 <ul style="margin-top: 110px;">
-                    <a href="index.php"><li>Meus Roteiros</li></a>
-
-                    <a href="#"><li>Meus Comentários</li></a>
-                </ul>
-
-
-                <ul>
                     <a href="index.php?p=inserir"><li>Inserir Roteiro</li></a>
                 </ul>
 
@@ -116,6 +96,15 @@ margin-top: 25px;
                 </ul>
             <?php endif ?>
 
+            <ul id="ulEstadoRoteiros">
+                <?php
+                switch (@$_GET['p']) {
+                case 'editar':
+                    include 'includes/estadoRoteiro.php';
+                    break;
+                }
+                ?>
+            </ul>
 
         </div>
 
@@ -124,11 +113,15 @@ margin-top: 25px;
             <?php
             switch (@$_GET['p']) {
                 case 'inserir':
-                include '../area_inserir_roteiro.php';
-                break;
+                    include '../area_inserir_roteiro.php';
+                    break;
                 case 'gerirRoteiros':
-                include 'gerirRoteiros.php';
-                break;
+                    include 'gerirRoteiros.php';
+                    break;
+                case 'editar':
+                    include 'editarRoteiros.php';
+                    break;
+
                 default:
                 include '../area_inserir_roteiro.php';
             }

@@ -9,9 +9,9 @@
         <img id="right_button" src="img/right_arrow.png"/>
 
         <ul id="navegationButtons" class="clearfix">
-            <li class="slide_ativo"></li>	
-            <li></li>	
-            <li></li>	
+            <li class="slide_ativo"></li>
+            <li></li>
+            <li></li>
         </ul>
         <ul id="slideshowList">
             <li>

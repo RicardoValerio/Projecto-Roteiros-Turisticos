@@ -19,7 +19,7 @@ function enviaEmail($subject, $body, $email_destinatario, $username_destinatario
     $mail->AddEmbeddedImage("img/logo_email.jpg", "logo", "img/logo_email.jpg");
     $mail->Subject = $subject;
     $mail->Body = $body;
-    
+
     return ($mail->Send());
 }
 

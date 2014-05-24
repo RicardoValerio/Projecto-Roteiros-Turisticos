@@ -1,7 +1,7 @@
 <h1 style="font-size: 3em;
     color:#D3109F;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 75px;
     ">Inserir Roteiro</h1>
 
 <div style="margin-left: 69px;" id="inserirRoteiro">
@@ -38,7 +38,7 @@
 
                         <?php endwhile; ?>
 
-                    <?php endwhile; ?>
+                <?php endwhile; ?>
             </select>
 
         </p>
@@ -88,7 +88,10 @@
             <legend>Percursos nas Imediações:</legend>
             <p>
                 <?php while ($row_percurso = @mysql_fetch_assoc($result_percursos)) { ?>
-                    <label for="<?php echo utf8_encode($row_percurso['tipo']); ?>"><?php echo utf8_encode($row_percurso['tipo']); ?></label><input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['id']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>">
+                    <label for="<?php echo utf8_encode($row_percurso['tipo']); ?>">
+                        <?php echo utf8_encode($row_percurso['tipo']); ?>
+                        <input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['tipo']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>">
+                    </label>
                 <?php } ?>
             </p>
         </fieldset>

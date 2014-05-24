@@ -54,7 +54,8 @@
         <?php
         $get_parametro = htmlspecialchars(urlencode($_GET['categoria']));
 
-        $sql = 'SELECT * FROM roteiro WHERE id_categoria = ' . $get_parametro;
+        $sql = 'SELECT * FROM roteiro
+                WHERE roteiro.id_categoria = ' . $get_parametro . " AND roteiro.ativo = 1";
 
         $result = mysql_query($sql);
         ?>
@@ -71,7 +72,7 @@
                     </a>
                 </div>
             <?php }
-            
+
             } else {
 
             $sql = "SELECT * FROM roteiro

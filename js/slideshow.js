@@ -17,15 +17,15 @@ $("document").ready(function() {
 function preparaSlideshow() {
 	centraNavegationButtons();
 	preparaNavegacaoSlideshow();
-	
+
 	slideshowImages = $("#slideshowImages img");
 	preparaElementoSlideShow(slideshowImages);
 	slideshowNavegationList = $("#slideshowList li");
 	preparaElementoSlideShow(slideshowNavegationList);
 	slideshowSaberMaisLink = $("#saberMais li");
 	preparaElementoSlideShow("#saberMais li");
-	
-	
+
+
 }
 
 function preparaElementoSlideShow(elem) {
@@ -44,13 +44,13 @@ function centraNavegationButtons() {
 	var larguraSlideShow = $('#slideshow').outerWidth();
 	var larguraNavegationButtons = $('#navegationButtons').outerWidth();
 	var leftMargin = (larguraSlideShow - larguraNavegationButtons) / 2;
-	
+
 	$('#navegationButtons').css('marginLeft',leftMargin);
 }
 
 function preparaNavegacaoSlideshow() {
 	slideshowNavegationButtons = $("#navegationButtons li");
-	
+
     for (i = 0; i < slideshowNavegationButtons.length; i++) {
         //para que o primeiro icon fique seleccionado
         if (i === 0) {
@@ -96,7 +96,7 @@ function manipulaBotoes() {
 
 function showWorksListElem(elem) {
     for (var i = 0; i < $(slideshowNavegationList).length; i++) {
-	
+
         if (i === elem) {
             effectOn(slideshowNavegationList[i]);
         } else {
@@ -107,7 +107,7 @@ function showWorksListElem(elem) {
 
 function showSaberMaisLinkElem(elem) {
 	for (var i = 0; i < $(slideshowSaberMaisLink).length; i++) {
-	
+
         if (i === elem) {
             effectOn(slideshowSaberMaisLink[i]);
         } else {

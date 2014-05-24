@@ -21,17 +21,17 @@ if(!mysql_num_rows($resultado_verificaEmail)) {
     if(mysql_query($sql)) {
         $id = mysql_insert_id();
         $hash = getHash('newsletter', $id);
-        
+
         $body_head_cliente = '<p>Obrigado por aderir à nossa newsletter!</p>';
         $body_corpo_cliente = '<p>Para confirmar a sua intenção de receber a newsletter dos roteiros turísticos proceda à validação do email.</p>';
         $linkValidarEmail = '<p style="align:center;"><a href="' . $urlActual . 'index.php?area=newsletter&token=' . $hash . '" style="background:#4183c4;padding:6px;color:white;text-decoration:none;padding-left:8px;padding-right:8px;border-width:0;border-radius:5px" target="_blank">Validar endereço de email</a></p>';
-        
+
         $body_cumprimentos_cliente = '<p>Com os nossos melhores cumprimentos,</p><p>' . NOME_EMPRESA . '</p>';
         $body_logo_cliente = '<img src="cid:logo" width="150">';
         $body = '<html><head><style type="text/css">.text_black{color: #000000;}</style></head><body><div class="text_black">'.$body_head_cliente.'<br/>'.$body_corpo_cliente.$linkValidarEmail.'<br />'.$body_cumprimentos_cliente.$body_logo_cliente.'<br /></div></body></html>';
 
         $sql_hash = "UPDATE newsletter set hash='$hash' WHERE id=$id";
-        
+
         if(enviaEmail(SUBJECT, $body, $email, $email) && mysql_query($sql_hash)) {
             echo MENSAGEM_SUCESSO;
         } else {
@@ -41,29 +41,29 @@ if(!mysql_num_rows($resultado_verificaEmail)) {
         echo MENSAGEM_ERRO;
     }
 } else {
-    
+
     $row = mysql_fetch_assoc($resultado_verificaEmail);
     if($row['ativo']) {
         echo MENSAGEM_ATIVO;
     } else {
         $id = $row['id'];
         $hash = getHash('newsletter',$id);
-            
+
         $body_head_cliente = '<p>Obrigado por aderir à nossa newsletter!</p>';
         $body_corpo_cliente = '<p>Para confirmar a sua intenção de receber a newsletter dos roteiros turísticos proceda à validação do email.</p>';
         $linkValidarEmail = '<p style="align:center;"><a href="' . $urlActual . 'index.php?area=newsletter&token=' . $hash . '" style="background:#4183c4;padding:6px;color:white;text-decoration:none;padding-left:8px;padding-right:8px;border-width:0;border-radius:5px" target="_blank">Validar endereço de email</a></p>';
-        
+
         $body_cumprimentos_cliente = '<p>Com os nossos melhores cumprimentos,</p><p>' . NOME_EMPRESA . '</p>';
         $body_logo_cliente = '<img src="cid:logo" width="150">';
         $body = '<html><head><style type="text/css">.text_black{color: #000000;}</style></head><body><div class="text_black">'.$body_head_cliente.'<br/>'.$body_corpo_cliente.$linkValidarEmail.'<br />'.$body_cumprimentos_cliente.$body_logo_cliente.'<br /></div></body></html>';
 
         $sql_hash = "UPDATE newsletter set hash='$hash' WHERE id=$id";
-        
+
         if(enviaEmail(SUBJECT, $body, $email, $email) && mysql_query($sql_hash)) {
             echo MENSAGEM_SUCESSO;
         } else {
             echo MENSAGEM_ERRO;
         }
-    }   
+    }
 }
 ?>
