@@ -19,7 +19,7 @@
             $result_comentarios = mysql_query($sql_comentarios);
             ?>
             <ul>
-                <?php 
+                <?php
                 if($result_comentarios) {
                     while ($row = mysql_fetch_assoc($result_comentarios)){ ?>
                         <li><?php echo $row['comentario']; ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></li>

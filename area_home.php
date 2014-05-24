@@ -101,7 +101,7 @@
 <div id="testemunhos">
     <h2>Aventura <span>testemunhos</span></h2>
     <div id="comentario">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitiam et nisi nec elit scelerisque susciproin id rhoncus lacus. 
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitiam et nisi nec elit scelerisque susciproin id rhoncus lacus.
             Praesent vitae orci lobortis, volutpat neque et, mattis nishasellus ac tempor nulla, at egestas augue.</p>
     </div>
     <img src="img/separador_testemunhos.jpg" alt="" id="separadorTestemunhos"/>

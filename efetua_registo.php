@@ -25,7 +25,7 @@ if (!mysql_num_rows(mysql_query($sql))) {
     // ::TODO::
     // o utilizador já existe. fazer login ou recuperar a password
     // redireccionar para o login
-    
+
     echo "já existe esse utilizador na base de dados...esqueceu-se da password??";
 }
 ?>

@@ -71,7 +71,7 @@
                     </a>
                 </div>
             <?php }
-            
+
             } else {
 
             $sql = "SELECT * FROM roteiro

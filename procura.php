@@ -35,16 +35,16 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
             LEFT JOIN categoria ON roteiro.id_categoria = categoria.id
         WHERE
             titulo LIKE "%' . $search_string . '%"
-            OR categoria.nome LIKE "%' . $search_string . '%" 
-            OR roteiro.descricao LIKE "%' . $search_string . '%" 
-            OR regiao.nome LIKE "%' . $search_string . '%" 
-            OR palavra_chave.palavra LIKE "%' . $search_string . '%" 
+            OR categoria.nome LIKE "%' . $search_string . '%"
+            OR roteiro.descricao LIKE "%' . $search_string . '%"
+            OR regiao.nome LIKE "%' . $search_string . '%"
+            OR palavra_chave.palavra LIKE "%' . $search_string . '%"
         GROUP BY roteiro.id';
-    
+
     // Do Search
     $result = mysql_query($query);
-    
-    
+
+
     if(mysql_num_rows($result)) {
         while($row =  mysql_fetch_assoc($result)) {
             $displayTitulo = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['titulo']));
