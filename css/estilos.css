@@ -121,7 +121,7 @@ h1, h2, h3, #roteiros p, #testemunhos p  {
 #header {
     height: 96px;
     position: absolute;
-    z-index: 999;
+    z-index: 98;
 }
 
 #header li {
@@ -181,7 +181,7 @@ h1, h2, h3, #roteiros p, #testemunhos p  {
     position: absolute;
     top: 259px;
     cursor: pointer;
-    z-index: 999;
+    z-index: 98;
 }
 
 #right_button {
@@ -935,6 +935,8 @@ span#classificacaoEstrelas {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
+    z-index: 99;
+    display: block;
 }
 
 .loginRegistoBox {
@@ -942,11 +944,14 @@ span#classificacaoEstrelas {
     margin: 0 auto;
     width: 600px;
     background: #000;
+    z-index: 100;
+    cursor: default;
 }
 
 #lightboxLogin h1, #lightboxRegisto  h1{
     color: #fff;
     text-transform: uppercase;
+    z-index: 100;
 }
 
 #lightboxLogin label, #lightboxRegisto label {
@@ -959,6 +964,7 @@ span#classificacaoEstrelas {
 
 #lightboxLogin form, #lightboxRegisto form {
     padding: 50px;
+    z-index: 100;
 }
 
 #lightboxLogin input, #lightboxRegisto input {
@@ -978,15 +984,6 @@ span#classificacaoEstrelas {
     color: #fff;
     text-decoration: underline;
     font-size: 10px;
-}
-
-.lightboxAtivo {
-    display: block;
-    z-index: 1500;
-}
-
-.lightboxInativo {
-    display: none;
 }
 
 /* end Registo e Login */
@@ -1095,4 +1092,17 @@ ul#results li:hover h3, ul#results li:hover h4  {
 
 b.highlight{
     color:green;
+}
+
+
+
+/******
+*   DIALOG
+******/
+
+.ui-dialog {
+    z-index: 1000 !important;
+}
+.ui-front {
+    z-index: 1000 !important;
 }

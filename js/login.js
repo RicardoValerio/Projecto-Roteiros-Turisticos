@@ -1,13 +1,17 @@
 $(document).ready(function() {
-    $("#newsletterForm").validate({
+    $("#formLogin").validate({
         rules: {
-            subscrever: {
+            email: {
                 required: true,
                 email: true
+            },
+            password: {
+                required: true
             }
         },
         messages: {
-            subscrever: "Insira um email válido."
+            email: "Por favor preencha o seu email.",
+            password: "Por favor preencha a sua password."
         },
         submitHandler: function(form) {
             $.ajax({
@@ -15,9 +19,8 @@ $(document).ready(function() {
                 url: form.action,
                 data: $(form).serialize(),
                 success: function(response) {
-                    dialogMessageNormal('#dialog_mensage', 'Newsletter');
+                    dialogMessageNormal('#dialog_mensage', 'Login');
                     $('#dialog_text').html(response);
-                    formPlaceholder('input[name="subscrever"]', "Subscrever");
                 }
             });
             return false;

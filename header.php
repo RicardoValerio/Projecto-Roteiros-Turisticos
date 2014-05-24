@@ -16,8 +16,8 @@
             <li><a href="logout.php">Logout</a></li>
 
         <?php } else { ?>
-            <li><a id="login" href="">Login</a></li>
-            <li><a id="registo" href="">Registo</a></li>
+            <li><a id="login" href="<?php echo devolveUrlActual().'&log=login'; ?>">Login</a></li>
+            <li><a id="registo" href="<?php echo devolveUrlActual().'&log=registo'; ?>">Registo</a></li>
         <?php } ?>
     </ul>
 </div>

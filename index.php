@@ -18,10 +18,10 @@ $_SESSION['url'] = devolveUrlActual();
         <meta name="viewport" content="width=device-width">
 
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-        <link href="css/estilos.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/plugin.tags.css" />
 
+        <link href="css/estilos.css" rel="stylesheet" type="text/css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>
@@ -33,6 +33,7 @@ $_SESSION['url'] = devolveUrlActual();
 
         <script type="text/javascript" src="js/dialogMessage.js"></script>
         <script type="text/javascript" src="js/newsletter.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/search.js"></script>
         <script type="text/javascript" src="js/slideshow.js"></script>
 
@@ -54,7 +55,7 @@ $_SESSION['url'] = devolveUrlActual();
             <!-- AREAS -->
             <?php include(verificaAreaIndex('linkNavegacao')); ?>
 
-            
+
             <!--<div class="separador">
                  <hr />
                 <img src="img/separador_certo.jpg" alt="" />
@@ -85,14 +86,24 @@ $_SESSION['url'] = devolveUrlActual();
 
         </div>
 
-        <div id="lightboxLogin" class="lightboxInativo">
-            <?php include 'login.php'; ?>
-        </div>
+        <?php
+        if (isset($_GET['log'])) {
+            if ($_GET['log'] == 'login') {
+                ?>
+                <a href="<?php echo strstr(devolveUrlActual(), '&log=login', true); ?>" id="lightboxLogin" >
+                    <?php include 'login.php'; ?>
+                </a>
+                <?php
+            } else if ($_GET['log'] == 'registo') {
+                ?>
+                <a href="<?php echo strstr(devolveUrlActual(), '&log=registo', true); ?>" id="lightboxRegisto" >
+                    <?php include 'registo.php'; ?>
+                </a>
+                <?php
+            }
+        }
 
-        <div id="lightboxRegisto" class="lightboxInativo">
-            <?php include 'registo.php'; ?>
-        </div>
-
-        <?php include 'includes/dialogMessage.php'; ?>
+        include 'includes/dialogMessage.php';
+        ?>
     </body>
 </html>
