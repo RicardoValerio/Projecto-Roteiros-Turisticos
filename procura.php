@@ -34,7 +34,8 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
             LEFT JOIN regiao ON roteiro.id_regiao = regiao.id)
             LEFT JOIN categoria ON roteiro.id_categoria = categoria.id
         WHERE
-            titulo LIKE "%' . $search_string . '%"
+            roteiro.ativo = 1
+            AND titulo LIKE "%' . $search_string . '%"
             OR categoria.nome LIKE "%' . $search_string . '%"
             OR roteiro.descricao LIKE "%' . $search_string . '%"
             OR regiao.nome LIKE "%' . $search_string . '%"

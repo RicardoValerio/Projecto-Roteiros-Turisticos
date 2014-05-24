@@ -91,7 +91,8 @@ if (!is_numeric($get_parametro)) {
             roteiro.id = $get_parametro
                 AND roteiro.id_categoria = categoria.id
                 AND roteiro.id_regiao = regiao.id
-                AND roteiro.id_utilizador = utilizador.id";
+                AND roteiro.id_utilizador = utilizador.id
+                AND roteiro.ativo = 1";
 
     $result_roteiro = mysql_query($sql_roteiro);
     if ($result_roteiro) {

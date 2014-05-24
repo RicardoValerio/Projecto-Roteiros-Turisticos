@@ -20,17 +20,21 @@ $result_estado_do_roteiro = mysql_query($sql);
 
 		<p id="notaEstado">Clique para Desativar o Roteiro:</p>
 			<div id="estadoRoteiro">
-				<div id="myRoteiroActivo" class="roteiroActivo">Roteiro Activo</div>
+				<div id="myRoteiroActivo" class="roteiroActivo">O Roteiro Está Activo</div>
 			</div>
 
 		<?php else: ?>
 
 		<p id="notaEstado">Clique para Ativar o Roteiro:</p>
 			<div id="estadoRoteiro">
-				<div id="myRoteiroInactivo" class="roteiroInactivo">Roteiro Inactivo</div>
+				<div id="myRoteiroInactivo" class="roteiroInactivo">O Roteiro Está Inactivo</div>
 			</div>
 
 		<?php endif ?>
+
+			<div id="eliminarRoteiroId">
+				<a href="processaEliminarRoteiro.php?id=<?php echo $id_get_parametro ?>" id="myEliminarRoteiro" class="eliminarRoteiro">Eliminar Roteiro</a>
+			</div>
 
 <?php endif ?>
 
@@ -38,18 +42,23 @@ $result_estado_do_roteiro = mysql_query($sql);
 
 $(document).ready(function() {
 
+
+/************************************************************************
+*		update do estado do roteiro via ajax
+************************************************************************/
+
 	setInterval(function() {
 
 
 			$('#myRoteiroInactivo').on('click', function () {
 
 				$.ajax({
-						url: 'testarUpdateEstadoRoteiro.php',
+						url: 'ajaxUpdateEstadoRoteiro.php',
 						type: 'post',
-						data: { id: <?php echo $_GET['id']; ?>,
+						data: { id: <?php echo $id_get_parametro; ?>,
 								estado: 0},
 						success: function (data) {
-							$('#estadoRoteiro').html('<div id="myRoteiroActivo" class="roteiroActivo">Roteiro Activo</div>');
+							$('#estadoRoteiro').html('<div id="myRoteiroActivo" class="roteiroActivo">O Roteiro Está Activo</div>');
 							$('#notaEstado').html('Clique para Desativar o Roteiro');
 						}
 					});
@@ -58,13 +67,13 @@ $(document).ready(function() {
 			$('#myRoteiroActivo').on('click', function () {
 
 				$.ajax({
-						url: 'testarUpdateEstadoRoteiro.php',
+						url: 'ajaxUpdateEstadoRoteiro.php',
 						type: 'post',
-						data: { id: <?php echo $_GET['id']; ?>,
+						data: { id: <?php echo $id_get_parametro; ?>,
 								estado: 1},
 						success: function (data) {
 							console.log(data);
-							$('#estadoRoteiro').html('<div id="myRoteiroInactivo" class="roteiroInactivo">Roteiro Inactivo</div>');
+							$('#estadoRoteiro').html('<div id="myRoteiroInactivo" class="roteiroInactivo">O Roteiro Está Inactivo</div>');
 							$('#notaEstado').html('Clique para Ativar o Roteiro:');
 						}
 					});
@@ -73,6 +82,12 @@ $(document).ready(function() {
 			});
 
 	}, 100);
+
+
+
+	$('#myEliminarRoteiro').on('click', function () {
+		return confirm("Tem a certeza que pretende eliminar este roteiro?");
+	});
 
 });
 

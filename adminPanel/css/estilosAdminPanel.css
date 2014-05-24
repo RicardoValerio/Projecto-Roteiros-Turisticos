@@ -223,7 +223,53 @@ dd li{
 *          ESTADO INACTIVO DO ROTEIRO
 ******************************************************************************/
 
+
 .roteiroInactivo {
+    -moz-box-shadow: 0px 1px 0px 0px #fff6af;
+    -webkit-box-shadow: 0px 1px 0px 0px #fff6af;
+    box-shadow: 0px 1px 0px 0px #fff6af;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffec64), color-stop(1, #ffab23));
+    background:-moz-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:-webkit-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:-o-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:-ms-linear-gradient(top, #ffec64 5%, #ffab23 100%);
+    background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23',GradientType=0);
+    background-color:#ffec64;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #ffaa22;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffee66;
+}
+.roteiroInactivo:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffab23), color-stop(1, #ffec64));
+    background:-moz-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:-webkit-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:-o-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:-ms-linear-gradient(top, #ffab23 5%, #ffec64 100%);
+    background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64',GradientType=0);
+    background-color:#ffab23;
+}
+.roteiroInactivo:active {
+    position:relative;
+    top:1px;
+}
+
+/****************************************************************************
+*   Botão para eliminar um determinado roteiro
+****************************************************************************/
+
+.eliminarRoteiro {
     -moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
     -webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
     box-shadow:inset 0px 1px 0px 0px #f5978e;
@@ -249,7 +295,7 @@ dd li{
     text-decoration:none;
     text-shadow:0px 1px 0px #810e05;
 }
-.roteiroInactivo:hover {
+.eliminarRoteiro:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537));
     background:-moz-linear-gradient(top, #c62d1f 5%, #f24537 100%);
     background:-webkit-linear-gradient(top, #c62d1f 5%, #f24537 100%);
@@ -259,7 +305,7 @@ dd li{
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537',GradientType=0);
     background-color:#c62d1f;
 }
-.roteiroInactivo:active {
+.eliminarRoteiro:active {
     position:relative;
     top:1px;
 }
@@ -269,11 +315,23 @@ dd li{
 *     estilos pessoais do botão para alterar o estado do roteiro
 *******************************************************************/
 #myRoteiroActivo, #myRoteiroInactivo{
-    width: 210px;
-    height: 44px;
     font-size: 22px;
-    text-align: center;
+    height: 44px;
+    margin-left: -21px;
     padding-top: 27px;
+    text-align: center;
+    width: 244px;
+}
+
+#ulEstadoRoteiros{
+    margin-top: -44px;
+}
+
+#myEliminarRoteiro{
+    width: 142px;
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 76px;
 }
 
 #notaEstado{

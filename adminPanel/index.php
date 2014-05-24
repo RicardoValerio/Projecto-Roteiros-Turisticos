@@ -96,14 +96,14 @@ margin-top: 25px;
                 </ul>
             <?php endif ?>
 
-            <ul>
+            <ul id="ulEstadoRoteiros">
                 <?php
-            switch (@$_GET['p']) {
+                switch (@$_GET['p']) {
                 case 'editar':
                     include 'includes/estadoRoteiro.php';
                     break;
-            }
-            ?>
+                }
+                ?>
             </ul>
 
         </div>
