@@ -4,7 +4,8 @@ $sql = "SELECT
     roteiro.titulo,
     utilizador.nome,
     comentario.comentario,
-    comentario.data
+    comentario.data,
+    comentario.ativo
 FROM
     roteiro,
     utilizador,
@@ -26,6 +27,7 @@ $result_comentarios = mysql_query($sql);
                     <th class="sorting">Utilizador</th>
                     <th class="sorting">Comentário</th>
                     <th class="sorting">Data</th>
+                    <th class="sorting">Ativo</th>
                     <th class="sorting">Editar Comentário</th>
                 </tr>
             </thead>
@@ -36,6 +38,7 @@ $result_comentarios = mysql_query($sql);
                     <th>Utilizador</th>
                     <th>Comentário</th>
                     <th>Data</th>
+                    <th>Ativo</th>
                     <th>Editar Comentário</th>
                 </tr>
             </tfoot>
@@ -48,6 +51,7 @@ $result_comentarios = mysql_query($sql);
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['nome']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['comentario']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['data']; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo $row_comentario['ativo']; ?></td>
                         <td class="linhasCentradasTabela"><a href="index.php?p=editar_comentario&id=<?php echo $row_comentario['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
                 <?php endwhile; ?>
