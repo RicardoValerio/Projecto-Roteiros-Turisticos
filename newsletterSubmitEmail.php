@@ -7,7 +7,7 @@ $urlActual = strstr("http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
 
 define('MENSAGEM_ERRO', 'Pedimos desculpa mas de momento não foi possível adicionar o seu email à newsletter dos roteiros turísticos');
 define('MENSAGEM_ATIVO', 'O seu email já foi adicionado à newsletter dos roteiros turísticos');
-define('MENSAGEM_SUCESSO', 'Obrigado por se ter inscrito na newsletter dos roteiros turísticos. <br /><br /> Dentro de momentos irá receber um email pedindo-lhe que confirme a sua intenção, bastanto para isso clicar no link fornecido.');
+define('MENSAGEM_SUCESSO', 'Obrigado por se ter inscrito na newsletter dos roteiros turísticos. <br /><br /> Dentro de momentos irá receber um email pedindo-lhe que confirme a sua intenção, bastando para isso clicar no link fornecido.');
 define('SUBJECT', 'Newsletter'.NOME_EMPRESA);
 
 $email = mysql_real_escape_string($_POST['subscrever']);
