@@ -21,9 +21,9 @@
 <div id="newsletter" class="esq">
     <h4>Newsletter</h4>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitiam et nisi nec elit scelerisque.</p>
-    <form id="newsletterForm">
+    <form id="newsletterForm" action="newsletterSubmitEmail.php" method="post">
         <input type="text" name="subscrever" />
         <input type="submit" value="Ok" />
-        <p style="color:yellow;" id="thanks"></p>
+        <label for="subscrever" class="error"></label>
     </form>
 </div>

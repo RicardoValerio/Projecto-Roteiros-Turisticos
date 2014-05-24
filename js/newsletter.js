@@ -1,22 +1,29 @@
-/****************************************************************************
- *			NEWSLETTER FORM
- ****************************************************************************/
-
 $(document).ready(function() {
-    $(function() {
-        $('#newsletterForm').bind('submit', function(event) {
-
-            event.preventDefault();// using this page stop being refreshing
-
+    $("#newsletterForm").validate({
+        rules: {
+            subscrever: {
+                required: true,
+                email: true
+            },
+        },
+        messages: {
+            subscrever: "Insira um email válido."
+        },
+        submitHandler: function(form) {
             $.ajax({
-                type: 'POST',
-                url: 'newsletterSubmitEmail.php',
-                data: $('#newsletterForm').serialize(),
-                success: function() {
-                    $('#thanks').html("Obrigado por submeter o seu E-mail!");
+                type: form.method,
+                url: form.action,
+                data: $(form).serialize(),
+                success: function(response) {
+
+                    //fazer a resposta retornar um json
+                    //erro: false -> aparecer mensagem de sucesso a agradecer
+                    dialogMessageNormal('#dialog_mensage', 'Newsletter');
+                    $('#dialog_text').html(response);
+                    formPlaceholder('input[name="subscrever"]', "Subscrever");
                 }
             });
-
-        });
+            return false;
+        }
     });
 });

@@ -986,7 +986,22 @@ span#classificacaoEstrelas {
 
 /* end Registo e Login */
 
+/**********************************************
+*           CONFIRMA NEWSLETTER
+***********************************************/
 
+#confirmaNewsletter {
+    text-align: center;
+    padding: 50px;
+}
+
+#confirmaNewsletter h1 {
+    margin-bottom: 50px;
+}
+
+#confirmaNewsletter h4 {
+    margin-bottom: 15px;
+}
 
 /******************************************************************
 *				LIVE SEARCH STYLES

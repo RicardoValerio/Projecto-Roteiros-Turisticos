@@ -3,6 +3,22 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since type specimen book !!</p>
     </div>
     <div class="clearfix">
+
+        <?php
+        /*$sql_roteiros = "SELECT  comentario.comentario,
+			    comentario.data
+			FROM
+			    comentario,
+			    roteiro
+			WHERE
+			    roteiro.id_categoria = $get_parametro
+			        AND roteiro.id = comentario.id_roteiro
+			ORDER BY roteiro.id DESC
+			LIMIT 3";
+
+
+        $result_roteiros = mysql_query($sql_roteiros);*/
+        ?>
         <div id="roteiro1" class="esq borda">
             <img src="img/parques_reservas.jpg" alt="Parques e reservas naturais"/>
             <div class="descricao">
