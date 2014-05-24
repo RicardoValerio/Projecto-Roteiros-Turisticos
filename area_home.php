@@ -2,101 +2,112 @@
     <div id="introducao">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since type specimen book !!</p>
     </div>
-    <div class="clearfix">
+
+
+    <?php
+    $numBotoesPag = 3;
+    $limit = 6;
+    
+    
+    $sql_roteirosTodos = "SELECT  count(id) as total
+			FROM
+			    roteiro
+                        WHERE ativo=1";
+    $result_roteirosTodos = mysql_query($sql_roteirosTodos);
+    $linhatotal = mysql_fetch_array($result_roteirosTodos);
+    $total_num_rows = $linhatotal['total'];
+    
+    $totalPaginas = ceil($total_num_rows / $limit);
+    
+    
+    $pag = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
+    if($pag > $totalPaginas) $pag = $totalPaginas;
+    
+    $offset = (($pag - 1) * $limit);
+
+
+    $sql_roteirosPag = "SELECT  id, titulo, imagem, descricao
+			FROM
+			    roteiro
+                        WHERE ativo=1
+			ORDER BY roteiro.data DESC limit $offset, $limit";
+
+    $result_roteirosPag = mysql_query($sql_roteirosPag);
+
+    if (mysql_num_rows($result_roteirosPag)) {
+        ?><div class="clearfix">
+            <ul id="roteiroBox" class="clearfix"><?php
+                while ($row = mysql_fetch_assoc($result_roteirosPag)) {
+                    ?>
+                    <li class="roteiro esq borda">
+                        <img src="<?php echo 'img/' . $row['imagem']; ?>" alt="<?php echo utf8_decode($row['titulo']); ?>"/>
+                        <div class="descricao">
+                            <h3><?php echo utf8_decode($row['titulo']); ?></h3>
+                            <?php echo utf8_decode($row['descricao']); ?>
+                        </div>
+                        <div class="saibaMais">
+                            <a href="index.php?area=destinos&roteiro=<?php echo $row['id']; ?>">Saiba mais</a>
+                        </div>
+                    </li>
+                    <?php
+                }
+                ?></ul>
+        </div>
+
+        <div id="paginas" class="clearfix">
+            <ul>
+                <?php if ($pag >= $numBotoesPag) { ?>
+                    <li><a href="?pag=1"><<</a></li>
+                    <li><a href="?pag=<?php echo $pag - 1; ?>"><</a></li>
+                    <li><a href="?pag=<?php echo (($pag - $numBotoesPag) < 1)  ? 1 : ($pag - $numBotoesPag);?>" class="reticencias">...</a></li>
+                    <?php
+                }
+
+                if ($pag == 1) {
+                    ?>
+                    <li><a href="?pag=<?php echo $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                    <?php if( ($pag + 1) <= $totalPaginas) { ?>
+                    <li><a href="?pag=<?php echo $pag + 1; ?>"><?php echo $pag + 1; ?></a></li>
+                    <?php } ?>
+                    <?php if( ($pag + 2) <= $totalPaginas) { ?>
+                    <li><a href="?pag=<?php echo $pag + 2; ?>"><?php echo $pag + 2; ?></a></li>
+                    <?php } ?>
+
+                <?php } else if ($pag > 1 && $pag < $totalPaginas) { ?>
+                    <li><a href="?pag=<?php echo $pag - 1; ?>"><?php echo $pag - 1; ?></a></li>
+                    <li><a href="?pag=<?php echo $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                    <li><a href="?pag=<?php echo $pag + 1; ?>"><?php echo $pag + 1; ?></a></li>
+                <?php } else if ($pag == $totalPaginas) { ?>
+                    <?php if( ($pag - 2) >= 1) { ?>
+                    <li><a href="?pag=<?php echo $pag - 2; ?>"><?php echo $pag - 2; ?></a></li>
+                    <?php } ?>
+                    <?php if( ($pag - 1) >= 1) { ?>
+                    <li><a href="?pag=<?php echo $pag - 1; ?>"><?php echo $pag - 1; ?></a></li>
+                    <?php } ?>
+                    <li><a href="?pag=<?php echo $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                    <?php
+                }
+
+                if ($pag <= ($totalPaginas - $numBotoesPag + 1)) {
+                    ?>
+                    <li><a href="?pag=<?php echo (($pag + $numBotoesPag) > $totalPaginas)  ? $totalPaginas : ($pag + $numBotoesPag); ?>" class="reticencias">...</a></li>
+                    <li><a href="?pag=<?php echo $pag + 1 ?>">></a></li>
+                    <li><a href="?pag=<?php echo $totalPaginas; ?>">>></a></li>
+                <?php } ?>
+
+            </ul>
+        </div>
 
         <?php
-        /*$sql_roteiros = "SELECT  comentario.comentario,
-			    comentario.data
-			FROM
-			    comentario,
-			    roteiro
-			WHERE
-			    roteiro.id_categoria = $get_parametro
-			        AND roteiro.id = comentario.id_roteiro
-			ORDER BY roteiro.id DESC
-			LIMIT 3";
-
-
-        $result_roteiros = mysql_query($sql_roteiros);*/
-        ?>
-        <div id="roteiro1" class="esq borda">
-            <img src="img/parques_reservas.jpg" alt="Parques e reservas naturais"/>
-            <div class="descricao">
-                <h3>Parques e reservas</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et nisi nec elit scelerisque suscipit. Proin id rhoncus lacus. Praesent vitae orci lobortis, volutpat neque et, mattis nisi. Phasellus ac tempor nulla, at egestas augue. Praesent eget suscipit nunc. Donec quis rhoncus sapien. Morbi euismod nibh et ullamcorper pretium. Praesent luctus, urna id hendrerit adipiscing, nunc sem ullamcorper tortor, ac auctor dui purus in erat.</p>
-            </div>
-            <div class="saibaMais">
-                <a href="detalheRoteiro.html">Saiba mais</a>
-            </div>
-        </div>
-        <div id="roteiro2" class="esq borda">
-            <img src="img/bicicleta.jpg" alt="Bicicleta"/>
-            <div class="descricao">
-                <h3>Bicicleta</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et nisi nec elit scelerisque suscipit. Proin id rhoncus lacus. Praesent vitae orci lobortis, volutpat neque et, mattis nisi. Phasellus ac tempor nulla, at egestas augue. Praesent eget suscipit nunc. Donec quis rhoncus sapien. Morbi euismod nibh et ullamcorper pretium. Praesent luctus, urna id hendrerit adipiscing, nunc sem ullamcorper tortor, ac auctor dui purus in erat.</p>
-            </div>
-            <div class="saibaMais">
-                <a href="detalheRoteiro.html">Saiba mais</a>
-            </div>
-        </div>
-        <div id="roteiro3" class="esq borda">
-            <img src="img/miniFerias.jpg" alt="Miniférias"/>
-            <div class="descricao">
-                <h3>Miniférias</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et nisi nec elit scelerisque suscipit. Proin id rhoncus lacus. Praesent vitae orci lobortis, volutpat neque et, mattis nisi. Phasellus ac tempor nulla, at egestas augue. Praesent eget suscipit nunc. Donec quis rhoncus sapien. Morbi euismod nibh et ullamcorper pretium. Praesent luctus, urna id hendrerit adipiscing, nunc sem ullamcorper tortor, ac auctor dui purus in erat.</p>
-            </div>
-            <div class="saibaMais">
-                <a href="detalheRoteiro.html">Saiba mais</a>
-            </div>
-        </div>
-        <div id="roteiro4" class="esq borda">
-            <img src="img/parques_reservas.jpg" alt="Parques e reservas naturais"/>
-            <div class="descricao">
-                <h3>Parques e reservas naturais</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et nisi nec elit scelerisque suscipit. Proin id rhoncus lacus. Praesent vitae orci lobortis, volutpat neque et, mattis nisi. Phasellus ac tempor nulla, at egestas augue. Praesent eget suscipit nunc. Donec quis rhoncus sapien. Morbi euismod nibh et ullamcorper pretium. Praesent luctus, urna id hendrerit adipiscing, nunc sem ullamcorper tortor, ac auctor dui purus in erat.</p>
-            </div>
-            <div class="saibaMais">
-                <a href="detalheRoteiro.html">Saiba mais</a>
-            </div>
-        </div>
-        <div id="roteiro5" class="esq borda">
-            <img src="img/bicicleta.jpg" alt="Bicicleta"/>
-            <div class="descricao">
-                <h3>Bicicleta</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et nisi nec elit scelerisque suscipit. Proin id rhoncus lacus. Praesent vitae orci lobortis, volutpat neque et, mattis nisi. Phasellus ac tempor nulla, at egestas augue. Praesent eget suscipit nunc. Donec quis rhoncus sapien. Morbi euismod nibh et ullamcorper pretium. Praesent luctus, urna id hendrerit adipiscing, nunc sem ullamcorper tortor, ac auctor dui purus in erat.</p>
-            </div>
-            <div class="saibaMais">
-                <a href="detalheRoteiro.html">Saiba mais</a>
-            </div>
-        </div>
-        <div id="roteiro6" class="esq borda">
-            <img src="img/miniFerias.jpg" alt="Miniférias"/>
-            <div class="descricao">
-                <h3>Miniférias</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et nisi nec elit scelerisque suscipit. Proin id rhoncus lacus. Praesent vitae orci lobortis, volutpat neque et, mattis nisi. Phasellus ac tempor nulla, at egestas augue. Praesent eget suscipit nunc. Donec quis rhoncus sapien. Morbi euismod nibh et ullamcorper pretium. Praesent luctus, urna id hendrerit adipiscing, nunc sem ullamcorper tortor, ac auctor dui purus in erat.</p>
-            </div>
-            <div class="saibaMais">
-                <a href="detalheRoteiro.html">Saiba mais</a>
-            </div>
-        </div>
-    </div>
-    <div id="paginas" class="clearfix">
-        <ul>
-            <li><a href="#" class="paginaAtiva">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">...</a></li>
-            <li><a href="#">></a></li>
-        </ul>
-    </div>
-
-
+    }
+    ?>
 </div>
+
 
 <div class="separador">
     <hr />
     <img src="img/separador_fala.jpg" alt="" />
-</div>-->
+</div>
 
 <div id="testemunhos">
     <h2>Aventura <span>testemunhos</span></h2>
