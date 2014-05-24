@@ -8,7 +8,7 @@ $urlActual = strstr("http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
 define('MENSAGEM_ERRO', 'Pedimos desculpa mas de momento não foi possível adicionar o seu email à newsletter dos roteiros turísticos');
 define('MENSAGEM_ATIVO', 'O seu email já foi adicionado à newsletter dos roteiros turísticos');
 define('MENSAGEM_SUCESSO', 'Obrigado por se ter inscrito na newsletter dos roteiros turísticos. <br /><br /> Dentro de momentos irá receber um email pedindo-lhe que confirme a sua intenção, bastando para isso clicar no link fornecido.');
-define('SUBJECT', 'Newsletter'.NOME_EMPRESA);
+define('SUBJECT', 'Newsletter '.NOME_EMPRESA);
 
 $email = mysql_real_escape_string($_POST['subscrever']);
 
@@ -26,7 +26,7 @@ if(!mysql_num_rows($resultado_verificaEmail)) {
         $body_corpo_cliente = '<p>Para confirmar a sua intenção de receber a newsletter dos roteiros turísticos proceda à validação do email.</p>';
         $linkValidarEmail = '<p style="align:center;"><a href="' . $urlActual . 'index.php?area=newsletter&token=' . $hash . '" style="background:#4183c4;padding:6px;color:white;text-decoration:none;padding-left:8px;padding-right:8px;border-width:0;border-radius:5px" target="_blank">Validar endereço de email</a></p>';
 
-        $body_cumprimentos_cliente = '<p>Com os nossos melhores cumprimentos,</p><p>' . NOME_EMPRESA . '</p>';
+        $body_cumprimentos_cliente = '<p>Com os nossos melhores cumprimentos, </p><p>' . NOME_EMPRESA . '</p>';
         $body_logo_cliente = '<img src="cid:logo" width="150">';
         $body = '<html><head><style type="text/css">.text_black{color: #000000;}</style></head><body><div class="text_black">'.$body_head_cliente.'<br/>'.$body_corpo_cliente.$linkValidarEmail.'<br />'.$body_cumprimentos_cliente.$body_logo_cliente.'<br /></div></body></html>';
 
