@@ -6,8 +6,6 @@ margin-top: 75px;
 
 <div style="margin-left: 69px;" id="editarRoteiro">
 
-    <!-- <h1><span id="normal">Inserir</span> Roteiro</h1> -->
-
     <?php
 
     $id_get_parametro = mysql_real_escape_string($_GET['id']);
@@ -27,9 +25,10 @@ margin-top: 75px;
 
 
 
-    <h2> Roteiro com Id # <?php echo $roteiros_array['id']; ?> </h2>
+    <h2> Roteiro com Id # <?php echo $roteiros_array['id']; ?></h2>
+    <input type="hidden" name="i" value="<?php echo $roteiros_array['id']; ?>">
 
-
+<hr>
 
     <?php
 
@@ -39,16 +38,16 @@ margin-top: 75px;
      ?>
 
         <p>
-            <label for="utilizador">Utilizador:</label>
+            <label for="utilizador">Autor do Roteiro:</label>
             <h5><?php echo $row_utilizador['nome'];  ?></h5>
             <h5><?php echo $row_utilizador['email'];  ?></h5>
         </p>
-
+<hr>
         <p>
             <label for="nome">Nome/Título do Roteiro:</label>
             <input type="text" id="nome" name="titulo" value="<?php echo $roteiros_array['titulo']; ?>" />
         </p>
-
+<hr>
         <p>
             <label for="regiao">Região:</label>
 
@@ -77,6 +76,7 @@ margin-top: 75px;
 
     </p>
 
+<hr>
 
     <p>
         <label for="categoria">Categoria:</label>
@@ -99,6 +99,7 @@ margin-top: 75px;
 
 </p>
 
+<hr>
 
 <p>
     <label for="imagem">Imagem:</label>
@@ -106,14 +107,7 @@ margin-top: 75px;
     <input type="file" id="imagem" name="imagem" />
 </p>
 
-
-<!--    <p>
-                <label for="tempo" >Tempo:</label>
-                <input type="text" id="tempo" name="tempo" />
-        </p>
-    -->
-
-    <!-- TODO: fazer um ciclo e colocar o id dentro dos indices dos arrays do percurso bem como os values e id-->
+<hr>
 
 <?php
     $sql_roteiro_tem_percursos = "SELECT * FROM roteiro_tem_tipo WHERE id_roteiro = " . $roteiros_array['id'];
@@ -137,7 +131,7 @@ margin-top: 75px;
         <legend>Percursos nas Imediações:</legend>
         <p>
             <?php while ($row_percurso = @mysql_fetch_assoc($result_percursos)): ?>
-            <label for="<?php echo utf8_encode($row_percurso['tipo']); ?>"><?php echo utf8_encode($row_percurso['tipo']); ?></label><input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['id']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>"
+            <label for="<?php echo utf8_encode($row_percurso['tipo']); ?>"><?php echo utf8_encode($row_percurso['tipo']); ?></label><input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['tipo']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>"
             <?php if(in_array($row_percurso['id'], $array_ids_percursos_do_roteiro)) echo "checked";?>>
         <?php endwhile; ?>
         </p>
@@ -192,7 +186,7 @@ margin-top: 75px;
         <input style="width: 300px;" id="palavras_chave" name="palavras_chave" type="text" class="tags" value="<?php echo $string_palavras_do_roteiro; ?>" />
     </p>
 
-    <input type="submit" value="Inserir Roteiro" />
+    <input class="mySubmitButton" type="submit" value="Atualizar Roteiro" />
 
 </form>
 

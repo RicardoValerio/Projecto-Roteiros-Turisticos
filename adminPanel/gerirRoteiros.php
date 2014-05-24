@@ -1,5 +1,16 @@
 <?php
-$sql = "SELECT * FROM roteiro";
+$sql = "SELECT
+	roteiro.id,
+    roteiro.titulo,
+	categoria.nome,
+	roteiro.data,
+	roteiro.ativo
+FROM
+    roteiro,
+    categoria
+WHERE
+    roteiro.id_categoria = categoria.id";
+
 $result_roteiros = mysql_query($sql);
 ?>
 
@@ -33,10 +44,10 @@ $result_roteiros = mysql_query($sql);
 				<?php while ($row_roteiros = mysql_fetch_assoc($result_roteiros)): ?>
 					<tr>
 						<td class="linhasCentradasTabela"><?php echo $row_roteiros['titulo']; ?></td>
-						<td class="linhasCentradasTabela"><?php echo $row_roteiros['id_categoria']; ?></td>
+						<td class="linhasCentradasTabela"><?php echo $row_roteiros['nome']; ?></td>
 						<td class="linhasCentradasTabela"><?php echo $row_roteiros['data']; ?></td>
 						<td class="linhasCentradasTabela"><?php echo $row_roteiros['ativo']; ?></td>
-						<td class="linhasCentradasTabela"><a href="index.php?p=editar&id=<?php echo $row_roteiros['id']; ?>" class="editarRoteiro">Editar</a></td>
+						<td class="linhasCentradasTabela"><a href="index.php?p=editar_roteiro&id=<?php echo $row_roteiros['id']; ?>" class="editarRoteiro">Editar</a></td>
 					</tr>
 				<?php endwhile; ?>
 
@@ -51,7 +62,9 @@ $result_roteiros = mysql_query($sql);
 <script type="text/javascript" language="javascript" class="init">
 
 $(document).ready(function() {
-    $('#example').dataTable();
+    $('#example').dataTable({
+    	"scrollX": true
+    });
 
 // tive de adicionar isto pois foi a unica forma de conseguir com que a tabela
 // fica-se ordenada pela data de forma descendente - pelo sql não deu, deve ser

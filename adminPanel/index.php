@@ -88,9 +88,9 @@ margin-top: 25px;
                 <ul id="ultimaUl">
                     <a href="index.php?p=gerirRoteiros"><li>Gerir Roteiros</li></a>
 
-                    <a href="#"><li>Gerir Comentários</li></a>
+                    <a href="index.php?p=gerirComentarios"><li>Gerir Comentários</li></a>
 
-                    <a href="#"><li>Gerir Utilizadores</li></a>
+                    <a href="index.php?p=gerirUtilizadores"><li>Gerir Utilizadores</li></a>
 
                     <a href="#"><li>Gerir Conteúdos</li></a>
                 </ul>
@@ -99,8 +99,14 @@ margin-top: 25px;
             <ul id="ulEstadoRoteiros">
                 <?php
                 switch (@$_GET['p']) {
-                case 'editar':
+                case 'editar_roteiro':
                     include 'includes/estadoRoteiro.php';
+                    break;
+                case 'editar_comentario':
+                    include 'includes/estadoComentario.php';
+                    break;
+                case 'editar_utilizador':
+                    include 'includes/estadoUtilizador.php';
                     break;
                 }
                 ?>
@@ -118,8 +124,20 @@ margin-top: 25px;
                 case 'gerirRoteiros':
                     include 'gerirRoteiros.php';
                     break;
-                case 'editar':
+                case 'editar_roteiro':
                     include 'editarRoteiros.php';
+                    break;
+                case 'gerirComentarios':
+                    include 'gerirComentarios.php';
+                    break;
+                case 'editar_comentario':
+                    include 'editarComentarios.php';
+                    break;
+                case 'gerirUtilizadores':
+                    include 'gerirUtilizadores.php';
+                    break;
+                case 'editar_utilizador':
+                    include 'editarUtilizadores.php';
                     break;
 
                 default:

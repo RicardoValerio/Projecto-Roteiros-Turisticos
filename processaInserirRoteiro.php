@@ -1,8 +1,8 @@
 ﻿<?php
 include_once 'includes/config.php';
 
-print_r($_POST);
-print_r($_FILES);
+//print_r($_POST);
+//print_r($_FILES);
 
 $titulo = mysql_real_escape_string(utf8_encode($_POST['titulo']));
 $nomeImagem = mysql_real_escape_string(utf8_encode($_FILES['imagem']['name']));
@@ -56,5 +56,13 @@ if (mysql_query($sql)) {
         $palavra = utf8_encode($palavra);
         mysql_query("INSERT INTO palavra_chave (id_roteiro, palavra) VALUES ($id_ultimo_roteiro_inserido, '$palavra')");
     }
+
+
+    // falta tratar da imagem, e depois redireccionar
+    echo "sucesso, inserido com tranquilidade, falta agora tratar da parte das imagens e dps redireccionar!";
+
+
+}else{
+    echo "erro, por favor contacte a empresa onde pagou pela porcaria de software xD...";
 }
 ?>

@@ -10,6 +10,7 @@ body{
     width: 70%;
     float: right;
     margin-right: 60px;
+    margin-bottom: 69px;
 }
 
 .left{
@@ -337,4 +338,49 @@ dd li{
 #notaEstado{
     color: white;
     text-align: center;
+}
+
+/*****************************************************************************
+*           Submit Button Style
+*****************************************************************************/
+
+
+.mySubmitButton {
+    -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    box-shadow:inset 0px 1px 0px 0px #cf866c;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f04b1d), color-stop(1, #bc3315));
+    background:-moz-linear-gradient(top, #f04b1d 5%, #bc3315 100%);
+    background:-webkit-linear-gradient(top, #f04b1d 5%, #bc3315 100%);
+    background:-o-linear-gradient(top, #f04b1d 5%, #bc3315 100%);
+    background:-ms-linear-gradient(top, #f04b1d 5%, #bc3315 100%);
+    background:linear-gradient(to bottom, #f04b1d 5%, #bc3315 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f04b1d', endColorstr='#bc3315',GradientType=0);
+    background-color:#f04b1d;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    border:1px solid #942911;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:arial;
+    font-size:24px;
+    padding:23px 76px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #854629;
+}
+.mySubmitButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #f04b1d));
+    background:-moz-linear-gradient(top, #bc3315 5%, #f04b1d 100%);
+    background:-webkit-linear-gradient(top, #bc3315 5%, #f04b1d 100%);
+    background:-o-linear-gradient(top, #bc3315 5%, #f04b1d 100%);
+    background:-ms-linear-gradient(top, #bc3315 5%, #f04b1d 100%);
+    background:linear-gradient(to bottom, #bc3315 5%, #f04b1d 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#f04b1d',GradientType=0);
+    background-color:#bc3315;
+}
+.mySubmitButton:active {
+    position:relative;
+    top:1px;
 }
