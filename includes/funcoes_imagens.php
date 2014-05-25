@@ -133,7 +133,7 @@ function verificaSeExtensaoDaImagemSeraValida($ext){
 }
 
 
-
+/*
 function mudaTamanhoImagem($tamanho, $nomeImagem){
     $patterns = array();
     $patterns[0] = '/.gif/';
@@ -154,6 +154,6 @@ function mudaTamanhoImagem($tamanho, $nomeImagem){
 
     return preg_replace($patterns, $replacements, $nomeImagem);
 }
-
+*/
 
 ?>

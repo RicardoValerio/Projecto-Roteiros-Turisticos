@@ -107,7 +107,7 @@ margin-top: 75px;
 <p>
     <label for="imagem">Imagem:</label>
     <p>Hash da Imagem: <?php echo $roteiros_array['imagem']; ?></p>
-    <img src="../img/<?php echo mudaTamanhoImagem(400,$roteiros_array['imagem']); ?>" alt="<?php echo $roteiros_array['titulo']; ?>">
+    <img src="<?php echo '../img/gd_'. $roteiros_array['imagem']; ?>" alt="<?php echo $roteiros_array['titulo']; ?>">
     <br>
     <input type="file" id="imagem" name="imagem" />
 </p>

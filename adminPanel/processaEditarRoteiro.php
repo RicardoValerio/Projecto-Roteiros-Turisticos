@@ -1,10 +1,15 @@
 <?php
 
+
+//  TODO ::   tratar do update da imagem
+
+
+
 include '../includes/config.php';
 
 ////////////////////////////////////////////////////////////////////////////////
 // ID do roteiro
-$post_parametro_id_roteiro 		= mysql_real_escape_string($_POST['i']);
+$post_parametro_id_roteiro      = mysql_real_escape_string($_POST['i']);
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -13,7 +18,6 @@ $post_parametro_regiao          = mysql_real_escape_string($_POST['regiao']);
 $post_parametro_categoria       = mysql_real_escape_string($_POST['categoria']);
 $post_parametro_titulo          = mysql_real_escape_string($_POST['titulo']);
 
-// tratar da imagem
 
 $post_parametro_descricao       = mysql_real_escape_string($_POST['descricao']);
 $post_parametro_sobre           = mysql_real_escape_string($_POST['sobre']);

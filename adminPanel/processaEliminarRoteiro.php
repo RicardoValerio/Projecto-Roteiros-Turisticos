@@ -8,8 +8,9 @@ $sql_file = "SELECT imagem FROM roteiro WHERE id = " . $id_get_parametro;
 $filename = @mysql_fetch_assoc(mysql_query($sql_file));
 $filename = $filename['imagem'];
 
-echo $filename;
-die;
+
+
+
 
 $sql = "DELETE FROM roteiro WHERE id = " . $id_get_parametro;
 
@@ -18,10 +19,22 @@ $sql = "DELETE FROM roteiro WHERE id = " . $id_get_parametro;
 <?php if (mysql_query($sql)): ?>
 
 <?php
-        $target = $image_dir_path . DIRECTORY_SEPARATOR . $filename;
-        if (file_exists($target)) {
-            unlink($target);
-        }
+
+		$image_dir = 'img';
+		$image_dir_path     = getcwd() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $image_dir;
+
+		$targets = array($image_dir_path . DIRECTORY_SEPARATOR . $filename,
+						$image_dir_path . DIRECTORY_SEPARATOR . 'gd_' . $filename,
+						$image_dir_path . DIRECTORY_SEPARATOR . 'pq_' . $filename
+						);
+
+		foreach ($targets as $target) {
+	        if (file_exists($target)) {
+	            unlink($target);
+	        }
+		}
+
+
 
 ?>
 
