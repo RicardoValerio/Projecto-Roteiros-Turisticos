@@ -87,7 +87,7 @@ $post_parametro_como_chegar     = mysql_real_escape_string($_POST['como_chegar']
                                     id_categoria       = $post_parametro_categoria,
                                     titulo             = '$post_parametro_titulo',";
 
-  $sql .= ($_GLOBALS['imagem_existe']) ? " imagem = '" . $_GLOBALS['nomeImagem'] . "' ,"  : ' ';
+  $sql .= (@$_GLOBALS['imagem_existe']) ? " imagem = '" . @$_GLOBALS['nomeImagem'] . "' ,"  : ' ';
 
            $sql .=" descricao          = '$post_parametro_descricao',
                     sobre              = '$post_parametro_sobre',
