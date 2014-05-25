@@ -57,13 +57,15 @@ if (!mysql_num_rows($result_verificaId)) {
             ?>
             <ul>
                 <?php
-                if ($result_comentarios) {
+                if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
                         <li><?php echo $row['comentario']; ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></li>
                         <?php
                     }
-                }
+                }else{ ?>
+                    <p>Não existem comentários para este roteiro.</p>
+               <?php }
                 ?>
             </ul>
         </div>
@@ -171,7 +173,7 @@ if (!mysql_num_rows($result_verificaId)) {
                 <h1><?php echo utf8_decode($row['titulo']); ?></h1>
                 <h2><?php echo $row['categoria']; ?></h2>
                 <!-- <h2><?php echo $row['regiao']; ?></h2> -->
-                <img src="<?php echo utf8_decode($row['imagem']); ?>" />
+                <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" />
                 <p><?php echo utf8_decode($row['descricao']); ?></p>
                 <div style="margin-top: 10px;" id="tabs">
                     <ul>

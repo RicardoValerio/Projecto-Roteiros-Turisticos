@@ -7,8 +7,8 @@
     <?php
     $numBotoesPag = 3;
     $limit = 6;
-    
-    
+
+
     $sql_roteirosTodos = "SELECT  count(id) as total
 			FROM
 			    roteiro
@@ -16,13 +16,13 @@
     $result_roteirosTodos = mysql_query($sql_roteirosTodos);
     $linhatotal = mysql_fetch_array($result_roteirosTodos);
     $total_num_rows = $linhatotal['total'];
-    
+
     $totalPaginas = ceil($total_num_rows / $limit);
-    
-    
+
+
     $pag = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
     if($pag > $totalPaginas) $pag = $totalPaginas;
-    
+
     $offset = (($pag - 1) * $limit);
 
 
@@ -40,7 +40,7 @@
                 while ($row = mysql_fetch_assoc($result_roteirosPag)) {
                     ?>
                     <li class="roteiro esq borda">
-                        <img src="<?php echo 'img/' . $row['imagem']; ?>" alt="<?php echo utf8_decode($row['titulo']); ?>"/>
+                        <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" alt="<?php echo utf8_decode($row['titulo']); ?>"/>
                         <div class="descricao">
                             <h3><?php echo utf8_decode($row['titulo']); ?></h3>
                             <?php echo utf8_decode($row['descricao']); ?>
