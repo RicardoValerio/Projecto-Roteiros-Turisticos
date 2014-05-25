@@ -697,11 +697,10 @@ input[name="procura"] {
 }
 
 #comentario span {
-    display: block;
     margin-top: 6px;
 }
 
-#comentario li, #palavrasChave li, #palavrasChave p{
+#comentario li, #comentario p, #palavrasChave li, #palavrasChave p{
     font-size: 13px;
     line-height: 24px;
     color: #7c7770;

@@ -21,15 +21,14 @@ if (!mysql_num_rows($result_verificaId)) {
         ORDER BY data DESC";
 
     $result_verificaId = mysql_query($sql_verificaId);
-    
-    if(mysql_num_rows($result_verificaId)){
+
+    if (mysql_num_rows($result_verificaId)) {
         $linha = mysql_fetch_assoc($result_verificaId);
         $get_parametro = $linha['id'];
     } else {
         header('Location: index.php?area=destinos');
     }
 }
-
 ?>
 <div id="content" class="clearfix">
     <div id="sidebar" class="esq borda">
@@ -44,9 +43,9 @@ if (!mysql_num_rows($result_verificaId)) {
 
             <?php
             $sql_comentarios = "SELECT
-		    comentario.comentario, comentario.data
+		    comentario.comentario, comentario.data, nome 
 		FROM
-		    comentario
+		    comentario LEFT JOIN utilizador ON utilizador.id=id_utilizador
 		WHERE
 		    comentario.id_roteiro = $get_parametro
 		ORDER BY comentario.data DESC
@@ -60,12 +59,13 @@ if (!mysql_num_rows($result_verificaId)) {
                 if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
-                        <li><?php echo $row['comentario']; ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></li>
+                        <li><?php echo utf8_encode($row['comentario']); ?><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
                         <?php
                     }
-                }else{ ?>
+                } else {
+                    ?>
                     <p>Não existem comentários para este roteiro.</p>
-               <?php }
+                <?php }
                 ?>
             </ul>
         </div>
@@ -87,8 +87,8 @@ if (!mysql_num_rows($result_verificaId)) {
                     ?><li class="borda"><a href="index.php?area=o_que_procura&pesquisa=<?php echo $row['palavra']; ?>"><?php echo $row['palavra']; ?></a></li><?php
                     }
                     ?></ul><?php
-                    } else {
-                        ?><p>Não existem palavras chave para este roteiro.</p><?php
+                } else {
+                    ?><p>Não existem palavras chave para este roteiro.</p><?php
                 }
                 ?>
 
