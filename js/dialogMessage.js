@@ -1,7 +1,7 @@
 var dialogMessageStatus = false;
 
 $(document).ready(function() {
-    
+
 });
 
 function dialogMessageNormal(elem, title) {
@@ -22,6 +22,11 @@ function dialogMessageNormal(elem, title) {
             $('#dialog_text').css({
                 paddingTop: "20px",
                 paddingBottom: "20px"
+            });
+            $('.ui-widget-overlay').css({
+                background: "#000",
+                opacity: "0.8",
+                filter: "Alpha(Opacity=80)"
             });
         },
         close: function() {
@@ -54,6 +59,11 @@ function dialogMensageForm() {
             $('.dialog').css({
                 display: "block"
             });
+            $('.ui-widget-overlay').css({
+                background: "#000",
+                opacity: "0.8",
+                filter: "Alpha(Opacity=80)"
+            });
         },
         close: function() {
             dialogMessageStatus = false;
@@ -75,3 +85,5 @@ function dialogMensageForm() {
         }
     });
 }
+
+

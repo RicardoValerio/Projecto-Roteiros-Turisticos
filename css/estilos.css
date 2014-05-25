@@ -758,6 +758,7 @@ input[name="procura"] {
     height: 28px;
     background: url('../img/estrelas.png') no-repeat;
     float: left;
+    cursor: pointer;
 }
 
 #estrelas li.estrelaCompleta {
@@ -772,7 +773,7 @@ input[name="procura"] {
     background-position: -35px 0px;
 }
 
-span#classificacaoEstrelas {
+span#classificacaoEstrelas, span#classificacaoTexto, span#numVotos {
     text-decoration: none;
 }
 

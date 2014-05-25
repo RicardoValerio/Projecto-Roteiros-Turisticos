@@ -2,6 +2,7 @@
 //verificar se é um numero
 //$get_parametro = (is_int($_GET['roteiro'])) $_GET['roteiro'] ? 0 ;
 $get_parametro = htmlentities(urlencode($_GET['roteiro']));
+$_SESSION['roteiro'] = $get_parametro;
 
 if (!is_numeric($get_parametro)) {
 
@@ -66,8 +67,8 @@ if (!is_numeric($get_parametro)) {
                     <li class="estrelaVazia"></li>
                 </ul>
             </div>
-            <p><span id="classificacaoEstrelas">3,5</span> Médio</p>
-            <p>10.456 votações</p>
+            <p><span id="classificacaoEstrelas">2,9</span> <span id="classificacaoTexto">Médio</span></p>
+            <p><span id="numVotos">10.456</span> votações</p>
         </div>
     </div>
 
