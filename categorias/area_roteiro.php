@@ -40,13 +40,15 @@ if (!is_numeric($get_parametro)) {
             ?>
             <ul>
                 <?php
-                if ($result_comentarios) {
+                if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
                         <li><?php echo $row['comentario']; ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></li>
                         <?php
                     }
-                }
+                }else{ ?>
+                    <p>Não existem comentários para este roteiro.</p>
+               <?php }
                 ?>
             </ul>
         </div>
