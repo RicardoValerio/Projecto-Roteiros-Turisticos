@@ -4,7 +4,7 @@ require 'includes/config.php';
 // Define Output HTML Formating
 $html = '';
 $html .= '<li class="result">';
-$html .= '<a target="_blank" href="urlString">';
+$html .= '<a href="urlString">';
 $html .= '<h3>tituloString</h3>';
 $html .= '<h3>categoriaString | regiaoString | </h3>';
 $html .= '<h4>descricaoString</h4>';

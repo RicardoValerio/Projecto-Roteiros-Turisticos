@@ -57,15 +57,22 @@ if (!is_numeric($get_parametro)) {
                     <h2>Palavras chave</h2>
                 </div>
             </div>
-            <ul class="clearfix">
-                <li class="borda">Lorem</li>
-                <li class="borda">Consectetur</li>
-                <li class="borda">Etiam</li>
-                <li class="borda">Themeforest</li>
-                <li class="borda">Sagittis</li>
-                <li class="borda">Vestibunolum</li>
-                <li class="borda">Curabitur</li>
-            </ul>
+
+            <?php
+            $sql_palavrasChave = "SELECT palavra FROM palavra_chave WHERE id_roteiro = $get_parametro";
+            $resultado_palavrasChave = mysql_query($sql_palavrasChave);
+
+            if (mysql_num_rows($resultado_palavrasChave)) {
+                ?><ul class="clearfix"><?php
+                while ($row = mysql_fetch_assoc($resultado_palavrasChave)) {
+                    ?><li class="borda"><a href="index.php?area=o_que_procura&pesquisa=<?php echo $row['palavra']; ?>"><?php echo $row['palavra']; ?></a></li><?php
+                    }
+                    ?></ul><?php
+                } else {
+                    ?><p>Não existem palavras chave para este roteiro.</p><?php
+                }
+                ?>
+
         </div>
 
         <?php
@@ -111,7 +118,7 @@ if (!is_numeric($get_parametro)) {
                 </ul>
             </div>
             <p><span id="classificacaoEstrelas"><?php echo number_format($media, 2, ",", '.'); ?></span> <span id="classificacaoTexto"><?php echo $texto; ?></span></p>
-            <p><span id="numVotos"><?php echo number_format($numVotos, 0, ",", '.'); ?></span><span id="textoVotacoes"><?php echo ($numVotos==1) ? ' votação' : ' votações'; ?></span></p>
+            <p><span id="numVotos"><?php echo number_format($numVotos, 0, ",", '.'); ?></span><span id="textoVotacoes"><?php echo ($numVotos == 1) ? ' votação' : ' votações'; ?></span></p>
         </div>
     </div>
 

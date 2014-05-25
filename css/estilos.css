@@ -707,6 +707,18 @@ input[name="procura"] {
     color: #7c7770;
 }
 
+#palavrasChave li a{
+    color: #7c7770;
+}
+
+#palavrasChave li a:hover{
+    color: #fff;
+}
+
+#palavrasChave li:hover {
+    background: #71b6d5;
+}
+
 #facebook p {
     font-size: 14px;
     line-height: 24px;
