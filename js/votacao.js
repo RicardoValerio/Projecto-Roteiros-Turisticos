@@ -36,6 +36,7 @@ $(document).ready(function() {
                     $('#classificacaoEstrelas').html(response.classificacao);
                     $('#classificacaoTexto').html(response.texto);
                     $('#numVotos').html(response.votos);
+                    $('#textoVotacoes').html(response.textoVotacoes);
 
                     preencheEstrelasConformeVotacao();
                 }

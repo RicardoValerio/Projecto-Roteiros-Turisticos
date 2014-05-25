@@ -773,7 +773,7 @@ input[name="procura"] {
     background-position: -35px 0px;
 }
 
-span#classificacaoEstrelas, span#classificacaoTexto, span#numVotos {
+span#classificacaoEstrelas, span#classificacaoTexto, span#numVotos, span#textoVotacoes {
     text-decoration: none;
 }
 

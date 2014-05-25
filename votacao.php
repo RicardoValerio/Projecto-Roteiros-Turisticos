@@ -17,7 +17,7 @@ if (is_numeric($votacao) && $votacao > 0 && $votacao < 6) {
     //verificar ip
     $ip = get_client_ip();
 
-    $sql_verificaIp = "SELECT timestamp FROM voto_temp WHERE ip='$ip' ORDER BY timestamp DESC";
+    $sql_verificaIp = "SELECT timestamp FROM voto_temp WHERE ip='$ip' and id_roteiro=$idRoteiro ORDER BY timestamp DESC";
     $resultado_verificaIp = mysql_query($sql_verificaIp);
 
     $numLinhas = mysql_num_rows($resultado_verificaIp);
@@ -51,7 +51,7 @@ if (is_numeric($votacao) && $votacao > 0 && $votacao < 6) {
 
                     $media = ($numVotos == 0) ? 0 : $classificacao / $numVotos;
 
-                    if($numVotos == 0) {
+                    if(!$numVotos) {
                         $texto = '';
                     } else if ($media <= 2) {
                         $texto = VOTOS_BAIXO;
@@ -60,8 +60,10 @@ if (is_numeric($votacao) && $votacao > 0 && $votacao < 6) {
                     } else {
                         $texto = VOTOS_MEDIO;
                     }
+                    
+                    $textoVotacoes = ($numVotos==1) ? ' votação' : ' votações';
 
-                    echo json_encode(array("erro" => false, "mensagem" => MENSAGEM_SUCESSO, "votos" => number_format($numVotos, 0, ",", '.'), "classificacao" => number_format($media, 2, ",", '.'), "texto" => $texto));
+                    echo json_encode(array("erro" => false, "mensagem" => MENSAGEM_SUCESSO, "votos" => number_format($numVotos, 0, ",", '.'), "classificacao" => number_format($media, 2, ",", '.'), "texto" => $texto, "textoVotacoes" => $textoVotacoes));
                 }
             } else {
                 echo json_encode(array("erro" => true, "mensagem" => MENSAGEM_ERRO));
