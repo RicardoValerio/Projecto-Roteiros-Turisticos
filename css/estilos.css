@@ -258,7 +258,7 @@ h1, h2, h3, #roteiros p, #testemunhos p  {
 }
 
 #roteiros {
-    padding-top: 88px;
+    padding: 88px 0px 72px 0px;
 }
 
 #introducao  {
@@ -311,7 +311,7 @@ h1, h2, h3, #roteiros p, #testemunhos p  {
 }
 
 #paginas {
-    margin: 41px 0px 72px 0px;
+    margin-top: 41px;
     text-align: center;
 }
 
@@ -773,7 +773,7 @@ input[name="procura"] {
     background-position: -35px 0px;
 }
 
-span#classificacaoEstrelas, span#classificacaoTexto, span#numVotos {
+span#classificacaoEstrelas, span#classificacaoTexto, span#numVotos, span#textoVotacoes {
     text-decoration: none;
 }
 

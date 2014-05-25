@@ -20,4 +20,8 @@ define('NOME_EMPRESA', 'Roteiros Turisticos');
 define('USERNAME_EMAIL', 'geral.roteiros.turisticos@gmail.com');
 define('PASSWORD_EMAIL', 'Europeia2014');
 
+define('VOTOS_ALTO', 'Alto');
+define('VOTOS_MEDIO', 'Médio');
+define('VOTOS_BAIXO', 'Baixo');
+
 ?>
