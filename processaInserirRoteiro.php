@@ -1,28 +1,34 @@
 ﻿<?php
 
-include 'includes/funcoes_imagens.php';
 
-$extensao           = getExtensaoDaImagem($_FILES['imagem']['type']);
-$extensao_valida    = verificaSeExtensaoDaImagemSeraValida($extensao);
+if (!isset($_FILES['imagem']){
 
-
-
-if (!isset($_FILES['imagem']) || !$extensao_valida) {
-
-    echo "a imagem n está definida ou a extensão do ficheiro n é uma imagem válida";
-
-    echo " extensão: $extensao";
-    echo "<br />";
-    print_r($_FILES);
-
+    echo "a imagem não está definida!";
     die;
-
-
 
 }else{
 
+        include 'includes/funcoes_imagens.php';
 
-    include_once 'includes/config.php';
+        $extensao           = getExtensaoDaImagem($_FILES['imagem']['type']);
+        $extensao_valida    = verificaSeExtensaoDaImagemSeraValida($extensao);
+
+
+        if (!$extensao_valida)
+        {
+
+            echo "a extensão do ficheiro n é uma imagem válida para a aplicação";
+
+            echo " extensão: $extensao";
+            echo "<br />";
+            print_r($_FILES);
+
+            die;
+        }
+        else
+        {
+
+            include_once 'includes/config.php';
 
             $titulo         = mysql_real_escape_string(utf8_encode($_POST['titulo']));
 
@@ -103,12 +109,13 @@ if (!isset($_FILES['imagem']) || !$extensao_valida) {
 
 
 
-            // redireccionar
-            echo "sucesso, inserido com tranquilidade, falta agora redireccionar!";
+                // redireccionar
+                echo "sucesso, inserido com tranquilidade, falta agora redireccionar!";
 
 
-        }else{
-            echo "erro, por favor contacte a empresa onde pagou pela porcaria de software xD...";
+            }else{
+                echo "erro, por favor contacte a empresa onde pagou pela porcaria de software xD...";
+            }
         }
 }
 ?>
