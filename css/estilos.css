@@ -701,10 +701,14 @@ input[name="procura"] {
     margin-top: 6px;
 }
 
-#comentario li, #palavrasChave li{
+#comentario li, #palavrasChave li, #palavrasChave p{
     font-size: 13px;
     line-height: 24px;
     color: #7c7770;
+}
+
+#palavrasChave p {
+    padding: 10px 0px;
 }
 
 #palavrasChave li a{

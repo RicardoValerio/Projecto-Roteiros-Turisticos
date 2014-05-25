@@ -1,18 +1,35 @@
 <?php
 //verificar se é um numero
 //$get_parametro = (is_int($_GET['roteiro'])) $_GET['roteiro'] ? 0 ;
-$get_parametro = htmlentities(urlencode($_GET['roteiro']));
+$get_parametro = mysql_real_escape_string(urlencode($_GET['roteiro']));
 $_SESSION['roteiro'] = $get_parametro;
 
-if (!is_numeric($get_parametro)) {
+$sql_verificaId = "SELECT id
+        FROM
+            roteiro
+        WHERE
+            id = $get_parametro AND roteiro.ativo = 1";
 
-    /*
-     * DEVIAMOS METER O ULTIMO ROTEIRO ATIVO
-     */
-    echo '<p style="text-align:center">O roteiro escolhido não existe</p>';
-    //@header("Location: index.php");
-    exit;
+$result_verificaId = mysql_query($sql_verificaId);
+
+if (!mysql_num_rows($result_verificaId)) {
+    $sql_verificaId = "SELECT id
+        FROM
+            roteiro
+        WHERE
+            roteiro.ativo = 1
+        ORDER BY data DESC";
+
+    $result_verificaId = mysql_query($sql_verificaId);
+    
+    if(mysql_num_rows($result_verificaId)){
+        $linha = mysql_fetch_assoc($result_verificaId);
+        $get_parametro = $linha['id'];
+    } else {
+        header('Location: index.php?area=destinos');
+    }
 }
+
 ?>
 <div id="content" class="clearfix">
     <div id="sidebar" class="esq borda">
@@ -68,8 +85,8 @@ if (!is_numeric($get_parametro)) {
                     ?><li class="borda"><a href="index.php?area=o_que_procura&pesquisa=<?php echo $row['palavra']; ?>"><?php echo $row['palavra']; ?></a></li><?php
                     }
                     ?></ul><?php
-                } else {
-                    ?><p>Não existem palavras chave para este roteiro.</p><?php
+                    } else {
+                        ?><p>Não existem palavras chave para este roteiro.</p><?php
                 }
                 ?>
 
