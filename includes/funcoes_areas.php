@@ -48,6 +48,11 @@ function verificaAreaIndex($elem) {
                 $areaEscolhida = 'confirmaNewsletter.php';
                 $bannerEscolhido = 'banner.php';
             } break;
+        case 'registo': {
+                $tituloEscolhido = 'Registo | ' . NOME_EMPRESA;
+                $areaEscolhida = 'confirmaRegisto.php';
+                $bannerEscolhido = 'banner.php';
+            } break;
         case 'inicio':
         default: {
                 $tituloEscolhido = NOME_EMPRESA;

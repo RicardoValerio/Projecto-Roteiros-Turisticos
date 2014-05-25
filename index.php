@@ -35,6 +35,7 @@ $_SESSION['url'] = devolveUrlActual();
         <script type="text/javascript" src="js/dialogMessage.js"></script>
         <script type="text/javascript" src="js/newsletter.js"></script>
         <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/registo.js"></script>
         <script type="text/javascript" src="js/search.js"></script>
         <script type="text/javascript" src="js/slideshow.js"></script>
 

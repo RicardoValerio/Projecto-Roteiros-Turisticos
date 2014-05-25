@@ -1016,6 +1016,23 @@ span#classificacaoEstrelas {
     margin-bottom: 15px;
 }
 
+/**********************************************
+*           CONFIRMA UTILIZADOR
+***********************************************/
+
+#confirmaUtilizador {
+    text-align: center;
+    padding: 50px;
+}
+
+#confirmaUtilizador h1 {
+    margin-bottom: 50px;
+}
+
+#confirmaUtilizador h4 {
+    margin-bottom: 15px;
+}
+
 /******************************************************************
 *				LIVE SEARCH STYLES
 ******************************************************************/

@@ -1,8 +1,5 @@
-﻿<?php
+<?php
 include_once 'includes/config.php';
-
-//print_r($_POST);
-//print_r($_FILES);
 
 $titulo = mysql_real_escape_string(utf8_encode($_POST['titulo']));
 $nomeImagem = mysql_real_escape_string(utf8_encode($_FILES['imagem']['name']));

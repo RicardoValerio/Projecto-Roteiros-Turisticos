@@ -121,24 +121,6 @@ function validarFormInserirRoteiro() {
     });
 }
 
-function validarFormRegisto() {
-    $("#formRegisto").validate({
-        rules: {
-            nome: "required",
-            email: {
-                required: true,
-                email: true
-            },
-            password: "required"
-        },
-        messages: {
-            nome: "Por favor preencha o seu nome.",
-            email: "Por favor preencha o seu email.",
-            password: "Por favor preencha a sua password."
-        }
-    });
-}
-
 function validarFormRecuperarPassword() {
     $("#recuperarPassword").validate({
         rules: {

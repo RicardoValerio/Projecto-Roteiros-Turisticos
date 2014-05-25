@@ -5,8 +5,8 @@ require_once 'includes/funcoes_email.php';
 
 $urlActual = strstr("http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 'newsletterSubmitEmail.php', true);
 
-define('MENSAGEM_ERRO', 'Pedimos desculpa mas de momento não foi possível adicionar o seu email à newsletter dos roteiros turísticos');
-define('MENSAGEM_ATIVO', 'O seu email já foi adicionado à newsletter dos roteiros turísticos');
+define('MENSAGEM_ERRO', 'Pedimos desculpa mas de momento não foi possível adicionar o seu email à newsletter dos roteiros turísticos.');
+define('MENSAGEM_ATIVO', 'O seu email já foi adicionado à newsletter dos roteiros turísticos.');
 define('MENSAGEM_SUCESSO', 'Obrigado por se ter inscrito na newsletter dos roteiros turísticos. <br /><br /> Dentro de momentos irá receber um email pedindo-lhe que confirme a sua intenção, bastando para isso clicar no link fornecido.');
 define('SUBJECT', 'Newsletter '.NOME_EMPRESA);
 
