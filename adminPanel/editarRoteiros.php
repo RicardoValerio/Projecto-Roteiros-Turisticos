@@ -1,4 +1,7 @@
-﻿<h1 style="font-size: 3em;
+﻿<?php include '../includes/funcoes_imagens.php'; ?>
+
+
+<h1 style="font-size: 3em;
 color:#D3109F;
 text-align: center;
 margin-top: 75px;
@@ -103,7 +106,9 @@ margin-top: 75px;
 
 <p>
     <label for="imagem">Imagem:</label>
-    <input type="text" name="nome_imagem" id="nome_imagem" value="<?php echo $roteiros_array['imagem']; ?>">
+    <p>Hash da Imagem: <?php echo $roteiros_array['imagem']; ?></p>
+    <img src="../img/<?php echo mudaTamanhoImagem(400,$roteiros_array['imagem']); ?>" alt="<?php echo $roteiros_array['titulo']; ?>">
+    <br>
     <input type="file" id="imagem" name="imagem" />
 </p>
 

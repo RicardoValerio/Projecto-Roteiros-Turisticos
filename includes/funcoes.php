@@ -20,14 +20,14 @@ function geraSenha($tamanho, $letrasMaiusculas, $letrasMinusculas) {
 	$minusculas = 'abcdefghijklmnopqrstuvwxyz';
 	$maiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	$numeros = '1234567890';
-	
+
 	//tem de ter pelo menos numeros e dp pode ter maiusculas e minusculas dependendo dos argumentos passados
 	$todosCaracteres .= $numeros;
 	if($letrasMaiusculas) $todosCaracteres .= $maiusculas;
 	if($letrasMinusculas) $todosCaracteres .= $minusculas;
-	
+
 	$lenghtTodosCaracteres = strlen($todosCaracteres);
-	
+
 	for ($n = 1; $n <= $tamanho; $n++) {
 		//devolve aleatoriamente um numero inteiro entre 1 e o comprimento de todos os caracteres juntos
 		$rand = mt_rand(1, $lenghtTodosCaracteres);

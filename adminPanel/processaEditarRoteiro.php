@@ -12,7 +12,9 @@ $post_parametro_id_roteiro 		= mysql_real_escape_string($_POST['i']);
 $post_parametro_regiao          = mysql_real_escape_string($_POST['regiao']);
 $post_parametro_categoria       = mysql_real_escape_string($_POST['categoria']);
 $post_parametro_titulo          = mysql_real_escape_string($_POST['titulo']);
-$post_parametro_nome_imagem     = mysql_real_escape_string($_POST['nome_imagem']);
+
+// tratar da imagem
+
 $post_parametro_descricao       = mysql_real_escape_string($_POST['descricao']);
 $post_parametro_sobre           = mysql_real_escape_string($_POST['sobre']);
 $post_parametro_infos_uteis     = mysql_real_escape_string($_POST['infos_uteis']);
@@ -23,7 +25,7 @@ $post_parametro_como_chegar     = mysql_real_escape_string($_POST['como_chegar']
 $sql = "UPDATE roteiro SET id_regiao = $post_parametro_regiao,
 						   id_categoria = $post_parametro_categoria,
 						   titulo = '$post_parametro_titulo',
-						   imagem = '$post_parametro_nome_imagem',
+
 						   descricao = '$post_parametro_descricao',
 						   sobre = '$post_parametro_sobre',
 						   informacoes_uteis = '$post_parametro_infos_uteis',
