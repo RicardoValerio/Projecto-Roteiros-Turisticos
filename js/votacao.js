@@ -3,6 +3,7 @@ var estrelas;
 $(document).ready(function() {
 
     estrelas = $('#estrelas li');
+    preencheEstrelasConformeVotacao();
 
     for (var i = 0; i < estrelas.length; i++) {
         $(estrelas[i]).attr({
@@ -15,8 +16,7 @@ $(document).ready(function() {
 
     }
     $('#estrelas ul').mouseleave(function() {
-        var classificacaoMedia = parseFloat($("#classificacaoEstrelas").text().replace(",", "."));
-        manipulaEstrelasVotacao(classificacaoMedia);
+        preencheEstrelasConformeVotacao();
     });
 
     $(estrelas).on('click', function() {
@@ -31,17 +31,15 @@ $(document).ready(function() {
             success: function(response) {
                 dialogMessageNormal('#dialog_mensage', 'Votação');
                 $('#dialog_text').html(response.mensagem);
-                
-                if(!response.erro) {
-                    console.log(response.classificacao);
-                    console.log(response.texto);
-                    console.log(response.votos);
-                    
+
+                if (!response.erro) {
                     $('#classificacaoEstrelas').html(response.classificacao);
                     $('#classificacaoTexto').html(response.texto);
                     $('#numVotos').html(response.votos);
+
+                    preencheEstrelasConformeVotacao();
                 }
-                
+
             }
         });
     });
@@ -68,4 +66,9 @@ function manipulaEstrelasVotacao(elem) {
     for (var i = int_classificacao + incremento; i < estrelas.length; i++) {
         $(estrelas[i]).addClass('estrelaVazia');
     }
+}
+
+function preencheEstrelasConformeVotacao() {
+    var classificacaoMedia = parseFloat($("#classificacaoEstrelas").text().replace(",", "."));
+    manipulaEstrelasVotacao(classificacaoMedia);
 }

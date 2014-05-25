@@ -60,10 +60,10 @@ if (!is_numeric($get_parametro)) {
             </div>
             <div id="estrelas">
                 <ul class="clearfix">
-                    <li class="estrelaCompleta"></li>
-                    <li class="estrelaCompleta"></li>
-                    <li class="estrelaCompleta"></li>
-                    <li class="estrelaMetade"></li>
+                    <li class="estrelaVazia"></li>
+                    <li class="estrelaVazia"></li>
+                    <li class="estrelaVazia"></li>
+                    <li class="estrelaVazia"></li>
                     <li class="estrelaVazia"></li>
                 </ul>
             </div>
