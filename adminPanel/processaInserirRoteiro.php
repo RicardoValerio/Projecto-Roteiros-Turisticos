@@ -1,7 +1,5 @@
 ﻿<?php
 
-echo getcwd();
-
 include '../includes/funcoes_imagens.php';
 
 $extensao           = getExtensaoDaImagem($_FILES['imagem']['type']);
@@ -72,7 +70,6 @@ if (!isset($_FILES['imagem']) || !$extensao_valida) {
 
             $image_dir          = 'img';
             $image_dir_path     = getcwd() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $image_dir;
-            echo $image_dir_path;
 
             $source             = $_FILES['imagem']['tmp_name'];
             $target             = $image_dir_path . DIRECTORY_SEPARATOR . $nomeImagem;

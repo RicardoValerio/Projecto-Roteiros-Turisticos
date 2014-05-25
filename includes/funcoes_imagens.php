@@ -10,8 +10,8 @@ function process_image($dir, $filename) {
     $image_path = $dir . DIRECTORY_SEPARATOR . $filename;
 
     // Set up the write paths
-    $image_path_400 = $dir . $image_name . '_400' . $ext;
-    $image_path_100 = $dir . $image_name . '_239' . $ext;
+    $image_path_400 = $dir . 'gd_' . $image_name . $ext;
+    $image_path_100 = $dir . 'pq_' . $image_name . $ext;
 
     // Create an image that's a maximum of 400x300 pixels
     resize_image($image_path, $image_path_400, 400, 300);
