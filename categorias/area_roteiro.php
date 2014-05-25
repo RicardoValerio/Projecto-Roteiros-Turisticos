@@ -50,6 +50,23 @@ if (!is_numeric($get_parametro)) {
                 ?>
             </ul>
         </div>
+        <div id="palavrasChave">
+            <div class="separador">
+                <hr />
+                <div>
+                    <h2>Palavras chave</h2>
+                </div>
+            </div>
+            <ul class="clearfix">
+                <li class="borda">Lorem</li>
+                <li class="borda">Consectetur</li>
+                <li class="borda">Etiam</li>
+                <li class="borda">Themeforest</li>
+                <li class="borda">Sagittis</li>
+                <li class="borda">Vestibunolum</li>
+                <li class="borda">Curabitur</li>
+            </ul>
+        </div>
 
         <?php
         $sql_classificacao = "SELECT IFNULL(sum(classificacao),0) as classificacao FROM voto WHERE id_roteiro=$get_parametro";

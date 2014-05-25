@@ -31,23 +31,6 @@
                 <?php } ?>
             </ul>
         </div>
-        <div id="palavrasChave">
-            <div class="separador">
-                <hr />
-                <div>
-                    <h2>Palavras chave</h2>
-                </div>
-            </div>
-            <ul class="clearfix">
-                <li class="borda">Lorem</li>
-                <li class="borda">Consectetur</li>
-                <li class="borda">Etiam</li>
-                <li class="borda">Themeforest</li>
-                <li class="borda">Sagittis</li>
-                <li class="borda">Vestibunolum</li>
-                <li class="borda">Curabitur</li>
-            </ul>
-        </div>
     </div>
     <div class="mainContent dir borda">
 
