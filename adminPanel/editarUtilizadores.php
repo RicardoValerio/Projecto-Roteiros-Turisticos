@@ -32,7 +32,7 @@ margin-top: 75px;
 
     <?php $row_utilizador = mysql_fetch_assoc($result_utilizadores); ?>
 
-    <form id="formEditarComentario" action="processaEditarComentario.php" method="post">
+    <form id="formEditarComentario" action="processaEditarUtilizador.php" method="post">
 
 
 
@@ -61,12 +61,12 @@ margin-top: 75px;
 <hr>
         <p>
             <label for="nome_utilizador">Nome do Utilizador:</label>
-            <h5><?php echo $row_utilizador['nome'];  ?></h5>
+            <input type="text" name="nome_utilizador" id="nome_utilizador" value="<?php echo $row_utilizador['nome']; ?>">
         </p>
 <hr>
         <p>
             <label for="email_utilizador">Email do Utilizador:</label>
-            <h5><?php echo $row_utilizador['email'];  ?></h5>
+            <input type="text" name="email_utilizador" id="email_utilizador" value="<?php echo $row_utilizador['email']; ?>">
         </p>
 <hr>
 
