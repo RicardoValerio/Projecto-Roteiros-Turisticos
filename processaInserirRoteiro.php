@@ -1,7 +1,7 @@
 ﻿<?php
 
 
-if (!isset($_FILES['imagem']){
+if ( !isset($_FILES['imagem']) ){
 
     echo "a imagem não está definida!";
     die;
