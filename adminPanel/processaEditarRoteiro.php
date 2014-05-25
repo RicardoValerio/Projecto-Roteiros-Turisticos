@@ -44,6 +44,20 @@ if( !empty($_FILES['imagem']['name']) ){
                 process_image($image_dir_path, $_GLOBALS['nomeImagem']);
 
 
+            // eliminar as imagens anteriores que estavam associadas ao roteiro
+                $imagem_atual_roteiro = $_POST['imagem_atual_roteiro'];
+                $targets = array($image_dir_path . DIRECTORY_SEPARATOR . $imagem_atual_roteiro,
+                        $image_dir_path . DIRECTORY_SEPARATOR . 'gd_' . $imagem_atual_roteiro,
+                        $image_dir_path . DIRECTORY_SEPARATOR . 'pq_' . $imagem_atual_roteiro
+                        );
+
+                foreach ($targets as $target) {
+                    if (file_exists($target)) {
+                        unlink($target);
+                    }
+                }
+
+
             }
 
 }
