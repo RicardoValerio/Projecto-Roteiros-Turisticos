@@ -11,11 +11,11 @@ if (!isset($_FILES['imagem']) || !$extensao_valida) {
 
     echo "a imagem n está definida ou a extensão do ficheiro n é uma imagem válida";
 
-echo " extensão: $extensao";
-echo "<br />";
-print_r($_FILES);
+    echo " extensão: $extensao";
+    echo "<br />";
+    print_r($_FILES);
 
-die;
+    die;
 
 
 
@@ -66,7 +66,7 @@ die;
         if (mysql_query($sql)) {
 
 
-            // gerar hash para o nome da imagem, guardar e redimensionar as imagens
+            // guardar e redimensionar as imagens
 
             $image_dir          = 'img';
             $image_dir_path     = getcwd() . DIRECTORY_SEPARATOR . $image_dir;

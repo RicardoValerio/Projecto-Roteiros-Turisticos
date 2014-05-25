@@ -22,15 +22,15 @@ $post_parametro_como_chegar     = mysql_real_escape_string($_POST['como_chegar']
 
 
 
-$sql = "UPDATE roteiro SET id_regiao = $post_parametro_regiao,
-						   id_categoria = $post_parametro_categoria,
-						   titulo = '$post_parametro_titulo',
+$sql = "UPDATE roteiro SET  id_regiao          = $post_parametro_regiao,
+                            id_categoria       = $post_parametro_categoria,
+                            titulo             = '$post_parametro_titulo',
 
-						   descricao = '$post_parametro_descricao',
-						   sobre = '$post_parametro_sobre',
-						   informacoes_uteis = '$post_parametro_infos_uteis',
-						   como_chegar = '$post_parametro_como_chegar'
-						WHERE id = $post_parametro_id_roteiro";
+                            descricao          = '$post_parametro_descricao',
+                            sobre              = '$post_parametro_sobre',
+                            informacoes_uteis  = '$post_parametro_infos_uteis',
+                            como_chegar        = '$post_parametro_como_chegar'
+                      WHERE id                 = $post_parametro_id_roteiro";
 
 
 

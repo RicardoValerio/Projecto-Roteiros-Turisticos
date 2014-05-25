@@ -6,74 +6,71 @@ margin-top: 75px;
 
 <div style="margin-left: 69px;" id="editarRoteiro">
 
-<?php print_r($_GET);
-    die;
-?>
-
-    <?php
+<?php
 
     $id_get_parametro = mysql_real_escape_string($_GET['id']);
 
-    $sql = "SELECT
-                comentario.id,
-                utilizador.nome,
-                utilizador.email,
-                roteiro.titulo,
-                comentario.data,
-                comentario.comentario
-            FROM
-                utilizador,
-                comentario,
-                roteiro
-            WHERE
-                utilizador.id = comentario.id_utilizador
-            AND roteiro.id = comentario.id_roteiro
-            AND comentario.id = $id_get_parametro";
+   $sql = "SELECT
+            utilizador.id,
+            tipo_utilizador.tipo,
+            utilizador.nome,
+            utilizador.email,
+            utilizador.ativo
+        FROM
+            utilizador,
+            tipo_utilizador
+        WHERE
+            utilizador.id = $id_get_parametro
+        AND utilizador.id_tipo_utilizador = tipo_utilizador.id";
 
-    $result_comentarios = mysql_query($sql);
+    $result_utilizadores = mysql_query($sql);
 
     ?>
 
-    <?php if (@mysql_num_rows($result_comentarios)): ?>
+    <?php if (@mysql_num_rows($result_utilizadores)): ?>
 
 
-    <?php $row_comentario = mysql_fetch_assoc($result_comentarios); ?>
+    <?php $row_utilizador = mysql_fetch_assoc($result_utilizadores); ?>
 
     <form id="formEditarComentario" action="processaEditarComentario.php" method="post">
 
 
 
-        <h2> Comentário com Id # <?php echo $row_comentario['id']; ?></h2>
-        <input type="hidden" name="i" value="<?php echo $row_comentario['id']; ?>">
+        <h2> Utilizador com Id # <?php echo $row_utilizador['id']; ?></h2>
+        <input type="hidden" name="i" value="<?php echo $row_utilizador['id']; ?>">
 
 <hr>
+
+    <?php $sql_tipos = "SELECT * FROM tipo_utilizador";
+    $result_tipos = mysql_query($sql_tipos);
+    ?>
+
         <p>
-            <label for="utilizador">Autor do Comentário:</label>
-            <h5><?php echo $row_comentario['nome'];  ?></h5>
-            <h5><?php echo $row_comentario['email'];  ?></h5>
+            <label for="tipo_utilizador">Tipo de Utilizador:</label>
+            <select name="tipo_utilizador" id="utilizador">
+                <?php while ($row_tipos = mysql_fetch_assoc($result_tipos)): ?>
+
+    <?php echo 'DEBUG: ' . $row_utilizador['tipo'] . '<br />' ; ?>
+    <?php echo 'DEBUG: ' . $row_tipos['tipo'] . '<br />' ; ?>
+
+                    <option value="<?php echo $row_tipos['id']; ?>" <?php if($row_tipos['tipo'] == $row_utilizador['tipo'] ) echo "selected"; ?>>
+                        <?php echo $row_tipos['tipo']; ?></option>
+                <?php endwhile; ?>
+            </select>
+        </p>
+<hr>
+        <p>
+            <label for="nome_utilizador">Nome do Utilizador:</label>
+            <h5><?php echo $row_utilizador['nome'];  ?></h5>
+        </p>
+<hr>
+        <p>
+            <label for="email_utilizador">Email do Utilizador:</label>
+            <h5><?php echo $row_utilizador['email'];  ?></h5>
         </p>
 <hr>
 
-        <p>
-            <label for="nome">Nome/Título do Roteiro:</label>
-            <h3><?php echo $row_comentario['titulo'];  ?></h3>
-        </p>
-
-<hr>
-        <p>
-            <label for="utilizador">Data do Comentário:</label>
-            <h5><?php echo $row_comentario['data'];  ?></h5>
-        </p>
-<hr>
-
-        <p>
-            <label for="descricao">Comentário:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="comentario" id="descricao" placeholder="Insira uma breve descrição sobre o roteiro...">
-                <?php echo $row_comentario['comentario']; ?>
-            </textarea>
-        </p>
-
-        <input class="mySubmitButton" type="submit" value="Atualizar Comentário" />
+        <input class="mySubmitButton" type="submit" value="Atualizar Utilizador" />
 
     </form>
 
