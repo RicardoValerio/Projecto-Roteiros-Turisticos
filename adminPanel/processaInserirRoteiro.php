@@ -1,60 +1,117 @@
 ﻿<?php
-include_once '../includes/config.php';
 
-print_r($_POST);
-print_r($_FILES);
+echo getcwd();
 
-$titulo = mysql_real_escape_string(utf8_encode($_POST['titulo']));
-$nomeImagem = mysql_real_escape_string(utf8_encode($_FILES['imagem']['name']));
-$descricao = mysql_real_escape_string(utf8_encode($_POST['descricao']));
-$sobre = mysql_real_escape_string(utf8_encode($_POST['sobre']));
-$infos_uteis = mysql_real_escape_string(utf8_encode($_POST['infos_uteis']));
-$como_chegar = mysql_real_escape_string(utf8_encode($_POST['como_chegar']));
+include '../includes/funcoes_imagens.php';
 
-$sql = "INSERT INTO roteiro
-    (
-    id_regiao,
-    id_utilizador,
-    id_categoria,
-    titulo,
-    imagem,
-    descricao,
-    sobre,
-    informacoes_uteis,
-    como_chegar
-    )
-    VALUES
-    (
-    " . $_POST['regiao'] . ", "
-    . $_POST['u'] . ", "
-    . $_POST['categoria'] . ", '"
-    . $titulo . "' , '"
-    . $nomeImagem . "','"
-    . $descricao . "','"
-    . $sobre . "','"
-    . $infos_uteis . "','"
-    . $como_chegar . "'
-    )";
+$extensao           = getExtensaoDaImagem($_FILES['imagem']['type']);
+$extensao_valida    = verificaSeExtensaoDaImagemSeraValida($extensao);
 
 
-if (mysql_query($sql)) {
 
-    $id_ultimo_roteiro_inserido = mysql_insert_id();
+if (!isset($_FILES['imagem']) || !$extensao_valida) {
 
-    // inserir tipos de percurso do roteiro
+    echo "a imagem n está definida ou a extensão do ficheiro n é uma imagem válida";
 
-    $array_indexs_percursos = array_keys($_POST['percurso']);
-    foreach ($array_indexs_percursos as $index => $value) {
-        mysql_query("INSERT INTO roteiro_tem_tipo (id_roteiro, id_tipo) VALUES ($id_ultimo_roteiro_inserido, $value)");
-    }
+    echo " extensão: $extensao";
+    echo "<br />";
+    print_r($_FILES);
 
-    // inserir palavras-chave
-    $palavras_chave_adicionadas = $_POST['palavras_chave'];
-    $array_palavras_chave = explode(",", $palavras_chave_adicionadas);
+    die;
 
-    foreach ($array_palavras_chave as $palavra) {
-        $palavra = utf8_encode($palavra);
-        mysql_query("INSERT INTO palavra_chave (id_roteiro, palavra) VALUES ($id_ultimo_roteiro_inserido, '$palavra')");
-    }
+
+
+}else{
+
+
+    include_once '../includes/config.php';
+
+            $titulo         = mysql_real_escape_string(utf8_encode($_POST['titulo']));
+
+            $nomeImagem     = mysql_real_escape_string(utf8_encode($_FILES['imagem']['name']));
+
+            $date = new DateTime();
+            $nomeImagem     = hash( 'sha256', $nomeImagem . $date->getTimestamp() );
+            $nomeImagem     .= '.' . $extensao;
+
+            $descricao      = mysql_real_escape_string(utf8_encode($_POST['descricao']));
+            $sobre          = mysql_real_escape_string(utf8_encode($_POST['sobre']));
+            $infos_uteis    = mysql_real_escape_string(utf8_encode($_POST['infos_uteis']));
+            $como_chegar    = mysql_real_escape_string(utf8_encode($_POST['como_chegar']));
+
+            $sql = "INSERT INTO roteiro
+            (
+                id_regiao,
+                id_utilizador,
+                id_categoria,
+                titulo,
+                imagem,
+                descricao,
+                sobre,
+                informacoes_uteis,
+                como_chegar
+                )
+        VALUES
+        (
+            " . $_POST['regiao'] . ", "
+            . $_POST['u'] . ", "
+            . $_POST['categoria'] . ", '"
+            . $titulo . "' , '"
+            . $nomeImagem . "','"
+            . $descricao . "','"
+            . $sobre . "','"
+            . $infos_uteis . "','"
+            . $como_chegar . "'
+            )";
+
+
+        if (mysql_query($sql)) {
+
+
+            // guardar e redimensionar as imagens
+
+            $image_dir          = 'img';
+            $image_dir_path     = getcwd() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $image_dir;
+            echo $image_dir_path;
+
+            $source             = $_FILES['imagem']['tmp_name'];
+            $target             = $image_dir_path . DIRECTORY_SEPARATOR . $nomeImagem;
+
+            move_uploaded_file($source, $target);
+
+            // create the '400' and '100' versions of the image
+            process_image($image_dir_path, $nomeImagem);
+
+
+
+            // inserir tipos de percurso do roteiro
+            $id_ultimo_roteiro_inserido = mysql_insert_id();
+
+            $array_indexs_percursos = array_keys($_POST['percurso']);
+            foreach ($array_indexs_percursos as $index => $value) {
+                mysql_query("INSERT INTO roteiro_tem_tipo (id_roteiro, id_tipo) VALUES ($id_ultimo_roteiro_inserido, $value)");
+            }
+
+            // inserir palavras-chave
+            $palavras_chave_adicionadas = $_POST['palavras_chave'];
+            $array_palavras_chave = explode(",", $palavras_chave_adicionadas);
+
+            foreach ($array_palavras_chave as $palavra) {
+                $palavra = utf8_encode($palavra);
+                mysql_query("INSERT INTO palavra_chave (id_roteiro, palavra) VALUES ($id_ultimo_roteiro_inserido, '$palavra')");
+            }
+
+
+
+
+
+
+            // redireccionar
+            echo "sucesso, inserido com tranquilidade, falta agora redireccionar!";
+
+
+        }else{
+            echo "erro, por favor contacte a empresa onde pagou pela porcaria de software xD...";
+        }
 }
 ?>
