@@ -10,26 +10,34 @@
             </div>
             <?php
             $get_parametro = htmlspecialchars(urlencode($_GET['categoria']));
+            
+            $sql_comentarios = "SELECT
+		    comentario.comentario, comentario.data, nome 
+		FROM
+		    (comentario LEFT JOIN roteiro ON roteiro.id=id_roteiro) LEFT JOIN utilizador ON utilizador.id=id_utilizador
+                WHERE
+                    roteiro.id_categoria = $get_parametro
+                    AND roteiro.ativo=1
+		ORDER BY comentario.data DESC LIMIT 3";
 
-            $sql = "SELECT  comentario.comentario,
-			    comentario.data
-			FROM
-			    comentario,
-			    roteiro
-			WHERE
-			    roteiro.id_categoria = $get_parametro
-			        AND roteiro.id = comentario.id_roteiro
-			ORDER BY roteiro.id DESC
-			LIMIT 3";
-
-
-            $result = mysql_query($sql);
+            $result_comentarios = mysql_query($sql_comentarios);
             ?>
             <ul>
-                <?php while ($row = @mysql_fetch_assoc($result)) { ?>
-                    <li><?php echo $row['comentario']; ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></li>
-                <?php } ?>
+                <?php
+                if (mysql_num_rows($result_comentarios)) {
+                    while ($row = mysql_fetch_assoc($result_comentarios)) {
+                        ?>
+                        <li><?php echo utf8_encode($row['comentario']); ?><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
+                        <?php
+                    }
+                } else {
+                    ?>
+                    <p>Não existem comentários.</p>
+                    <?php
+                }
+                ?>
             </ul>
+            
         </div>
     </div>
     <div class="mainContent dir borda">
