@@ -59,7 +59,7 @@
                         <div>
                             <h2><?php echo $row['titulo']; ?></h2>
                         </div>
-                        <img src="<?php echo 'img/pq_' . $row['imagem']; ?>" alt="<?php echo $row['titulo']; ?>"/>
+                        <div class="destinosDeCategoria" style="background-image: url('<?php echo $row['imagem']; ?>');" alt="<?php echo $row['titulo']; ?>">
                     </a>
                 </div>
                 <?php
@@ -75,5 +75,4 @@
         <?php
     }
     ?>
-
 </div>

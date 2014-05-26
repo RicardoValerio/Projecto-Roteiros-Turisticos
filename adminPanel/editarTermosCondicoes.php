@@ -2,7 +2,7 @@
 color:#D3109F;
 text-align: center;
 margin-top: 75px;
-">Editar Comentário</h1>
+">Editar Termos & Condições</h1>
 
 <div style="margin-left: 69px;" id="editarRoteiro">
 
@@ -46,5 +46,5 @@ margin-top: 75px;
 
 
 <?php else: ?>
-    <?php echo "Bazinga!, Esse id não existe na BD"; ?>
+    <?php echo "Bazinga!, não existe nada nessta tabela!"; ?>
 <?php endif ?>
