@@ -51,7 +51,7 @@
                         <div>
                             <h2><?php echo utf8_encode($row['nome']); ?></h2>
                         </div>
-                        <img src="img/<?php echo $row['imagem']; ?>" alt="<?php echo utf8_encode($row['nome']); ?>"/>
+                            <img src="img/<?php echo $row['imagem']; ?>" alt="<?php echo utf8_encode($row['nome']); ?>"/>
                     </a>
                 </div>
             <?php } ?>

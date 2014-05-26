@@ -1163,3 +1163,13 @@ b.highlight{
     background-position: center center;
     background-repeat: no-repeat;
 }
+
+.destinosDeCategoria{
+    height: 149px;
+    width: 239px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 70px;
+    overflow: hidden;
+}
