@@ -45,7 +45,7 @@ $result_utilizadores = mysql_query($sql);
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['tipo']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['nome']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['email']; ?></td>
-                        <td class="linhasCentradasTabela"><?php echo $row_utilizador['ativo']; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo ($row_utilizador['ativo']) ? 'Sim':'Não'; ?></td>
                         <td class="linhasCentradasTabela"><a href="index.php?area=editar_utilizador&id=<?php echo $row_utilizador['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
                 <?php endwhile; ?>
@@ -60,18 +60,15 @@ $result_utilizadores = mysql_query($sql);
 
 <script type="text/javascript" language="javascript" class="init">
 
-$(document).ready(function() {
-    $('#example').dataTable({
-          "scrollX": true
-    });
+    $(document).ready(function() {
+        $('#example').dataTable({
+            "scrollX": true
+        });
 
-// tive de adicionar isto pois foi a unica forma de conseguir com que a tabela
-// fica-se ordenada pela data de forma descendente - pelo sql não deu, deve ser
-// devido à forma como o plugin está feito...weird
-$('#example').DataTable()
-    .order( [ 2, 'desc' ] )
-    .draw();
-});
+        $('#example').DataTable()
+                .order([2, 'desc'])
+                .draw();
+    });
 
 
 </script>

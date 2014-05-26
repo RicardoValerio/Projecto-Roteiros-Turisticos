@@ -3,6 +3,7 @@ body{
     background-color: #CFCECE;
     width: 100%;
     margin: 0 auto;
+    word-wrap: break-word;
 }
 
 #eliminarRoteiroId a{

@@ -27,7 +27,6 @@
         <li><a href="index.php">Início</a></li>
         <li><a href="index.php?area=destinos">Destinos</a></li>
         <li><a href="index.php?area=o_que_procura">O que procura?</a></li>
-        <li><a href="index.php?area=noticias">Notícias</a></li>
         <li><a href="index.php?area=galeria">Galeria</a></li>
     </ul>
 </div>

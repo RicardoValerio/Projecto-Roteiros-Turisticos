@@ -23,11 +23,6 @@ function verificaAreaIndex($elem) {
                 $areaEscolhida = 'area_pesquisa.php';
                 $bannerEscolhido = 'banner.php';
             } break;
-        case 'noticias': {
-                $tituloEscolhido = 'Notícias | ' . NOME_EMPRESA;
-                $areaEscolhida = 'area_noticias.php';
-                $bannerEscolhido = 'banner.php';
-            } break;
         case 'galeria': {
                 $tituloEscolhido = 'Galeria | ' . NOME_EMPRESA;
                 $areaEscolhida = 'area_galeria.php';
