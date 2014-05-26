@@ -75,7 +75,7 @@ $(document).ready(function() {
 // fica-se ordenada pela data de forma descendente - pelo sql não deu, deve ser
 // devido à forma como o plugin está feito...weird
 $('#example').DataTable()
-    .order( [ 2, 'desc' ] )
+    .order( [ 3, 'desc' ] )
     .draw();
 });
 

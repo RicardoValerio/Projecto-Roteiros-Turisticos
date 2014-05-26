@@ -78,7 +78,7 @@ margin-top: 25px;
                     </ul>
                 -->
 
-                <ul style="margin-top: 110px;">
+                <ul style="margin-top: 95px;">
                     <a href="index.php?p=inserir"><li>Inserir Roteiro</li></a>
                 </ul>
 
@@ -91,8 +91,8 @@ margin-top: 25px;
                     <a href="index.php?p=gerirComentarios"><li>Gerir Comentários</li></a>
 
                     <a href="index.php?p=gerirUtilizadores"><li>Gerir Utilizadores</li></a>
-
-                    <a href="#"><li>Gerir Conteúdos</li></a>
+                    <br><br>
+                    <a href="index.php?p=editarTermosCondicoes"><li>Editar Termos & Condições</li></a>
                 </ul>
             <?php endif ?>
 
@@ -138,6 +138,9 @@ margin-top: 25px;
                     break;
                 case 'editar_utilizador':
                     include 'editarUtilizadores.php';
+                    break;
+                case 'editarTermosCondicoes':
+                    include 'editarTermosCondicoes.php';
                     break;
 
                 default:
