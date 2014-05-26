@@ -18,7 +18,7 @@
                 WHERE
                     roteiro.id_categoria = $get_parametro
                     AND roteiro.ativo=1
-		ORDER BY comentario.data DESC LIMIT 5";
+		ORDER BY comentario.data DESC LIMIT 4";
 
             $result_comentarios = mysql_query($sql_comentarios);
             ?>
