@@ -6,14 +6,6 @@ include '../includes/config.php';
 $post_parametro_id_termos   	 = mysql_real_escape_string($_POST['i']);
 $post_parametro_texto_termo      = mysql_real_escape_string($_POST['termos']);
 
-
-print_r($_POST);
-echo "<br />";
-echo $post_parametro_texto_termo;
-echo "<br />";
-
-
-
 $sql = "UPDATE texto
 		SET texto.texto = '$post_parametro_texto_termo'
 		WHERE texto.id = $post_parametro_id_termos";
