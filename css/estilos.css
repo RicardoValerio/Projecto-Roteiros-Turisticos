@@ -75,6 +75,7 @@ body{
     margin:0;
     font-family: open_sans, Verdana, Geneva, sans-serif;
     font-size: 13.5px;
+    word-wrap:break-word;
 }
 
 hr {
@@ -682,14 +683,26 @@ select[name="oQueFazer"] {
     padding: 0px 15px;
 }
 
-input[name="procura"] {
+#comentar {
     color: #727272;
     border-color: #cfcfcf;
     margin-top: 14px;
-    margin-bottom: 30px;
-    height: 36px;
+    height: 70px;
     width: 215px;
     padding-left: 14px;
+    resize: vertical;
+}
+
+#formComentar input[type="submit"] {
+    border: solid 1px #e1e1e1;
+    margin: 20px 0px 20px 115px;
+    height: 35px;
+    width: 116px;
+    font-weight: bold;
+    color: #7c7770;
+    background: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 #sidebar span {

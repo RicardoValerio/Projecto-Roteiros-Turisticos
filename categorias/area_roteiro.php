@@ -1,8 +1,6 @@
 <?php
-//verificar se é um numero
-//$get_parametro = (is_int($_GET['roteiro'])) $_GET['roteiro'] ? 0 ;
+
 $get_parametro = mysql_real_escape_string(urlencode($_GET['roteiro']));
-$_SESSION['roteiro'] = $get_parametro;
 
 $sql_verificaId = "SELECT id
         FROM
@@ -27,8 +25,11 @@ if (!mysql_num_rows($result_verificaId)) {
         $get_parametro = $linha['id'];
     } else {
         header('Location: index.php?area=destinos');
+        exit();
     }
 }
+
+$_SESSION['roteiro'] = $get_parametro;
 ?>
 <div id="content" class="clearfix">
     <div id="sidebar" class="esq borda">
@@ -40,7 +41,10 @@ if (!mysql_num_rows($result_verificaId)) {
                     <h2>Comentários</h2>
                 </div>
             </div>
-
+            <form id = "formComentar" <?php if (isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"])) echo 'action="inserirComentario.php"'; ?> method = "post">
+                <textarea id = "comentar" name = "comentar" placeholder="<?php echo (isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"])) ? 'Insira o seu comentário...' : 'Para comentar faça login ou registe-se.'; ?>"></textarea>
+                <input type = "submit" value = "Comentar" <?php if (!(isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"]))) echo 'disabled'; ?> />
+            </form>
             <?php
             $sql_comentarios = "SELECT
 		    comentario.comentario, comentario.data, nome 
@@ -59,13 +63,10 @@ if (!mysql_num_rows($result_verificaId)) {
                 if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
-                        <li><?php echo utf8_encode($row['comentario']); ?><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
+                        <li><p><?php echo utf8_encode($row['comentario']); ?></p><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
                         <?php
                     }
-                } else {
-                    ?>
-                    <p>Não existem comentários para este roteiro.</p>
-                <?php }
+                }
                 ?>
             </ul>
         </div>
