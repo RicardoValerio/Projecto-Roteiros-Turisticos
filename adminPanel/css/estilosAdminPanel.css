@@ -360,6 +360,16 @@ dd li{
     width: 244px;
 }
 
+#myUtilizadorActivo, #myUtilizadorInactivo{
+    font-size: 22px;
+    margin-left: -21px;
+    padding-top: 17px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 244px;
+    margin-bottom: 10px;
+}
+
 #ulEstadoRoteiros{
     margin-top: -44px;
 }
@@ -371,7 +381,7 @@ dd li{
     margin-top: 76px;
 }
 
-#notaEstado{
+#notaEstado, #notaEstadoUtilizador{
     color: white;
     text-align: center;
 }

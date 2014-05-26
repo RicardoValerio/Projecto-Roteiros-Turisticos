@@ -1,14 +1,15 @@
 <?php
 $id_get_parametro = mysql_real_escape_string($_GET['id']);
 
-$sql = "SELECT ativo FROM utilizador WHERE id = $id_get_parametro";
+$sql = "SELECT ativo, bloqueado FROM utilizador WHERE id = $id_get_parametro";
 
 $result_estado_do_utilizador = mysql_query($sql);
 
 if (@mysql_num_rows($result_estado_do_utilizador)) {
-    $result_ativo_ou_inactivo = mysql_fetch_assoc($result_estado_do_utilizador);
+    $linha = mysql_fetch_assoc($result_estado_do_utilizador);
 
-    if ($result_ativo_ou_inactivo['ativo'] == 1) { ?>
+    if ($linha['ativo'] == 1) {
+        ?>
 
         <p id="notaEstado">Clique para Desativar o Utilizador:</p>
         <div id="estadoRoteiro">
@@ -22,13 +23,29 @@ if (@mysql_num_rows($result_estado_do_utilizador)) {
             <div id="myRoteiroInactivo" class="roteiroInactivo">O Utilizador Está Inativo</div>
         </div>
 
-    <?php } ?>
+    <?php }
 
-    <div id="eliminarRoteiroId">
-        <a href="processaEliminarUtilizador.php?id=<?php echo $id_get_parametro ?>" id="myEliminarRoteiro" class="eliminarRoteiro">Eliminar Utilizador</a>
-    </div>
 
-<?php } ?>
+
+
+    if ($linha['bloqueado'] == 0) {
+        ?>
+
+        <p id="notaEstadoUtilizador">Clique para Bloquear o Utilizador:</p>
+        <div id="estadoUtilizador">
+            <div id="myUtilizadorActivo" class="roteiroActivo">O Utilizador Está Desbloqueado</div>
+        </div>
+
+    <?php } else { ?>
+
+        <p id="notaEstadoUtilizador">Clique para Desbloquear o Utilizador:</p>
+        <div id="estadoUtilizador">
+            <div id="myUtilizadorInactivo" class="roteiroInactivo">O Utilizador Está Bloqueado</div>
+        </div>
+
+    <?php }
+}
+?>
 
 <script>
 
@@ -38,17 +55,15 @@ if (@mysql_num_rows($result_estado_do_utilizador)) {
          ************************************************************************/
 
         setInterval(function() {
-
-
             $('#myRoteiroInactivo').on('click', function() {
 
                 $.ajax({
                     url: 'ajaxUpdateEstadoUtilizador.php',
                     type: 'post',
                     data: {id: <?php echo $id_get_parametro; ?>,
-                        estado: 0},
+                        estado: 1},
                     success: function(data) {
-                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroActivo">O Utilizador Está Ativo</div>');
+                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroActivo">O Utilizador Está Ativo</div>');
                         $('#notaEstado').html('Clique para Desativar o Utilizador');
                     }
                 });
@@ -60,10 +75,10 @@ if (@mysql_num_rows($result_estado_do_utilizador)) {
                     url: 'ajaxUpdateEstadoUtilizador.php',
                     type: 'post',
                     data: {id: <?php echo $id_get_parametro; ?>,
-                        estado: 1},
+                        estado: 0},
                     success: function(data) {
                         console.log(data);
-                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroInactivo">O Utilizador Está Inativo</div>');
+                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroInactivo">O Utilizador Está Inativo</div>');
                         $('#notaEstado').html('Clique para Ativar o Utilizador:');
                     }
                 });
@@ -72,12 +87,42 @@ if (@mysql_num_rows($result_estado_do_utilizador)) {
             });
 
         }, 100);
+        
+        
+        
+        /*setInterval(function() {
+            $('#myUtilizadorActivo').on('click', function() {
+
+                $.ajax({
+                    url: 'processaBloquearUtilizador.php',
+                    type: 'post',
+                    data: {id: <?php echo $id_get_parametro; ?>,
+                        estado: 0},
+                    success: function(data) {
+                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroActivo">O Utilizador Está Ativo</div>');
+                        $('#notaEstadoUtilizador').html('Clique para Desativar o Utilizador');
+                    }
+                });
+            });
+
+            $('#myUtilizadorInactivo').on('click', function() {
+
+                $.ajax({
+                    url: 'processaBloquearUtilizador.php',
+                    type: 'post',
+                    data: {id: <?php echo $id_get_parametro; ?>,
+                        estado: 1},
+                    success: function(data) {
+                        console.log(data);
+                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroInactivo">O Utilizador Está Inativo</div>');
+                        $('#notaEstadoUtilizador').html('Clique para Ativar o Utilizador:');
+                    }
+                });
 
 
+            });
 
-        $('#myEliminarRoteiro').on('click', function() {
-            return confirm("Tem a certeza que pretende eliminar este utilizador?");
-        });
+        }, 100);*/
 
     });
 

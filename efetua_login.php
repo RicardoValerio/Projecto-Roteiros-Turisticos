@@ -12,7 +12,7 @@ $tableName = "utilizador";
 
 $sql = "SELECT * FROM $tableName
 		WHERE email = '$email'
-		AND password = '$password' and ativo = 1";
+		AND password = '$password' and ativo = 1 and bloqueado=0";
 
 $result = mysql_query($sql);
 $row = mysql_fetch_assoc($result);
