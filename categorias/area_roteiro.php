@@ -25,6 +25,7 @@ if (!mysql_num_rows($result_verificaId)) {
         $get_parametro = $linha['id'];
     } else {
         header('Location: index.php?area=destinos');
+        exit();
     }
 }
 
@@ -52,7 +53,7 @@ $_SESSION['roteiro'] = $get_parametro;
 		WHERE
 		    comentario.id_roteiro = $get_parametro
 		ORDER BY comentario.data DESC
-		LIMIT 3";
+		LIMIT 4";
 
 
             $result_comentarios = mysql_query($sql_comentarios);
@@ -62,7 +63,7 @@ $_SESSION['roteiro'] = $get_parametro;
                 if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
-                        <li><?php echo utf8_encode($row['comentario']); ?><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
+                        <li><p><?php echo utf8_encode($row['comentario']); ?></p><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
                         <?php
                     }
                 }

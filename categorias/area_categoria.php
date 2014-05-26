@@ -14,11 +14,11 @@
             $sql_comentarios = "SELECT
 		    comentario.comentario, comentario.data, nome 
 		FROM
-		    (comentario LEFT JOIN roteiro ON roteiro.id=id_roteiro) LEFT JOIN utilizador ON utilizador.id=id_utilizador
+		    (comentario LEFT JOIN roteiro ON roteiro.id=id_roteiro) LEFT JOIN utilizador ON utilizador.id=comentario.id_utilizador
                 WHERE
                     roteiro.id_categoria = $get_parametro
                     AND roteiro.ativo=1
-		ORDER BY comentario.data DESC LIMIT 3";
+		ORDER BY comentario.data DESC LIMIT 5";
 
             $result_comentarios = mysql_query($sql_comentarios);
             ?>
@@ -27,7 +27,7 @@
                 if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
-                        <li><?php echo utf8_encode($row['comentario']); ?><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
+                        <li><p><?php echo utf8_encode($row['comentario']); ?></p><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
                         <?php
                     }
                 } else {
