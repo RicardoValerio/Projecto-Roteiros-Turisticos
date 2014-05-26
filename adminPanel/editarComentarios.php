@@ -63,8 +63,8 @@ margin-top: 75px;
 <hr>
 
         <p>
-            <label for="descricao">Comentário:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="comentario" id="descricao" placeholder="Insira uma breve descrição sobre o roteiro...">
+            <label for="comentario">Comentário:</label>
+            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="comentario" id="comentario" placeholder="Insira uma breve descrição sobre o roteiro...">
                 <?php echo $row_comentario['comentario']; ?>
             </textarea>
         </p>
@@ -74,17 +74,7 @@ margin-top: 75px;
     </form>
 
     <script>
-    $(function() {
-        $('#palavras_chave').tagsInput({width: 'auto'});
-    });
-
-    </script>
-
-    <script>
-    CKEDITOR.replace('descricao');
-    CKEDITOR.replace('como_chegar');
-    CKEDITOR.replace('sobre');
-    CKEDITOR.replace('infos_uteis');
+    CKEDITOR.replace('comentario');
     </script>
 
 </div>

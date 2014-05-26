@@ -40,7 +40,11 @@
                 while ($row = mysql_fetch_assoc($result_roteirosPag)) {
                     ?>
                     <li class="roteiro esq borda">
-                        <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" alt="<?php echo utf8_decode($row['titulo']); ?>"/>
+
+                        <div style="background-image: url('<?php echo 'img/gd_' . $row['imagem']; ?>');" class="ultimosRoteiros">
+                        <!--
+                            <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" alt="<?php echo utf8_decode($row['titulo']); ?>"/> -->
+                        </div>
                         <div class="descricao">
                             <h3><?php echo utf8_decode($row['titulo']); ?></h3>
                             <?php echo utf8_decode($row['descricao']); ?>

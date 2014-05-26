@@ -50,9 +50,6 @@ margin-top: 75px;
             <select name="tipo_utilizador" id="utilizador">
                 <?php while ($row_tipos = mysql_fetch_assoc($result_tipos)): ?>
 
-    <?php echo 'DEBUG: ' . $row_utilizador['tipo'] . '<br />' ; ?>
-    <?php echo 'DEBUG: ' . $row_tipos['tipo'] . '<br />' ; ?>
-
                     <option value="<?php echo $row_tipos['id']; ?>" <?php if($row_tipos['tipo'] == $row_utilizador['tipo'] ) echo "selected"; ?>>
                         <?php echo $row_tipos['tipo']; ?></option>
                 <?php endwhile; ?>
@@ -73,20 +70,6 @@ margin-top: 75px;
         <input class="mySubmitButton" type="submit" value="Atualizar Utilizador" />
 
     </form>
-
-    <script>
-    $(function() {
-        $('#palavras_chave').tagsInput({width: 'auto'});
-    });
-
-    </script>
-
-    <script>
-    CKEDITOR.replace('descricao');
-    CKEDITOR.replace('como_chegar');
-    CKEDITOR.replace('sobre');
-    CKEDITOR.replace('infos_uteis');
-    </script>
 
 </div>
 

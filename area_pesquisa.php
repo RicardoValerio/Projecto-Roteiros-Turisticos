@@ -9,3 +9,9 @@
     <h4 id="results-text">Mostrando os resultados para: <b id="search-string">Array</b></h4>
     <ul id="results"></ul>
 </div>
+
+<script>
+$(document).ready(function() {
+		$( "#search" ).focus();
+});
+</script>

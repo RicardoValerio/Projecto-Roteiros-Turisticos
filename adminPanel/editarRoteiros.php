@@ -109,6 +109,7 @@ margin-top: 75px;
     <p>Hash da Imagem: <?php echo $roteiros_array['imagem']; ?></p>
     <img src="<?php echo '../img/gd_'. $roteiros_array['imagem']; ?>" alt="<?php echo $roteiros_array['titulo']; ?>">
     <br>
+    <input type="hidden" name="imagem_atual_roteiro" value="<?php echo $roteiros_array['imagem']; ?>">
     <input type="file" id="imagem" name="imagem" />
 </p>
 
