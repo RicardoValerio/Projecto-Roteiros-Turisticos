@@ -13,6 +13,7 @@ $(document).ready(function() {
 
     validarFormInserirRoteiro();
     validarFormRecuperarPassword();
+    validarFormComentario();
 
     $('.loginRegistoBox').click(function(localClicked) {
         var button = $('input[type="submit"]');
@@ -112,6 +113,25 @@ function validarFormRecuperarPassword() {
                 }
             });
             return false;
+        }
+    });
+}
+
+function validarFormComentario() {
+    $("#formComentar").validate({
+        rules: {
+            comentar: {
+                required: true,
+                minlength: 5,
+                maxlength: 50
+            }
+        },
+        messages: {
+            comentar: {
+                required: "O seu comentário tem de ter pelo menos 5 caracteres.",
+                minlength: "O seu comentário tem de ter pelo menos 5 caracteres.",
+                maxlength: "O seu comentário não pode ter mais de 50 caracteres."
+            }
         }
     });
 }

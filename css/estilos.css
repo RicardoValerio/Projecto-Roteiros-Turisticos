@@ -75,7 +75,7 @@ body{
     margin:0;
     font-family: open_sans, Verdana, Geneva, sans-serif;
     font-size: 13.5px;
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
 
 hr {
@@ -687,7 +687,7 @@ select[name="oQueFazer"] {
     color: #727272;
     border-color: #cfcfcf;
     margin-top: 14px;
-    height: 70px;
+    height: 45px;
     width: 215px;
     padding-left: 14px;
     resize: vertical;
@@ -713,10 +713,16 @@ select[name="oQueFazer"] {
     margin-top: 6px;
 }
 
-#comentario li, #comentario p, #palavrasChave li, #palavrasChave p{
+#comentario li, #comentario p, #palavrasChave li, #palavrasChave p, #semRoteiro{
     font-size: 13px;
     line-height: 24px;
     color: #7c7770;
+}
+
+#semRoteiro {
+    text-align: center;
+    font-size: 15px;
+    margin-left: 300px;
 }
 
 #palavrasChave p {

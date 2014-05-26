@@ -34,7 +34,7 @@
 
     $result_roteirosPag = mysql_query($sql_roteirosPag);
 
-    if (mysql_num_rows($result_roteirosPag)) {
+    if (@mysql_num_rows($result_roteirosPag)) {
         ?><div class="clearfix">
             <ul id="roteiroBox" class="clearfix"><?php
                 while ($row = mysql_fetch_assoc($result_roteirosPag)) {
@@ -108,7 +108,7 @@
 </div>
 
 
-<div class="separador">
+<!--<div class="separador">
     <hr />
     <img src="img/separador_fala.jpg" alt="" />
 </div>
@@ -128,4 +128,4 @@
         <li></li>
         <li></li>
     </ul>
-</div>
+</div>-->

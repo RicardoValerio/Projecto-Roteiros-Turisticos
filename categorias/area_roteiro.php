@@ -1,5 +1,4 @@
 <?php
-
 $get_parametro = mysql_real_escape_string(urlencode($_GET['roteiro']));
 
 $sql_verificaId = "SELECT id
@@ -41,8 +40,8 @@ $_SESSION['roteiro'] = $get_parametro;
                     <h2>Comentários</h2>
                 </div>
             </div>
-            <form id = "formComentar" <?php if (isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"])) echo 'action="inserirComentario.php"'; ?> method = "post">
-                <textarea id = "comentar" name = "comentar" placeholder="<?php echo (isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"])) ? 'Insira o seu comentário...' : 'Para comentar faça login ou registe-se.'; ?>"></textarea>
+            <form id = "formComentar" <?php if (isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"])) echo 'action="inserirComentario.php"'; ?> method = "post" <?php if (!(isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"]))) echo 'disabled'; ?>>
+                <textarea id = "comentar" name = "comentar" maxlength="50" placeholder="<?php echo (isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"])) ? 'Insira o seu comentário...' : 'Para comentar faça login ou registe-se.'; ?>" <?php if (!(isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"]))) echo 'disabled'; ?> ></textarea>
                 <input type = "submit" value = "Comentar" <?php if (!(isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"]))) echo 'disabled'; ?> />
             </form>
             <?php
@@ -88,8 +87,8 @@ $_SESSION['roteiro'] = $get_parametro;
                     ?><li class="borda"><a href="index.php?area=o_que_procura&pesquisa=<?php echo $row['palavra']; ?>"><?php echo $row['palavra']; ?></a></li><?php
                     }
                     ?></ul><?php
-                } else {
-                    ?><p>Não existem palavras chave para este roteiro.</p><?php
+                    } else {
+                        ?><p>Não existem palavras chave para este roteiro.</p><?php
                 }
                 ?>
 
