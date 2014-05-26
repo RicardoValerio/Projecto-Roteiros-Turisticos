@@ -1,14 +1,13 @@
 <?php require_once 'verificaSession.php'; ?>
 
 <h1 style="font-size: 3em;
-    color:#D3109F;
     text-align: center;
     margin-top: 75px;
     ">Inserir Roteiro</h1>
 
 <div style="margin-left: 69px;" id="inserirRoteiro">
 
-        <!-- <h1><span id="normal">Inserir</span> Roteiro</h1> -->
+        <!--<h1><span id="normal">Inserir</span> Roteiro</h1> -->
 
     <form id="formInserirRoteiro" action="processaInserirRoteiro.php" method="post" enctype="multipart/form-data">
 

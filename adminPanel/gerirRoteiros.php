@@ -47,7 +47,7 @@ $result_roteiros = mysql_query($sql);
 						<td class="linhasCentradasTabela"><?php echo $row_roteiros['nome']; ?></td>
 						<td class="linhasCentradasTabela"><?php echo $row_roteiros['data']; ?></td>
 						<td class="linhasCentradasTabela"><?php echo $row_roteiros['ativo']; ?></td>
-						<td class="linhasCentradasTabela"><a href="index.php?p=editar_roteiro&id=<?php echo $row_roteiros['id']; ?>" class="editarRoteiro">Editar</a></td>
+						<td class="linhasCentradasTabela"><a href="index.php?area=editar_roteiro&id=<?php echo $row_roteiros['id']; ?>" class="editarRoteiro">Editar</a></td>
 					</tr>
 				<?php endwhile; ?>
 

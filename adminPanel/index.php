@@ -2,6 +2,7 @@
 session_start();
 require_once 'verificaSessionsAdminPanel.php';
 require_once '../includes/config.php';
+require_once 'includes/funcoes_areas_back_office.php'
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,35 +47,7 @@ require_once '../includes/config.php';
         </div>
 
         <div class="right">
-
-            <?php
-            switch (@$_GET['p']) {
-                case 'gerirRoteiros':
-                    include 'gerirRoteiros.php';
-                    break;
-                case 'editar_roteiro':
-                    include 'editarRoteiros.php';
-                    break;
-                case 'gerirComentarios':
-                    include 'gerirComentarios.php';
-                    break;
-                case 'editar_comentario':
-                    include 'editarComentarios.php';
-                    break;
-                case 'gerirUtilizadores':
-                    include 'gerirUtilizadores.php';
-                    break;
-                case 'editar_utilizador':
-                    include 'editarUtilizadores.php';
-                    break;
-                case 'editarTermosCondicoes':
-                    include 'editarTermosCondicoes.php';
-                    break;
-                case 'inserir':
-                default:
-                    include '../area_inserir_roteiro.php';
-            }
-            ?>
+            <?php include verificaAreaIndexBackOffice(); ?>
         </div>
 
     </body>

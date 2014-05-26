@@ -15,20 +15,20 @@ $result_estado_do_comentario = mysql_query($sql);
 
 		<p id="notaEstado">Clique para Desativar o Comentário:</p>
 			<div id="estadoRoteiro">
-				<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroActivo">O Comentário Está Ativo</div>
+				<div id="myRoteiroActivo" class="roteiroActivo">O Comentário Está Ativo</div>
 			</div>
 
 		<?php else: ?>
 
 		<p id="notaEstado">Clique para Ativar o Comentário:</p>
 			<div id="estadoRoteiro">
-				<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroInactivo">O Comentário Está Inativo</div>
+				<div id="myRoteiroInactivo" class="roteiroInactivo">O Comentário Está Inativo</div>
 			</div>
 
 		<?php endif ?>
 
 			<div id="eliminarRoteiroId">
-				<a style="margin-top: 62px;" href="processaEliminarComentario.php?id=<?php echo $id_get_parametro ?>" id="myEliminarRoteiro" class="eliminarRoteiro">Eliminar Comentário</a>
+				<a href="processaEliminarComentario.php?id=<?php echo $id_get_parametro ?>" id="myEliminarRoteiro" class="eliminarRoteiro">Eliminar Comentário</a>
 			</div>
 
 <?php endif ?>

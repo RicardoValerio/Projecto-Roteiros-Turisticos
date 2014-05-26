@@ -5,6 +5,19 @@ body{
     margin: 0 auto;
 }
 
+#eliminarRoteiroId a{
+    margin-top: 62px;
+}
+
+#myRoteiroInactivo {
+    padding-bottom: 12px;
+    padding-top: 16px;
+}
+
+#myRoteiroActivo {
+    padding-bottom: 12px;
+    padding-top: 16px;
+}
 
 .right{
     width: 70%;
@@ -31,8 +44,8 @@ body{
     margin-top: 95px;
 }
 
-#ultimaUl{
-    margin-bottom: 100px;
+#btnTermosCondicoes {
+    margin-bottom: 80px;
 }
 
 .left a{

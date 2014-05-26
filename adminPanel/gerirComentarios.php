@@ -52,7 +52,7 @@ $result_comentarios = mysql_query($sql);
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['comentario']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['data']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['ativo']; ?></td>
-                        <td class="linhasCentradasTabela"><a href="index.php?p=editar_comentario&id=<?php echo $row_comentario['id']; ?>" class="editarRoteiro">Editar</a></td>
+                        <td class="linhasCentradasTabela"><a href="index.php?area=editar_comentario&id=<?php echo $row_comentario['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
                 <?php endwhile; ?>
 

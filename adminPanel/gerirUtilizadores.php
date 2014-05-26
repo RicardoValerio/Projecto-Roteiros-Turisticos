@@ -46,7 +46,7 @@ $result_utilizadores = mysql_query($sql);
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['nome']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['email']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['ativo']; ?></td>
-                        <td class="linhasCentradasTabela"><a href="index.php?p=editar_utilizador&id=<?php echo $row_utilizador['id']; ?>" class="editarRoteiro">Editar</a></td>
+                        <td class="linhasCentradasTabela"><a href="index.php?area=editar_utilizador&id=<?php echo $row_utilizador['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
                 <?php endwhile; ?>
 
