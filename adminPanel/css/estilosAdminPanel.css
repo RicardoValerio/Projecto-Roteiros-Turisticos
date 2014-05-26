@@ -25,7 +25,10 @@ body{
 .left ul{
     margin-right: 40px;
     margin-bottom: 30px;
-    /*margin-left: -33px;*/
+}
+
+#btnInserirRoteiro {
+    margin-top: 95px;
 }
 
 #ultimaUl{
@@ -104,13 +107,32 @@ dd li{
 }
 
 .topFixedBar{
-    background-color: #FFFF00;
-    height: 50px;
+    background-color: #273A43;
+    height: 62px;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+}
+
+.topFixedBar #welcome{
+    float: left;
+    margin-left: 40px;
+    margin-top: -3px;
+}
+
+#welcome h2 {
+    color: white;
+    text-align: center;
+}
+
+#welcome h2 span {
+    color: orange;
 }
 
 .topFixedBar ul{
     float: right;
     margin-right: 50px;
+    margin-top: 25px;
 }
 
 .topFixedBar ul li{
@@ -343,8 +365,6 @@ dd li{
 /*****************************************************************************
 *           Submit Button Style
 *****************************************************************************/
-
-
 .mySubmitButton {
     -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
     -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
