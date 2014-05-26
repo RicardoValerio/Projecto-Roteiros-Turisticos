@@ -53,7 +53,7 @@ $_SESSION['roteiro'] = $get_parametro;
 		WHERE
 		    comentario.id_roteiro = $get_parametro
 		ORDER BY comentario.data DESC
-		LIMIT 4";
+		LIMIT 3";
 
 
             $result_comentarios = mysql_query($sql_comentarios);
