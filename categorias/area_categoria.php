@@ -60,6 +60,7 @@
                             <h2><?php echo $row['titulo']; ?></h2>
                         </div>
                         <div class="destinosDeCategoria" style="background-image: url('<?php echo $row['imagem']; ?>');" alt="<?php echo $row['titulo']; ?>">
+                        </div>
                     </a>
                 </div>
                 <?php
