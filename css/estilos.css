@@ -612,6 +612,7 @@ select[name="oQueFazer"] {
 .mainContent {
     width: 719px;
     border-radius: 0px;
+    margin-bottom: 50px;
 }
 
 .mainContent .listaRoteiro{
@@ -765,9 +766,12 @@ select[name="oQueFazer"] {
 }
 
 #palavrasChave li {
-    padding: 2px 10px;
     float: left;
     margin: 0px 4px 6px 0px;
+}
+
+#palavrasChave li a {
+    padding: 2px 10px;
 }
 /* end Roteiros */
 

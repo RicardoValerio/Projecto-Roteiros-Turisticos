@@ -21,7 +21,11 @@ if (!mysql_num_rows($result_verificaId)) {
 
     if (mysql_num_rows($result_verificaId)) {
         $linha = mysql_fetch_assoc($result_verificaId);
-        $get_parametro = $linha['id'];
+        
+        $url = 'index.php?area=destinos&roteiro='.$linha['id'];
+        header("Location: $url");
+        exit();
+        
     } else {
         header('Location: index.php?area=destinos');
         exit();
