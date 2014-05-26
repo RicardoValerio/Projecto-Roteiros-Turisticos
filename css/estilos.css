@@ -1160,4 +1160,6 @@ b.highlight{
     height: 222px;
     overflow: hidden;
     background-color: #D9D9D9;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
