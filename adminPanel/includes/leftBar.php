@@ -11,7 +11,7 @@
 </ul>
 
 <ul id="btnTermosCondicoes">
-    <a href="index.php?area=editar_termosCondicoes"><li>Editar Termos & Condições</li></a>
+    <a href="index.php?area=editar_termosCondicoes"><li>Termos & Condições</li></a>
 </ul>
 
 <ul id="ulEstadoRoteiros">

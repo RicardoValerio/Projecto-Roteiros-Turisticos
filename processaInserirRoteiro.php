@@ -1,12 +1,14 @@
 <?php
+session_start();
+
 if (empty($_FILES['imagem']['name'])) {
 
     echo "a imagem não está definida!";
-    die;
+    die();
 } else {
 
     include 'includes/funcoes_imagens.php';
-
+    
     $extensao = getExtensaoDaImagem($_FILES['imagem']['type']);
     $extensao_valida = verificaSeExtensaoDaImagemSeraValida($extensao);
 
@@ -19,10 +21,10 @@ if (empty($_FILES['imagem']['name'])) {
         echo "<br />";
         print_r($_FILES);
 
-        die;
+        die();
     } else {
 
-        include_once 'includes/config.php';
+        include 'includes/config.php';
 
         $titulo = mysql_real_escape_string(utf8_encode($_POST['titulo']));
 
@@ -64,8 +66,6 @@ if (empty($_FILES['imagem']['name'])) {
 
 
         if (mysql_query($sql)) {
-
-
             // guardar e redimensionar as imagens
 
             $image_dir = 'img';
@@ -78,8 +78,6 @@ if (empty($_FILES['imagem']['name'])) {
 
             // create the '400' and '100' versions of the image
             process_image($image_dir_path, $nomeImagem);
-
-
 
             // inserir tipos de percurso do roteiro
             $id_ultimo_roteiro_inserido = mysql_insert_id();

@@ -101,11 +101,6 @@ function resize_image($old_image_path, $new_image_path,
     imagedestroy($old_image);
 }
 
-
-
-
-
-
 function getExtensaoDaImagem($imagem_type){
 
     $extensao = '';
@@ -125,13 +120,11 @@ function getExtensaoDaImagem($imagem_type){
 
 }
 
-
 function verificaSeExtensaoDaImagemSeraValida($ext){
 
     return ($ext != '') ? true : false;
 
 }
-
 
 /*
 function mudaTamanhoImagem($tamanho, $nomeImagem){

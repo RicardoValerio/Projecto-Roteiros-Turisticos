@@ -1,15 +1,21 @@
-<?php require_once 'verificaSession.php'; ?>
+<?php
+require_once 'verificaSession.php';
 
-<h1 style="font-size: 3em;
-    text-align: center;
-    margin-top: 75px;
-    ">Inserir Roteiro</h1>
-
+if ($_SESSION["tipo_utilizador"] == 'admin') {
+    ?>
+    <h1 style="font-size: 3em;
+        text-align: center;
+        margin-top: 75px;
+        ">Inserir Roteiro</h1>
+    <?php } ?>
 <div style="margin-left: 69px;" id="inserirRoteiro">
+    <?php
+    if ($_SESSION["tipo_utilizador"] != 'admin') {
+        ?>
+        <h1><span id="normal">Inserir</span> Roteiro</h1>
+    <?php } ?>
 
-        <!--<h1><span id="normal">Inserir</span> Roteiro</h1> -->
-
-    <form id="formInserirRoteiro" action="processaInserirRoteiro.php" method="post" enctype="multipart/form-data">
+    <form id="formInserirRoteiro" action="<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../processaInserirRoteiro.php' : 'processaInserirRoteiro.php'; ?>" method="post" enctype="multipart/form-data">
 
         <p>
             <label for="nome">Nome:</label>
@@ -39,7 +45,7 @@
 
                         <?php endwhile; ?>
 
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
             </select>
 
         </p>
