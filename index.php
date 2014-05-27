@@ -30,7 +30,6 @@ $_SESSION['url'] = devolveUrlActual();
 
 
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script type="text/javascript" src="js/plugin.tags.js"></script>
 
         <script type="text/javascript" src="js/dialogMessage.js"></script>
         <script type="text/javascript" src="js/votacao.js"></script>

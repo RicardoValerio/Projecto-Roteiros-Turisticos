@@ -153,4 +153,5 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
         CKEDITOR.replace('infos_uteis');
     </script>
 
+    <script type="text/javascript" src="<?php echo ($_SESSION['tipo_utilizador'] == 'admin')? '../js/plugin.tags.js' : 'js/plugin.tags.js'; ?>"></script>
 </div>
