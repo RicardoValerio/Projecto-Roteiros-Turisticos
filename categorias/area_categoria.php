@@ -74,22 +74,23 @@ $get_parametro = mysql_real_escape_string(urlencode($_GET['categoria']));
 
         $offsetRoteiros = (($pag - 1) * $limitRoteiros);
 
-        $sql_roteirosPag = "SELECT  id, titulo, imagem, descricao
+        $sql_roteirosPag = "SELECT  roteiro.id, titulo, imagem, descricao, regiao.nome as regiao
 			FROM
-			    roteiro
+			    roteiro left join regiao on id_regiao=regiao.id
                         WHERE roteiro.id_categoria=$get_parametro AND roteiro.ativo=1
 			ORDER BY roteiro.data DESC limit $offsetRoteiros, $limitRoteiros";
-
+        
         $result_roteirosPag = mysql_query($sql_roteirosPag);
 
         if (@mysql_num_rows($result_roteirosPag)) {
             ?>
-            <ul class="mainContent dir borda">
+            <ul class="mainContent dir">
                 <?php while ($row = mysql_fetch_assoc($result_roteirosPag)) { ?>
                     <li class="listaRoteiro">
                         <a href="index.php?area=destinos&roteiro=<?php echo $row['id']; ?>">
                             <div>
                                 <h2><?php echo utf8_encode($row['titulo']); ?></h2>
+                                <h3><?php echo utf8_encode($row['regiao']); ?></h3>
                             </div>
                             <div class="destinosDeCategoria" style="background-image: url('<?php echo 'img/pq_' . $row['imagem']; ?>');" alt="<?php echo utf8_encode($row['titulo']); ?>">
                             </div>

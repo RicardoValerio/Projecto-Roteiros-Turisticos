@@ -55,13 +55,6 @@ li {
     position: relative;
 }
 
-.borda {
-    border: solid 1px #e1e1e1;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
 label.error{
     color: red !important;
     width: 400px !important;
@@ -612,7 +605,7 @@ select[name="oQueFazer"] {
 }
 
 .mainContent {
-    width: 719px;
+    width: 722px;
     border-radius: 0px;
     margin-bottom: 50px;
 }
@@ -624,13 +617,41 @@ select[name="oQueFazer"] {
     position: relative;
 }
 
-.mainContent .listaRoteiro:nth-child(n+4) {
-    border-top: solid 1px #e1e1e1;
+.mainContent .listaRoteiro:nth-child(1) {
+    border: solid 1px #e1e1e1;
+    -webkit-border-top-left-radius: 3px;
+    -moz-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
 }
-
-.mainContent .listaRoteiro:nth-child(3n+2) {
+.mainContent .listaRoteiro:nth-child(2), .mainContent .listaRoteiro:nth-child(3) {
+    border-top: solid 1px #e1e1e1;
+    border-bottom: solid 1px #e1e1e1;
     border-right: solid 1px #e1e1e1;
+}
+.mainContent .listaRoteiro:nth-child(3) {
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.mainContent .listaRoteiro:nth-child(4), .mainContent .listaRoteiro:nth-child(7) {
     border-left: solid 1px #e1e1e1;
+    border-bottom: solid 1px #e1e1e1;
+    border-right: solid 1px #e1e1e1;
+}
+.mainContent .listaRoteiro:nth-child(5), .mainContent .listaRoteiro:nth-child(6),
+.mainContent .listaRoteiro:nth-child(8),.mainContent .listaRoteiro:nth-child(9) {
+    border-bottom: solid 1px #e1e1e1;
+    border-right: solid 1px #e1e1e1;
+}
+.mainContent .listaRoteiro:nth-child(7) {
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.mainContent .listaRoteiro:nth-child(9) {
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .listaRoteiro div {
@@ -1195,6 +1216,16 @@ b.highlight{
     background-position: center center;
     background-repeat: no-repeat;
     position: relative;
-    top: 70px;
+    bottom: 0px;
     overflow: hidden;
+}
+
+.listaRoteiro h3 {
+    padding-top: 10px;
+}
+
+.listaRoteiro a {
+    width: 239px;
+    height: 291px;
+    display: inline-block;
 }
