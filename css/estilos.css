@@ -1216,13 +1216,13 @@ b.highlight{
 }
 
 .destinosDeCategoria{
-    height: 149px;
+    height: 208px;
     width: 239px;
-    background-position: center center;
+    background-position: bottom center;
     background-repeat: no-repeat;
-    position: relative;
     bottom: 0px;
     overflow: hidden;
+    padding: 0px !important;
 }
 
 .listaRoteiro h3 {

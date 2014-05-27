@@ -188,6 +188,7 @@
         </form>
 
         <script>
+            
             $(function() {
                 $('#palavras_chave').tagsInput({width: 'auto'});
             });

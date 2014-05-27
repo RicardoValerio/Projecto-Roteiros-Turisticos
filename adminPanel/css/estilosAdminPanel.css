@@ -6,6 +6,10 @@ body{
     word-wrap: break-word;
 }
 
+.labelTransp {
+    margin-right: 20px;
+}
+
 .right{
     width: 70%;
     float: right;

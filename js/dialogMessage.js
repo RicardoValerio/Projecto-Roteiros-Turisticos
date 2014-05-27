@@ -1,9 +1,5 @@
 var dialogMessageStatus = false;
 
-$(document).ready(function() {
-
-});
-
 function dialogMessageNormal(elem, title) {
     $(elem).dialog({
         modal: true,

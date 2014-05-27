@@ -13,7 +13,7 @@ require_once 'includes/funcoes_areas_back_office.php'
         <title>Back Office</title>
         <meta name="viewport" content="width=device-width">
 
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 
         <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/estilosAdminPanel.css">
@@ -48,6 +48,5 @@ require_once 'includes/funcoes_areas_back_office.php'
         <div class="right">
             <?php include verificaAreaIndexBackOffice(); ?>
         </div>
-
     </body>
 </html>

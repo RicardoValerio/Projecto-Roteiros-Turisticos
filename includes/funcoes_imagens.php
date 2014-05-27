@@ -11,14 +11,19 @@ function process_image($dir, $filename) {
 
     // Set up the write paths
     $image_path_400 = $dir . 'gd_' . $image_name . $ext;
-    $image_path_100 = $dir . 'pq_' . $image_name . $ext;
+    $image_path_239 = $dir . 'pq_' . $image_name . $ext;
+    $image_path_150 = $dir . 'mini_' . $image_name . $ext;
 
     // Create an image that's a maximum of 400x300 pixels
     resize_image($image_path, $image_path_400, 400, 300);
 
-    // Create a thumbnail image that's a maximum of 100x100 pixels
-    resize_image($image_path, $image_path_100, 239, 208);
+    // Create an image that's a maximum of 239x208 pixels
+    resize_image($image_path, $image_path_239, 239, 208);
+    
+    // Create a thumbnail image that's a maximum of 150x90 pixels
+    resize_image($image_path, $image_path_150, 150, 90);
 }
+
 
 /*******************************************
  * Resize image to 400x300 max
@@ -126,27 +131,5 @@ function verificaSeExtensaoDaImagemSeraValida($ext){
 
 }
 
-/*
-function mudaTamanhoImagem($tamanho, $nomeImagem){
-    $patterns = array();
-    $patterns[0] = '/.gif/';
-    $patterns[1] = '/.jpg/';
-    $patterns[2] = '/.png/';
-
-    $replacements = array();
-    if($tamanho == 239){
-        $replacements[0] = '_239.gif';
-        $replacements[1] = '_239.jpg';
-        $replacements[2] = '_239.png';
-    }else{
-        $replacements[0] = '_400.gif';
-        $replacements[1] = '_400.jpg';
-        $replacements[2] = '_400.png';
-
-    }
-
-    return preg_replace($patterns, $replacements, $nomeImagem);
-}
-*/
 
 ?>

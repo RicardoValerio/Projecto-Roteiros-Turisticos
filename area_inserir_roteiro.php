@@ -93,14 +93,14 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
             <legend>Percursos nas Imediações:</legend>
             <p>
                 <?php while ($row_percurso = @mysql_fetch_assoc($result_percursos)) { ?>
-                    <label for="<?php echo utf8_encode($row_percurso['tipo']); ?>">
+                    <label class="labelTransp" for="<?php echo utf8_encode($row_percurso['tipo']); ?>">
                         <?php echo utf8_encode($row_percurso['tipo']); ?>
                         <input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['tipo']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>">
                     </label>
                 <?php } ?>
             </p>
         </fieldset>
-        
+
         <p>
             <label for="descricao">Descrição:</label>
             <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao">
@@ -135,8 +135,9 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
 
     </form>
 
-    <script type="text/javascript" src="<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../js/plugin.tags.js' : 'js/plugin.tags.js'; ?>"></script>
 </div>
+
+<script type="text/javascript" src="<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../js/plugin.tags.js' : 'js/plugin.tags.js'; ?>"></script>
 <script>
     $(document).ready(function() {
         CKEDITOR.replace('descricao');
@@ -147,37 +148,5 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
         $(function() {
             $('#palavras_chave').tagsInput({width: 'auto'});
         });
-
-
-        /*$("#formInserirRoteiro").validate({
-            rules: {
-                nome: "required",
-                regiao: "required",
-                tempo: "required",
-                tipoPercurso: "required",
-                descricao: "required"
-            },
-            messages: {
-                nome: "Por favor preencha o nome do roteiro.",
-                regiao: "Por favor selecione a regi&#227;o do roteiro.",
-                tempo: "Por favor preencha o tempo do roteiro.",
-                tipoPercurso: "Por favor escolha o tipo de percurso do roteiro.",
-                descricao: "Por favor preencha a descri&#231;&#227;o do roteiro."
-            },
-            submitHandler: function(form) {
-                $.ajax({
-                 type: form.method,
-                 url: form.action,
-                 data: $(form).serialize(),
-                 success: function(response) {
-                 dialogMessageNormal('#dialog_mensage', 'Registo');
-                 $('#dialog_text').html(response);
-                 }
-                 });
-                return false;
-            }
-        });
-        */
-
     });
 </script>
