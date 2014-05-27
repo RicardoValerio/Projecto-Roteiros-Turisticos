@@ -1,9 +1,10 @@
 <div class="esq" id="logo">
     <img src="img/logo.png" alt="logo" />
 </div>
+
 <div id="menu" class="dir">
     <ul>
-        <?php if(isset($_SESSION['nome'])) { ?>
+        <?php if (isset($_SESSION['nome'])) { ?>
 
             <?php if ($_SESSION['tipo_utilizador'] == "admin") { ?>
                 <li style="color: yellow;">Olá administrador <?php echo utf8_encode($_SESSION['nome']); ?></li>
@@ -16,8 +17,8 @@
             <li><a href="logout.php">Logout</a></li>
 
         <?php } else { ?>
-            <li><a id="login" href="<?php echo devolveUrlActual().'&log=login'; ?>">Login</a></li>
-            <li><a id="registo" href="<?php echo devolveUrlActual().'&log=registo'; ?>">Registo</a></li>
+            <li><a id="login" href="<?php echo devolveUrlActual() . '&log=login'; ?>">Login</a></li>
+            <li><a id="registo" href="<?php echo devolveUrlActual() . '&log=registo'; ?>">Registo</a></li>
         <?php } ?>
     </ul>
 </div>

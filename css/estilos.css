@@ -123,6 +123,7 @@ h1, h2, h3, #roteiros p, #testemunhos p  {
     height: 96px;
     position: absolute;
     z-index: 98;
+    width: 100%;
 }
 
 #header li {
@@ -139,6 +140,7 @@ h1, h2, h3, #roteiros p, #testemunhos p  {
 
 #nav {
     margin-right: 238px;
+    margin-left: 200px;
 }
 
 #menu li, #nav li {
