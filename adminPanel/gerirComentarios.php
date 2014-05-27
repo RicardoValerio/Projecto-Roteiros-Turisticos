@@ -22,7 +22,7 @@ $result_comentarios = mysql_query($sql);
                 <tr>
                     <th class="sorting">Nome do Roteiro</th>
                     <th class="sorting">Utilizador</th>
-                    <th id="colunaComentario" class="sorting">Comentário</th>
+                    <th class="sorting">Comentário</th>
                     <th class="sorting">Data</th>
                     <th class="sorting">Editar Comentário</th>
                 </tr>
@@ -44,7 +44,7 @@ $result_comentarios = mysql_query($sql);
                     <tr>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['titulo']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['nome']; ?></td>
-                        <td id="colComent" class="linhasCentradasTabela"><?php echo $row_comentario['comentario']; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo $row_comentario['comentario']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['data']; ?></td>
                         <td class="linhasCentradasTabela"><a href="index.php?area=editar_comentario&id=<?php echo $row_comentario['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>

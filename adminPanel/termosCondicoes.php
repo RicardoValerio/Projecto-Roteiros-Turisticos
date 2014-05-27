@@ -1,5 +1,4 @@
 <h1 style="font-size: 3em;
-color:#D3109F;
 text-align: center;
 margin-top: 75px;
 ">Editar Termos & Condições</h1>
@@ -46,5 +45,5 @@ margin-top: 75px;
 
 
 <?php else: ?>
-    <?php echo "Bazinga!, não existe nada nessta tabela!"; ?>
+    <?php echo "Não existe nada nessta tabela!"; ?>
 <?php endif ?>

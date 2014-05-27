@@ -43,16 +43,16 @@ $result_utilizadores = mysql_query($sql);
 
             <tbody>
 
-                <?php while ($row_utilizador = mysql_fetch_assoc($result_utilizadores)): ?>
+                <?php while ($row_utilizador = mysql_fetch_assoc($result_utilizadores)) { ?>
                     <tr>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['tipo']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['nome']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['email']; ?></td>
-                        <td class="linhasCentradasTabela"><?php echo ($row_utilizador['ativo']) ? 'Sim':'Não'; ?></td>
-                        <td class="linhasCentradasTabela"><?php echo ($row_utilizador['bloqueado']) ? 'Sim':'Não'; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo ($row_utilizador['ativo']) ? 'Sim' : 'Não'; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo ($row_utilizador['bloqueado']) ? 'Sim' : 'Não'; ?></td>
                         <td class="linhasCentradasTabela"><a href="index.php?area=editar_utilizador&id=<?php echo $row_utilizador['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
-                <?php endwhile; ?>
+                <?php } ?>
 
             </tbody>
         </table>

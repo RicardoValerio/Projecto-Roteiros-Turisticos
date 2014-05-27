@@ -3,8 +3,8 @@
 include '../includes/config.php';
 
 
-$post_parametro_id_termos   	 = mysql_real_escape_string($_POST['i']);
-$post_parametro_texto_termo      = mysql_real_escape_string($_POST['termos']);
+$post_parametro_id_termos = mysql_real_escape_string($_POST['i']);
+$post_parametro_texto_termo = mysql_real_escape_string($_POST['termos']);
 
 $sql = "UPDATE texto
 		SET texto.texto = '$post_parametro_texto_termo'
@@ -13,14 +13,9 @@ $sql = "UPDATE texto
 
 
 if (mysql_query($sql)) {
-
 // redirecionar no futuro
-	echo "sucesso, foi tudo actualizado com tranquilidade xD - redirrecionar no futuro...<br><br>";
-
-}else{
-	echo "erro! contacte a empresa a quem pagou por esta porcaria de software..." . mysql_error();
+    echo "sucesso, foi tudo actualizado com tranquilidade xD - redirrecionar no futuro...<br><br>";
+} else {
+    echo "erro! contacte a empresa a quem pagou por esta porcaria de software..." . mysql_error();
 }
-
-
-
 ?>

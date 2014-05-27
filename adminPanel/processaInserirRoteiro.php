@@ -1,49 +1,44 @@
 <?php
 
-
-if ( empty($_FILES['imagem']['name']) ){
+if (empty($_FILES['imagem']['name'])) {
 
     echo "a imagem não está definida!";
     die;
+} else {
 
-}else{
+    include '../includes/funcoes_imagens.php';
 
-        include '../includes/funcoes_imagens.php';
-
-        $extensao           = getExtensaoDaImagem($_FILES['imagem']['type']);
-        $extensao_valida    = verificaSeExtensaoDaImagemSeraValida($extensao);
+    $extensao = getExtensaoDaImagem($_FILES['imagem']['type']);
+    $extensao_valida = verificaSeExtensaoDaImagemSeraValida($extensao);
 
 
-        if (!$extensao_valida)
-        {
+    if (!$extensao_valida) {
 
-            echo "a extensão do ficheiro n é uma imagem válida para a aplicação";
+        echo "a extensão do ficheiro n é uma imagem válida para a aplicação";
 
-            echo " extensão: $extensao";
-            echo "<br />";
-            print_r($_FILES);
+        echo " extensão: $extensao";
+        echo "<br />";
+        print_r($_FILES);
 
-            die;
-        }
-        else
-        {
+        die;
+    } else {
 
-            include_once '../includes/config.php';
+        include_once '../includes/config.php';
 
-            $titulo         = mysql_real_escape_string(utf8_encode($_POST['titulo']));
+        $titulo = mysql_real_escape_string(utf8_encode($_POST['titulo']));
 
-            $nomeImagem     = mysql_real_escape_string(utf8_encode($_FILES['imagem']['name']));
+        $nomeImagem = mysql_real_escape_string(utf8_encode($_FILES['imagem']['name']));
 
-            $date = new DateTime();
-            $nomeImagem     = hash( 'sha256', $nomeImagem . $date->getTimestamp() );
-            $nomeImagem     .= '.' . $extensao;
+        $date = new DateTime();
+        $nomeImagem = hash('sha256', $nomeImagem . $date->getTimestamp());
+        $nomeImagem .= '.' . $extensao;
 
-            $descricao      = mysql_real_escape_string(utf8_encode($_POST['descricao']));
-            $sobre          = mysql_real_escape_string(utf8_encode($_POST['sobre']));
-            $infos_uteis    = mysql_real_escape_string(utf8_encode($_POST['infos_uteis']));
-            $como_chegar    = mysql_real_escape_string(utf8_encode($_POST['como_chegar']));
+        $descricao = mysql_real_escape_string(utf8_encode($_POST['descricao']));
+        $sobre = mysql_real_escape_string(utf8_encode($_POST['sobre']));
+        $infos_uteis = mysql_real_escape_string(utf8_encode($_POST['infos_uteis']));
+        $como_chegar = mysql_real_escape_string(utf8_encode($_POST['como_chegar']));
 
-            $sql = "INSERT INTO roteiro
+        $sql = "INSERT INTO roteiro
             (
                 id_regiao,
                 id_utilizador,
@@ -58,26 +53,26 @@ if ( empty($_FILES['imagem']['name']) ){
         VALUES
         (
             " . $_POST['regiao'] . ", "
-            . $_POST['u'] . ", "
-            . $_POST['categoria'] . ", '"
-            . $titulo . "' , '"
-            . $nomeImagem . "','"
-            . $descricao . "','"
-            . $sobre . "','"
-            . $infos_uteis . "','"
-            . $como_chegar . "'
+                . $_POST['u'] . ", "
+                . $_POST['categoria'] . ", '"
+                . $titulo . "' , '"
+                . $nomeImagem . "','"
+                . $descricao . "','"
+                . $sobre . "','"
+                . $infos_uteis . "','"
+                . $como_chegar . "'
             )";
 
 
         if (mysql_query($sql)) {
 
-              // guardar e redimensionar as imagens
+            // guardar e redimensionar as imagens
 
-            $image_dir          = 'img';
-            $image_dir_path     = getcwd() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $image_dir;
+            $image_dir = 'img';
+            $image_dir_path = getcwd() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $image_dir;
 
-            $source             = $_FILES['imagem']['tmp_name'];
-            $target             = $image_dir_path . DIRECTORY_SEPARATOR . $nomeImagem;
+            $source = $_FILES['imagem']['tmp_name'];
+            $target = $image_dir_path . DIRECTORY_SEPARATOR . $nomeImagem;
 
             move_uploaded_file($source, $target);
 
@@ -105,16 +100,11 @@ if ( empty($_FILES['imagem']['name']) ){
 
 
 
-
-
-
-                // redireccionar
-                echo "sucesso, inserido com tranquilidade, falta agora redireccionar!";
-
-
-            }else{
-                echo "erro, por favor contacte a empresa onde pagou pela porcaria de software xD...";
-            }
+            // redireccionar
+            echo "sucesso, inserido com tranquilidade, falta agora redireccionar!";
+        } else {
+            echo "erro, por favor contacte a empresa onde pagou pela porcaria de software xD...";
         }
+    }
 }
 ?>

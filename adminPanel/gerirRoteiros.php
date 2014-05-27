@@ -41,15 +41,15 @@ $result_roteiros = mysql_query($sql);
 
             <tbody>
 
-                <?php while ($row_roteiros = mysql_fetch_assoc($result_roteiros)): ?>
+                <?php while ($row_roteiros = mysql_fetch_assoc($result_roteiros)) { ?>
                     <tr>
                         <td class="linhasCentradasTabela"><?php echo $row_roteiros['titulo']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_roteiros['nome']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_roteiros['data']; ?></td>
-                        <td class="linhasCentradasTabela"><?php echo ($row_roteiros['ativo']) ? 'Sim':'Não'; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo ($row_roteiros['ativo']) ? 'Sim' : 'Não'; ?></td>
                         <td class="linhasCentradasTabela"><a href="index.php?area=editar_roteiro&id=<?php echo $row_roteiros['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
-                <?php endwhile; ?>
+                <?php } ?>
 
             </tbody>
         </table>

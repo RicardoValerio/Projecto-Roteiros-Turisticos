@@ -23,12 +23,11 @@
         AND utilizador.id_tipo_utilizador = tipo_utilizador.id";
 
     $result_utilizadores = mysql_query($sql);
-    ?>
 
-    <?php if (@mysql_num_rows($result_utilizadores)): ?>
+    if (@mysql_num_rows($result_utilizadores)) {
 
-
-    <?php $row_utilizador = mysql_fetch_assoc($result_utilizadores); ?>
+        $row_utilizador = mysql_fetch_assoc($result_utilizadores);
+        ?>
 
         <form id="formEditarComentario" action="processaEditarUtilizador.php" method="post">
 
@@ -39,19 +38,19 @@
 
             <hr>
 
-    <?php
-    $sql_tipos = "SELECT * FROM tipo_utilizador";
-    $result_tipos = mysql_query($sql_tipos);
-    ?>
+            <?php
+            $sql_tipos = "SELECT * FROM tipo_utilizador";
+            $result_tipos = mysql_query($sql_tipos);
+            ?>
 
             <p>
                 <label for="tipo_utilizador">Tipo de Utilizador:</label>
                 <select name="tipo_utilizador" id="utilizador">
-                    <?php while ($row_tipos = mysql_fetch_assoc($result_tipos)): ?>
+    <?php while ($row_tipos = mysql_fetch_assoc($result_tipos)) { ?>
 
                         <option value="<?php echo $row_tipos['id']; ?>" <?php if ($row_tipos['tipo'] == $row_utilizador['tipo']) echo "selected"; ?>>
-                            <?php echo $row_tipos['tipo']; ?></option>
-                        <?php endwhile; ?>
+                        <?php echo $row_tipos['tipo']; ?></option>
+    <?php } ?>
                 </select>
             </p>
             <hr>
@@ -73,6 +72,8 @@
     </div>
 
 
-<?php else: ?>
-    <?php echo "Bazinga!, Esse id não existe na BD"; ?>
-<?php endif ?>
+<?php
+} else {
+    echo "Esse id não existe na BD";
+}
+?>

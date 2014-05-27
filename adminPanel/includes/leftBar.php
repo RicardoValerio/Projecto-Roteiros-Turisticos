@@ -1,17 +1,17 @@
 <ul id="btnInserirRoteiro">
-    <a href="index.php?area=inserir"><li>Inserir Roteiro</li></a>
+    <a href="index.php?area=inserir_roteiro"><li>Inserir Roteiro</li></a>
 </ul>
 
 <ul id="ultimaUl">
-    <a href="index.php?area=gerirRoteiros"><li>Gerir Roteiros</li></a>
+    <a href="index.php?area=gerir_roteiros"><li>Gerir Roteiros</li></a>
 
-    <a href="index.php?area=gerirComentarios"><li>Gerir Comentários</li></a>
+    <a href="index.php?area=gerir_comentarios"><li>Gerir Comentários</li></a>
 
-    <a href="index.php?area=gerirUtilizadores"><li>Gerir Utilizadores</li></a>
+    <a href="index.php?area=gerir_utilizadores"><li>Gerir Utilizadores</li></a>
 </ul>
 
 <ul id="btnTermosCondicoes">
-    <a href="index.php?area=editarTermosCondicoes"><li>Editar Termos & Condições</li></a>
+    <a href="index.php?area=editar_termosCondicoes"><li>Editar Termos & Condições</li></a>
 </ul>
 
 <ul id="ulEstadoRoteiros">
