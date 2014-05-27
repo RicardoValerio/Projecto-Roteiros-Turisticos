@@ -8,14 +8,14 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
         margin-top: 75px;
         ">Inserir Roteiro</h1>
     <?php } ?>
-<div style="margin-left: 69px;" id="inserirRoteiro">
+<div style="<?php if ($_SESSION["tipo_utilizador"] == 'admin') echo 'margin-left: 69px;' ?>" id="inserirRoteiro">
     <?php
     if ($_SESSION["tipo_utilizador"] != 'admin') {
         ?>
         <h1><span id="normal">Inserir</span> Roteiro</h1>
     <?php } ?>
 
-    <form id="formInserirRoteiro" action="<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../processaInserirRoteiro.php' : 'processaInserirRoteiro.php'; ?>" method="post" enctype="multipart/form-data">
+    <form class="<?php if ($_SESSION["tipo_utilizador"] != 'admin') echo 'inserirRoteiros' ?>" id="formInserirRoteiro" action="<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../processaInserirRoteiro.php' : 'processaInserirRoteiro.php'; ?>" method="post" enctype="multipart/form-data">
 
         <p>
             <label for="nome">Nome:</label>
@@ -70,7 +70,7 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
         </p>
 
 
-        <p>
+        <p id="imagem">
             <label for="imagem">Imagem:</label>
             <input type="file" id="imagem" name="imagem" />
         </p>
@@ -101,35 +101,37 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
             </p>
         </fieldset>
 
-        <p>
-            <label for="descricao">Descrição:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao">
-            </textarea>
-        </p>
+        <div class="areas">
+            <p>
+                <label for="descricao">Descrição:</label>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao">
+                </textarea>
+            </p>
 
-        <p>
-            <label for="como_chegar">Como Chegar:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="como_chegar" id="como_chegar">
-            </textarea>
-        </p>
+            <p>
+                <label for="como_chegar">Como Chegar:</label>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="como_chegar" id="como_chegar">
+                </textarea>
+            </p>
 
-        <p>
-            <label for="sobre">Sobre:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="sobre" id="sobre">
-            </textarea>
-        </p>
+            <p>
+                <label for="sobre">Sobre:</label>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="sobre" id="sobre">
+                </textarea>
+            </p>
 
-        <p>
-            <label for="infos_uteis">Informações Úteis:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="infos_uteis" id="infos_uteis">
-            </textarea>
-        </p>
+            <p>
+                <label for="infos_uteis">Informações Úteis:</label>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="infos_uteis" id="infos_uteis">
+                </textarea>
+            </p>
 
 
-        <p>
-            <label>Palavras-Chave:</label>
-            <input id="palavras_chave" name="palavras_chave" type="text" class="tags" value="" />
-        </p>
+            <p>
+                <label>Palavras-Chave:</label>
+                <input id="palavras_chave" name="palavras_chave" type="text" class="tags" value="" />
+            </p>
+        </div>
 
         <input type="submit" value="Inserir Roteiro" />
 

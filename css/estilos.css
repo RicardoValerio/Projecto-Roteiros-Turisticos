@@ -26,12 +26,12 @@
 html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
 dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
 a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
-strong, sub, sup, tt, var, legend, fieldset, figure, input, a, hr {
+strong, sub, sup, tt, var, legend, figure, input, a, hr {
     margin: 0;
     padding: 0;
 }
 
-img, fieldset, hr {
+img, hr {
     border: 0;
 }
 
@@ -1278,3 +1278,34 @@ b.highlight{
     color: #000;
 }
 /* end LightBox */
+
+.inserirRoteiros label.labelTransp {
+    width: auto !important;
+    margin-right: 20px;
+}
+
+.inserirRoteiros label {
+    width: 200px !important;
+}
+
+.inserirRoteiros fieldset {
+    margin-bottom: 30px;
+}
+
+.inserirRoteiros .areas p {
+    margin-bottom: 30px;
+}
+
+.inserirRoteiros .areas label {
+    margin-bottom: 10px;
+}
+
+.inserirRoteiros #imagem {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.inserirRoteiros fieldset p {
+    margin-top:16px;
+    margin-bottom:16px;
+}
