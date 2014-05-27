@@ -56,28 +56,7 @@ $_SESSION['url'] = devolveUrlActual();
 
             <!-- AREAS -->
             <?php include(verificaAreaIndex('linkNavegacao')); ?>
-
-
-            <!--<div class="separador">
-                 <hr />
-                <img src="img/separador_certo.jpg" alt="" />
-            </div>
-            <div id="destinos">
-                <h2>Explore <span>destinos</span></h2>
-                <p>Sugestões</p>
-                <p>Eventos</p>
-                <form method="get" action="">
-                    <select name="destino">
-                        <option>Destino</option>
-                    </select>
-                    <select name="oQueFazer">
-                        <option>O que fazer?</option>
-                    </select>
-                    <input type="text" name="pesquisa"/>
-                    <input type="submit" value="Pesquisar" />
-                </form>
-            </div>-->
-
+            
             <div id="info" class="clearfix">
                 <?php include 'info.php'; ?>
             </div>

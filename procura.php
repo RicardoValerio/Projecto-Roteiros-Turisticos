@@ -6,7 +6,7 @@ $html = '';
 $html .= '<li class="result">';
 $html .= '<a href="urlString">';
 $html .= '<h3>tituloString</h3>';
-$html .= '<h3>categoriaString | regiaoString | </h3>';
+$html .= '<h3>categoriaString | regiaoString</h3>';
 $html .= '<h4>descricaoString</h4>';
 $html .= '<h6>palavraChaveString</h6>';
 $html .= '</a>';
@@ -15,7 +15,7 @@ $html .= '</li>';
 // Get Search
 // @$search_string = preg_replace("/[^A-Za-z0-9]/", " ", $_POST['query']);
 @$search_string = preg_replace("/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i", " ", $_POST['query']);
-$search_string = mysql_real_escape_string($search_string);
+$search_string = mysql_real_escape_string(utf8_decode($search_string));
 
 // Check Length More Than One Character
 if (strlen($search_string) >= 1 && $search_string !== ' ') {
@@ -90,6 +90,5 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
         // Output
         echo($output);
     }
-
 }
 ?>

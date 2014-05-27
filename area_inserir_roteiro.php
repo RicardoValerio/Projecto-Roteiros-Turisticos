@@ -128,7 +128,7 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
 
         <p>
             <label>Palavras-Chave:</label>
-            <input style="width: 300px;" id="palavras_chave" name="palavras_chave" type="text" class="tags" value="" />
+            <input id="palavras_chave" name="palavras_chave" type="text" class="tags" value="" />
         </p>
 
         <input type="submit" value="Inserir Roteiro" />

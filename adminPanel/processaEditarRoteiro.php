@@ -1,8 +1,6 @@
 <?php
 
 //  TODO ::   tratar do update da imagem
-
-
 $imagem_existe = false;
 $nomeImagem = '';
 
@@ -16,7 +14,7 @@ if (!empty($_FILES['imagem']['name'])) {
 
     if (!$extensao_valida) {
 
-        echo "a extensão do ficheiro n é uma imagem válida para a aplicação";
+        echo "A extensão do ficheiro não é uma imagem válida para a aplicação";
         print_r($_FILES);
         die;
     } else {
@@ -64,15 +62,15 @@ $post_parametro_id_roteiro = mysql_real_escape_string($_POST['i']);
 
 ////////////////////////////////////////////////////////////////////////////////
 // UPDATE NA TABELA - roteiro
-$post_parametro_regiao = mysql_real_escape_string($_POST['regiao']);
-$post_parametro_categoria = mysql_real_escape_string($_POST['categoria']);
-$post_parametro_titulo = mysql_real_escape_string($_POST['titulo']);
+$post_parametro_regiao = mysql_real_escape_string(utf8_decode($_POST['regiao']));
+$post_parametro_categoria = mysql_real_escape_string(utf8_decode($_POST['categoria']));
+$post_parametro_titulo = mysql_real_escape_string(utf8_decode($_POST['titulo']));
 
 
-$post_parametro_descricao = mysql_real_escape_string($_POST['descricao']);
-$post_parametro_sobre = mysql_real_escape_string($_POST['sobre']);
-$post_parametro_infos_uteis = mysql_real_escape_string($_POST['infos_uteis']);
-$post_parametro_como_chegar = mysql_real_escape_string($_POST['como_chegar']);
+$post_parametro_descricao = mysql_real_escape_string(utf8_decode($_POST['descricao']));
+$post_parametro_sobre = mysql_real_escape_string(utf8_decode($_POST['sobre']));
+$post_parametro_infos_uteis = mysql_real_escape_string(utf8_decode($_POST['infos_uteis']));
+$post_parametro_como_chegar = mysql_real_escape_string(utf8_decode($_POST['como_chegar']));
 
 
 
@@ -114,7 +112,7 @@ if (mysql_query($sql)) {
     $array_palavras_chave = explode(",", $palavras_chave_adicionadas);
 
     foreach ($array_palavras_chave as $palavra) {
-        $palavra = utf8_encode($palavra);
+        $palavra = utf8_decode($palavra);
         mysql_query("INSERT INTO palavra_chave (id_roteiro, palavra) VALUES ($post_parametro_id_roteiro, '$palavra')");
     }
 

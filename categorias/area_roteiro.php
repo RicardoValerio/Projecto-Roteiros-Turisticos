@@ -176,16 +176,16 @@ $_SESSION['roteiro'] = $get_parametro;
             <div style="text-align: center;" id="detalheRoteiro" class="mainContent dir">
                 <h1><?php echo utf8_encode($row['titulo']); ?></h1>
                 <h2><?php echo utf8_encode($row['categoria']); ?></h2>
-                <!-- <h2><?php echo utf8_encode($row['regiao']); ?></h2> -->
                 <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" />
-                <p><?php echo utf8_encode($row['descricao']); ?></p>
+                <div id="descricaoDetalheRoteiro"><?php echo utf8_encode($row['descricao']); ?></div>
                 <div style="margin-top: 10px;" id="tabs">
                     <ul>
                         <li><a href="#tabs-1">Sobre</a></li>
                         <li><a href="#tabs-2">Informações Úteis</a></li>
                         <li><a href="#tabs-3">Como Chegar</a></li>
-                        <li><a href="#tabs-4">Data</a></li>
-                        <li><a href="#tabs-5">Autor</a></li>
+                        <li><a href="#tabs-4">Região</a></li>
+                        <li><a href="#tabs-5">Data</a></li>
+                        <li><a href="#tabs-6">Autor</a></li>
                     </ul>
                     <div id="tabs-1">
                         <p><?php echo utf8_encode($row['sobre']); ?></p>
@@ -197,9 +197,12 @@ $_SESSION['roteiro'] = $get_parametro;
                         <p><?php echo utf8_encode($row['como_chegar']); ?></p>
                     </div>
                     <div id="tabs-4">
-                        <p><?php echo date("d-m-Y H:i:s", strtotime($row['data'])); ?></p>
+                        <p><?php echo utf8_encode($row['regiao']); ?></p>
                     </div>
                     <div id="tabs-5">
+                        <p><?php echo date("d-m-Y H:i:s", strtotime($row['data'])); ?></p>
+                    </div>
+                    <div id="tabs-6">
                         <p><?php echo utf8_encode($row['autor']); ?></p>
                     </div>
                 </div>

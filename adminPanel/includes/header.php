@@ -1,5 +1,5 @@
 <div id="welcome">
-    <h2>Hello <span><em><?php echo $_SESSION['nome']; ?></em></span></h2>
+    <h2>Hello <span><em><?php echo utf8_encode($_SESSION['nome']); ?></em></span></h2>
 </div>
 
 <ul>
