@@ -4,7 +4,7 @@ include '../includes/config.php';
 
 $estadoUpdate = ($_POST['estado']) ? 0 : 1;
 
-$sql = "UPDATE utilizador SET apagado = " . $estadoUpdate . ' WHERE id = ' . $_POST['id'];
+$sql = "UPDATE utilizador SET bloqueado = " . $estadoUpdate . ' WHERE id = ' . $_POST['id'];
 
-mysql_query($sql);
+echo json_encode(array("erro" => !mysql_query($sql)));
 ?>

@@ -35,6 +35,7 @@ if (@mysql_num_rows($result_estado_do_roteiro)) {
                     data: {id: <?php echo $id_get_parametro; ?>, estado: 0},
                     success: function(response) {
                         if (!response.erro) {
+                            console.log(response);
                             $('#estadoRoteiro').html('<div id="myRoteiroActivo" class="roteiroActivo">O Roteiro Está Ativo</div>');
                             $('#notaEstado').html('Clique para Desativar o Roteiro:');
                         }
@@ -49,6 +50,7 @@ if (@mysql_num_rows($result_estado_do_roteiro)) {
                     data: {id: <?php echo $id_get_parametro; ?>, estado: 1},
                     success: function(response) {
                         if (!response.erro) {
+                            console.log(response);
                             $('#estadoRoteiro').html('<div id="myRoteiroInactivo" class="roteiroInactivo">O Roteiro Está Inativo</div>');
                             $('#notaEstado').html('Clique para Ativar o Roteiro:');
                         }

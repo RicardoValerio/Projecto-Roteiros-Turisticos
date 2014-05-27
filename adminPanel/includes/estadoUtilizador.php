@@ -25,80 +25,71 @@ if (@mysql_num_rows($result_estado_do_utilizador)) {
 <script>
 
     $(document).ready(function() {
-        /************************************************************************
-         *		update do estado do roteiro via ajax
-         ************************************************************************/
-
         setInterval(function() {
-            $('#myRoteiroInactivo').on('click', function() {
-
-                $.ajax({
-                    url: 'ajaxUpdateEstadoUtilizador.php',
-                    type: 'post',
-                    data: {id: <?php echo $id_get_parametro; ?>, estado: 1},
-                    dataType: "json",
-                    success: function(data) {
-                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroActivo">O Utilizador Está Ativo</div>');
-                        $('#notaEstado').html('Clique para Desativar o Utilizador');
-                    }
-                });
-            });
-
-            $('#myRoteiroActivo').on('click', function() {
-
+            
+            $('#myUtilizadorInactivo').on('click', function() {
                 $.ajax({
                     url: 'ajaxUpdateEstadoUtilizador.php',
                     type: 'post',
                     data: {id: <?php echo $id_get_parametro; ?>, estado: 0},
-                    dataType: "json",
-                    success: function(data) {
-                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroInactivo">O Utilizador Está Inativo</div>');
-                        $('#notaEstado').html('Clique para Ativar o Utilizador:');
+                    success: function(response) {
+                        if (!response.erro) {
+                            console.log(response);
+                            $('#estadoUtilizador').html('<div id="myUtilizadorActivo" class="utilizadorActivo">O Utilizador Está Ativo</div>');
+                            $('#notaEstado').html('Clique para Desativar o Utilizador:');
+                        }
                     }
                 });
-
-
+            });
+            
+            $('#myUtilizadorActivo').on('click', function() {
+                $.ajax({
+                    url: 'ajaxUpdateEstadoUtilizador.php',
+                    type: 'post',
+                    data: {id: <?php echo $id_get_parametro; ?>, estado: 1},
+                    success: function(response) {
+                        if (!response.erro) {
+                            console.log(response);
+                            $('#estadoUtilizador').html('<div id="myUtilizadorInactivo" class="utilizadorInactivo">O Utilizador Está Inativo</div>');
+                            $('#notaEstado').html('Clique para Ativar o Utilizador:');
+                        }
+                    }
+                });
+            });
+            
+            
+            
+            
+            $('#myUtilizadorBloqueado').on('click', function() {
+                $.ajax({
+                    url: 'processaBloquearUtilizador.php',
+                    type: 'post',
+                    data: {id: <?php echo $id_get_parametro; ?>, estado: 1},
+                    success: function(response) {
+                        if (!response.erro) {
+                            console.log(response);
+                            $('#estadoUtilizadorBloqueado').html('<div id="myUtilizadorDesbloqueado" class="utilizadorDesbloqueado">O Utilizador Está Desbloqueado</div>');
+                            $('#notaBloqueado').html('Clique para Bloquear o Utilizador:');
+                        }
+                    }
+                });
+            });
+            
+            $('#myUtilizadorDesbloqueado').on('click', function() {
+                $.ajax({
+                    url: 'processaBloquearUtilizador.php',
+                    type: 'post',
+                    data: {id: <?php echo $id_get_parametro; ?>, estado: 0},
+                    success: function(response) {
+                        if (!response.erro) {
+                            console.log(response);
+                            $('#estadoUtilizadorBloqueado').html('<div id="myUtilizadorBloqueado" class="utilizadorBloqueado">O Utilizador Está Bloqueado</div>');
+                            $('#notaBloqueado').html('Clique para Desbloquear o Utilizador:');
+                        }
+                    }
+                });
             });
 
         }, 100);
-
-
-
-        /*setInterval(function() {
-         $('#myUtilizadorActivo').on('click', function() {
-         
-         $.ajax({
-         url: 'processaBloquearUtilizador.php',
-         type: 'post',
-         data: {id: <?php echo $id_get_parametro; ?>,
-         estado: 0},
-         success: function(data) {
-         $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroActivo">O Utilizador Está Ativo</div>');
-         $('#notaEstadoUtilizador').html('Clique para Desativar o Utilizador');
-         }
-         });
-         });
-         
-         $('#myUtilizadorInactivo').on('click', function() {
-         
-         $.ajax({
-         url: 'processaBloquearUtilizador.php',
-         type: 'post',
-         data: {id: <?php echo $id_get_parametro; ?>,
-         estado: 1},
-         success: function(data) {
-         console.log(data);
-         $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroInactivo">O Utilizador Está Inativo</div>');
-         $('#notaEstadoUtilizador').html('Clique para Ativar o Utilizador:');
-         }
-         });
-         
-         
-         });
-         
-         }, 100);*/
-
     });
-
-
 </script>

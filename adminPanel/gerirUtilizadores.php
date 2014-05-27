@@ -4,7 +4,8 @@ $sql = "SELECT
     tipo_utilizador.tipo,
     utilizador.nome,
     utilizador.email,
-    utilizador.ativo
+    utilizador.ativo,
+    utilizador.bloqueado
 FROM
     utilizador,
     tipo_utilizador
@@ -24,6 +25,7 @@ $result_utilizadores = mysql_query($sql);
                     <th class="sorting">Nome</th>
                     <th class="sorting">Email</th>
                     <th class="sorting">Ativo</th>
+                    <th class="sorting">Bloqueado</th>
                     <th class="sorting">Editar</th>
                 </tr>
             </thead>
@@ -34,6 +36,7 @@ $result_utilizadores = mysql_query($sql);
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Ativo</th>
+                    <th>Bloqueado</th>
                     <th>Editar</th>
                 </tr>
             </tfoot>
@@ -46,6 +49,7 @@ $result_utilizadores = mysql_query($sql);
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['nome']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_utilizador['email']; ?></td>
                         <td class="linhasCentradasTabela"><?php echo ($row_utilizador['ativo']) ? 'Sim':'Não'; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo ($row_utilizador['bloqueado']) ? 'Sim':'Não'; ?></td>
                         <td class="linhasCentradasTabela"><a href="index.php?area=editar_utilizador&id=<?php echo $row_utilizador['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
                 <?php endwhile; ?>
