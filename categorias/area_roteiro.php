@@ -65,7 +65,7 @@ $_SESSION['roteiro'] = $get_parametro;
                 if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
-                <li><p><?php echo utf8_encode($row['comentario']); ?></p><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
+                        <li><p><?php echo utf8_encode($row['comentario']); ?></p><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
                         <?php
                     }
                 }
@@ -88,12 +88,12 @@ $_SESSION['roteiro'] = $get_parametro;
                 ?><ul class="clearfix"><?php
                 while ($row = mysql_fetch_assoc($resultado_palavrasChave)) {
                     ?><li class="borda"><a href="index.php?area=o_que_procura&pesquisa=<?php echo urlencode(utf8_encode($row['palavra'])); ?>"><?php echo utf8_encode($row['palavra']); ?></a></li><?php
-                }
+                    }
                     ?></ul><?php
-            } else {
+                } else {
                     ?><p>Não existem palavras chave para este roteiro.</p><?php
-            }
-            ?>
+                }
+                ?>
 
         </div>
 
@@ -178,6 +178,19 @@ $_SESSION['roteiro'] = $get_parametro;
                 <h2><?php echo utf8_encode($row['categoria']); ?></h2>
                 <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" />
                 <div id="descricaoDetalheRoteiro"><?php echo utf8_encode($row['descricao']); ?></div>
+                <ul id="imagensTipoTransporte">
+                    <?php
+                    $sql = "SELECT * FROM tipo INNER JOIN roteiro_tem_tipo on id=id_tipo WHERE id_roteiro=$get_parametro";
+                    $result = mysql_query($sql);
+                    while ($row = mysql_fetch_assoc($result)) {
+                        ?>
+                        <li>
+                            <img src="<?php echo 'img/' . $row['imagem']; ?>" alt="<?php echo utf8_encode($row['tipo']) ?>" title="<?php echo utf8_encode($row['tipo']) ?>" />
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
                 <div style="margin-top: 10px;" id="tabs">
                     <ul>
                         <li><a href="#tabs-1">Sobre</a></li>

@@ -1059,6 +1059,11 @@ span#classificacaoEstrelas, span#classificacaoTexto, span#numVotos, span#textoVo
     width: 480px;
 }
 
+#imagensTipoTransporte li {
+    display: inline-block;
+    margin: 0px 10px;
+}
+
 /* end Registo e Login */
 
 /**********************************************
