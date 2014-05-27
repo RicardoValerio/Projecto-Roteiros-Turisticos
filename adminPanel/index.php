@@ -22,6 +22,9 @@ require_once 'includes/funcoes_areas_back_office.php'
         <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
         <link rel="stylesheet" type="text/css" href="css/shCore.css">
         <link rel="stylesheet" type="text/css" href="css/demo.css">
+        
+        <script type="text/javascript" src="js/dialogMessage.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/dialogStyle.css" />
 
 
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
