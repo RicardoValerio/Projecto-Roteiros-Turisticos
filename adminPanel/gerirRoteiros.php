@@ -74,5 +74,3 @@ $result_roteiros = mysql_query($sql);
 
 
 </script>
-
-

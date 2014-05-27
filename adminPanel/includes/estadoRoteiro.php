@@ -5,7 +5,8 @@ $sql = "SELECT ativo FROM roteiro WHERE id = $id_get_parametro";
 
 $result_estado_do_roteiro = mysql_query($sql);
 
-if (@mysql_num_rows($result_estado_do_roteiro)) { ?>
+if (@mysql_num_rows($result_estado_do_roteiro)) {
+    ?>
 
     <?php $result_ativo_ou_inactivo = @mysql_fetch_assoc($result_estado_do_roteiro); ?>
 
@@ -26,7 +27,7 @@ if (@mysql_num_rows($result_estado_do_roteiro)) { ?>
          *		update do estado do roteiro via ajax
          ************************************************************************/
         setInterval(function() {
-            
+
             $('#myRoteiroInactivo').on('click', function() {
                 $.ajax({
                     url: 'ajaxUpdateEstadoRoteiro.php',
@@ -63,5 +64,3 @@ if (@mysql_num_rows($result_estado_do_roteiro)) { ?>
 
     });
 </script>
-
-

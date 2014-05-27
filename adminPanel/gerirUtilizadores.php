@@ -72,5 +72,3 @@ $result_utilizadores = mysql_query($sql);
 
 
 </script>
-
-

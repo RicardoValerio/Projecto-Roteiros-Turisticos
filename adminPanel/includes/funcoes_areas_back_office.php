@@ -14,31 +14,32 @@ function verificaAreaIndexBackOffice() {
 
     switch ($area_escolhida) {
         case 'gerirRoteiros':
-            $areaEscolhida =  'gerirRoteiros.php';
+            $areaEscolhida = 'gerirRoteiros.php';
             break;
         case 'editar_roteiro':
-            $areaEscolhida =  'editarRoteiros.php';
+            $areaEscolhida = 'editarRoteiros.php';
             break;
         case 'gerirComentarios':
-            $areaEscolhida =  'gerirComentarios.php';
+            $areaEscolhida = 'gerirComentarios.php';
             break;
         case 'editar_comentario':
-            $areaEscolhida =  'editarComentarios.php';
+            $areaEscolhida = 'editarComentarios.php';
             break;
         case 'gerirUtilizadores':
-            $areaEscolhida =  'gerirUtilizadores.php';
+            $areaEscolhida = 'gerirUtilizadores.php';
             break;
         case 'editar_utilizador':
-            $areaEscolhida =  'editarUtilizadores.php';
+            $areaEscolhida = 'editarUtilizadores.php';
             break;
         case 'editarTermosCondicoes':
-            $areaEscolhida =  'editarTermosCondicoes.php';
+            $areaEscolhida = 'editarTermosCondicoes.php';
             break;
         case 'inserir':
         default:
-            $areaEscolhida =  '../area_inserir_roteiro.php';
+            $areaEscolhida = '../area_inserir_roteiro.php';
     }
-    
+
     return $areaEscolhida;
 }
+
 ?>

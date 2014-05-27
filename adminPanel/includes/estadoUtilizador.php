@@ -5,7 +5,8 @@ $sql = "SELECT ativo, bloqueado FROM utilizador WHERE id = $id_get_parametro";
 
 $result_estado_do_utilizador = mysql_query($sql);
 
-if (@mysql_num_rows($result_estado_do_utilizador)) { ?>
+if (@mysql_num_rows($result_estado_do_utilizador)) {
+    ?>
 
     <?php $result = @mysql_fetch_assoc($result_estado_do_utilizador); ?>
 
@@ -60,46 +61,44 @@ if (@mysql_num_rows($result_estado_do_utilizador)) { ?>
             });
 
         }, 100);
-        
-        
-        
+
+
+
         /*setInterval(function() {
-            $('#myUtilizadorActivo').on('click', function() {
-
-                $.ajax({
-                    url: 'processaBloquearUtilizador.php',
-                    type: 'post',
-                    data: {id: <?php echo $id_get_parametro; ?>,
-                        estado: 0},
-                    success: function(data) {
-                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroActivo">O Utilizador Está Ativo</div>');
-                        $('#notaEstadoUtilizador').html('Clique para Desativar o Utilizador');
-                    }
-                });
-            });
-
-            $('#myUtilizadorInactivo').on('click', function() {
-
-                $.ajax({
-                    url: 'processaBloquearUtilizador.php',
-                    type: 'post',
-                    data: {id: <?php echo $id_get_parametro; ?>,
-                        estado: 1},
-                    success: function(data) {
-                        console.log(data);
-                        $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroInactivo">O Utilizador Está Inativo</div>');
-                        $('#notaEstadoUtilizador').html('Clique para Ativar o Utilizador:');
-                    }
-                });
-
-
-            });
-
-        }, 100);*/
+         $('#myUtilizadorActivo').on('click', function() {
+         
+         $.ajax({
+         url: 'processaBloquearUtilizador.php',
+         type: 'post',
+         data: {id: <?php echo $id_get_parametro; ?>,
+         estado: 0},
+         success: function(data) {
+         $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroActivo" class="roteiroActivo">O Utilizador Está Ativo</div>');
+         $('#notaEstadoUtilizador').html('Clique para Desativar o Utilizador');
+         }
+         });
+         });
+         
+         $('#myUtilizadorInactivo').on('click', function() {
+         
+         $.ajax({
+         url: 'processaBloquearUtilizador.php',
+         type: 'post',
+         data: {id: <?php echo $id_get_parametro; ?>,
+         estado: 1},
+         success: function(data) {
+         console.log(data);
+         $('#estadoRoteiro').html('<div style="padding-bottom: 12px; padding-top: 16px;" id="myRoteiroInactivo" class="roteiroInactivo">O Utilizador Está Inativo</div>');
+         $('#notaEstadoUtilizador').html('Clique para Ativar o Utilizador:');
+         }
+         });
+         
+         
+         });
+         
+         }, 100);*/
 
     });
 
 
 </script>
-
-

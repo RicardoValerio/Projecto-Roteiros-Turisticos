@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 
 //  TODO ::   tratar do update da imagem
@@ -135,8 +135,5 @@ $post_parametro_como_chegar     = mysql_real_escape_string($_POST['como_chegar']
         }else{
             echo "erro! contacte a empresa a quem pagou por esta porcaria de software..." . mysql_error();
         }
-
-
-
 
 ?>

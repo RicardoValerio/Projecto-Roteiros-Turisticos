@@ -22,6 +22,4 @@ if (mysql_query($sql)) {
 	echo "erro! contacte a empresa a quem pagou por esta porcaria de software..." . mysql_error();
 }
 
-
-
 ?>
