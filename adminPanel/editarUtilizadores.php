@@ -33,7 +33,7 @@
 
 
             <h2> Utilizador com Id # <?php echo $row_utilizador['id']; ?></h2>
-
+            <input type="hidden" name="i" value="<?php echo $row_utilizador['id']; ?>">
             <hr>
 
             <?php

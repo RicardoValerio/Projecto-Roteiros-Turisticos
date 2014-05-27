@@ -179,7 +179,7 @@
     $.fn.tagsInput = function(options) {
         var settings = jQuery.extend({
             interactive: true,
-            defaultText: 'Adicione palavras-chave, separadas por vírgula, ao roteiro...',
+            defaultText: 'Adicione palavras-chave ao roteiro...',
             minChars: 0,
             width: '600px',
             height: '100px',
