@@ -35,15 +35,6 @@
                 ?>
             </ul>
         </div>
-        <!-- <div id="facebook">
-                <div class="separador">
-                        <hr />
-                        <div>
-                                <h2>Facebook</h2>
-                        </div>
-                </div>
-                <p><span>Lorem ipsum dolor sit amet, </span>consectetur adipiscing elittiam et nisi nec elit scelerisque suscipit.</p>
-        </div> -->
     </div>
     <div class="mainContent dir borda">
 

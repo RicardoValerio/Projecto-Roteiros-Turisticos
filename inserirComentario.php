@@ -14,7 +14,7 @@ if (isset($_SESSION["nome"]) && isset($_SESSION["tipo_utilizador"])) {
     $now = date("Y-m-d H:i:s");
     $roteiro = $_SESSION['roteiro'];
     $utilizador = $_SESSION['id_utilizador'];
-    $comentar = utf8_decode($_POST['comentar']);
+    $comentar = mysql_real_escape_string(utf8_decode(nl2br($_POST['comentar'])));
     
     $sql = "INSERT INTO comentario (id_roteiro, id_utilizador, comentario, data) VALUES ($roteiro, $utilizador, '$comentar', '$now')";
     

@@ -13,8 +13,5 @@
             <input type="submit" value="Entrar" />
             <div id="recuperaPassword"><p>Esqueceu-se da password?</p></div>
         </form>
-        <!--<form id="formrecuperaPassword" action="index.php?&log=login&recuperaPassword=true" method="post">
-            <input type="submit" value="Esqueceu-se da password?" />
-        </form>-->
     </div>
 </a>

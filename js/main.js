@@ -11,7 +11,6 @@ $(document).ready(function() {
 
     scrollCenter();
 
-    validarFormInserirRoteiro();
     validarFormRecuperarPassword();
     validarFormComentario();
 
@@ -61,25 +60,6 @@ function centraLoginRegisto(element) {
 
     var margemTop = (windowSize - boxSize) / 2;
     $(element + ' .loginRegistoBox').css('marginTop', margemTop);
-}
-
-function validarFormInserirRoteiro() {
-    $("#formInserirRoteiro").validate({
-        rules: {
-            nome: "required",
-            regiao: "required",
-            tempo: "required",
-            tipoPercurso: "required",
-            descricao: "required"
-        },
-        messages: {
-            nome: "Por favor preencha o nome do roteiro.",
-            regiao: "Por favor selecione a regi&#227;o do roteiro.",
-            tempo: "Por favor preencha o tempo do roteiro.",
-            tipoPercurso: "Por favor escolha o tipo de percurso do roteiro.",
-            descricao: "Por favor preencha a descri&#231;&#227;o do roteiro."
-        }
-    });
 }
 
 function validarFormRecuperarPassword() {

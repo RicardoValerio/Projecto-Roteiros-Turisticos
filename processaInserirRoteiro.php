@@ -26,18 +26,18 @@ if (empty($_FILES['imagem']['name'])) {
 
         include 'includes/config.php';
 
-        $titulo = mysql_real_escape_string(utf8_encode($_POST['titulo']));
+        $titulo = mysql_real_escape_string(utf8_decode($_POST['titulo']));
 
-        $nomeImagem = mysql_real_escape_string(utf8_encode($_FILES['imagem']['name']));
+        $nomeImagem = mysql_real_escape_string(utf8_decode($_FILES['imagem']['name']));
 
         $date = new DateTime();
         $nomeImagem = hash('sha256', $nomeImagem . $date->getTimestamp());
         $nomeImagem .= '.' . $extensao;
 
-        $descricao = mysql_real_escape_string(utf8_encode($_POST['descricao']));
-        $sobre = mysql_real_escape_string(utf8_encode($_POST['sobre']));
-        $infos_uteis = mysql_real_escape_string(utf8_encode($_POST['infos_uteis']));
-        $como_chegar = mysql_real_escape_string(utf8_encode($_POST['como_chegar']));
+        $descricao = mysql_real_escape_string(utf8_decode($_POST['descricao']));
+        $sobre = mysql_real_escape_string(utf8_decode($_POST['sobre']));
+        $infos_uteis = mysql_real_escape_string(utf8_decode($_POST['infos_uteis']));
+        $como_chegar = mysql_real_escape_string(utf8_decode($_POST['como_chegar']));
 
         $sql = "INSERT INTO roteiro
             (
@@ -54,7 +54,7 @@ if (empty($_FILES['imagem']['name'])) {
         VALUES
         (
             " . $_POST['regiao'] . ", "
-                . $_POST['u'] . ", "
+                . $_SESSION['id_utilizador'] . ", "
                 . $_POST['categoria'] . ", '"
                 . $titulo . "' , '"
                 . $nomeImagem . "','"
@@ -92,7 +92,7 @@ if (empty($_FILES['imagem']['name'])) {
             $array_palavras_chave = explode(",", $palavras_chave_adicionadas);
 
             foreach ($array_palavras_chave as $palavra) {
-                $palavra = utf8_encode($palavra);
+                $palavra = utf8_decode($palavra);
                 mysql_query("INSERT INTO palavra_chave (id_roteiro, palavra) VALUES ($id_ultimo_roteiro_inserido, '$palavra')");
             }
 

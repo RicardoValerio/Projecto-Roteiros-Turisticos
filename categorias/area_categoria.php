@@ -89,9 +89,9 @@ $get_parametro = mysql_real_escape_string(urlencode($_GET['categoria']));
                     <li class="listaRoteiro">
                         <a href="index.php?area=destinos&roteiro=<?php echo $row['id']; ?>">
                             <div>
-                                <h2><?php echo $row['titulo']; ?></h2>
+                                <h2><?php echo utf8_encode($row['titulo']); ?></h2>
                             </div>
-                            <div class="destinosDeCategoria" style="background-image: url('<?php echo 'img/pq_'.$row['imagem']; ?>');" alt="<?php echo $row['titulo']; ?>">
+                            <div class="destinosDeCategoria" style="background-image: url('<?php echo 'img/pq_' . $row['imagem']; ?>');" alt="<?php echo utf8_encode($row['titulo']); ?>">
                             </div>
                         </a>
                     </li>

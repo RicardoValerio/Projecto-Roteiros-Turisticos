@@ -1,8 +1,6 @@
 <?php include '../includes/funcoes_imagens.php'; ?>
 
-
 <h1 style="font-size: 3em;
-    color:#D3109F;
     text-align: center;
     margin-top: 75px;
     ">Editar Roteiro</h1>
@@ -38,13 +36,13 @@
 
             <p>
                 <label for="utilizador">Autor do Roteiro:</label>
-            <h5><?php echo $row_utilizador['nome']; ?></h5>
-            <h5><?php echo $row_utilizador['email']; ?></h5>
+            <h5><?php echo utf8_encode($row_utilizador['nome']); ?></h5>
+            <h5><?php echo utf8_encode($row_utilizador['email']); ?></h5>
             </p>
             <hr>
             <p>
-                <label for="nome">Nome/Título do Roteiro:</label>
-                <input type="text" id="nome" name="titulo" value="<?php echo $roteiros_array['titulo']; ?>" />
+                <label for="nome">Nome do Roteiro:</label>
+                <input type="text" id="nome" name="titulo" value="<?php echo utf8_encode($roteiros_array['titulo']); ?>" />
             </p>
             <hr>
             <p>
@@ -107,7 +105,7 @@
             <p>Hash da Imagem: <?php echo $roteiros_array['imagem']; ?></p>
             <img src="<?php echo '../img/gd_' . $roteiros_array['imagem']; ?>" alt="<?php echo $roteiros_array['titulo']; ?>">
             <br>
-            <input type="hidden" name="imagem_atual_roteiro" value="<?php echo $roteiros_array['imagem']; ?>">
+            <input type="hidden" name="imagem_atual_roteiro" value="<?php echo utf8_encode($roteiros_array['imagem']); ?>">
             <input type="file" id="imagem" name="imagem" />
             </p>
 
@@ -132,36 +130,36 @@
                 <p>
                     <?php while ($row_percurso = @mysql_fetch_assoc($result_percursos)) { ?>
                         <label for="<?php echo utf8_encode($row_percurso['tipo']); ?>"><?php echo utf8_encode($row_percurso['tipo']); ?></label><input type="checkbox" name="percurso[<?php echo $row_percurso['id']; ?>]" id="<?php echo utf8_encode($row_percurso['tipo']); ?>" value="<?php echo utf8_encode($row_percurso['tipo']); ?>"
-                                                                                                                                                       <?php if (in_array($row_percurso['id'], $array_ids_percursos_do_roteiro)) echo "checked"; ?>>
-                                                                                                                                                   <?php } ?>
+                        <?php if (in_array($row_percurso['id'], $array_ids_percursos_do_roteiro)) echo "checked"; ?>
+                    <?php } ?>
                 </p>
             </fieldset>
 
             <p>
                 <label for="descricao">Descrição:</label>
-                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao" placeholder="Insira uma breve descrição sobre o roteiro...">
-                    <?php echo $roteiros_array['descricao']; ?>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao">
+                    <?php echo utf8_encode($roteiros_array['descricao']); ?>
                 </textarea>
             </p>
 
             <p>
                 <label for="como_chegar">Como Chegar:</label>
-                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="como_chegar" id="como_chegar" placeholder="Insira uma breve indicação de como chegar ao local...">
-                    <?php echo $roteiros_array['como_chegar']; ?>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="como_chegar" id="como_chegar">
+                    <?php echo utf8_encode($roteiros_array['como_chegar']); ?>
                 </textarea>
             </p>
 
             <p>
                 <label for="sobre">Sobre:</label>
-                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="sobre" id="sobre" placeholder="Insira uma descrição mais detalhada sobre o roteiro...">
-                    <?php echo $roteiros_array['sobre']; ?>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="sobre" id="sobre">
+                    <?php echo utf8_encode($roteiros_array['sobre']); ?>
                 </textarea>
             </p>
 
             <p>
                 <label for="infos_uteis">Informações Úteis:</label>
-                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="infos_uteis" id="infos_uteis" placeholder="Insira um conjunto de informações úteis sobre o roteiro...">
-                    <?php echo $roteiros_array['informacoes_uteis']; ?>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="infos_uteis" id="infos_uteis">
+                    <?php echo utf8_encode($roteiros_array['informacoes_uteis']); ?>
                 </textarea>
             </p>
 
@@ -173,7 +171,7 @@
 
             if ($result_roteiro_tem_palavras = mysql_query($sql_roteiro_tem_palavras)) {
                 while ($row_roteiro_tem_palavras = mysql_fetch_assoc($result_roteiro_tem_palavras)) {
-                    $palavras_do_roteiro[] = $row_roteiro_tem_palavras['palavra'];
+                    $palavras_do_roteiro[] = utf8_encode($row_roteiro_tem_palavras['palavra']);
                 }
             }
 
@@ -194,20 +192,16 @@
                 $('#palavras_chave').tagsInput({width: 'auto'});
             });
 
-        </script>
-
-        <script>
             CKEDITOR.replace('descricao');
             CKEDITOR.replace('como_chegar');
             CKEDITOR.replace('sobre');
             CKEDITOR.replace('infos_uteis');
         </script>
+        <script type="text/javascript" src="../js/plugin.tags.js"></script>
 
-    </div>
-
-
-    <?php
-} else {
-    echo "Esse id não existe na BD";
-}
-?>
+        <?php
+    } else {
+        echo "Esse id não existe na BD";
+    }
+    ?>
+</div>

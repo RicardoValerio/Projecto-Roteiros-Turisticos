@@ -31,7 +31,7 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
             ?>
 
             <select id="regiao" name="regiao">
-                <?php while ($row_nuts = @mysql_fetch_assoc($result_nuts)): ?>
+                <?php while ($row_nuts = @mysql_fetch_assoc($result_nuts)) { ?>
 
                     <optgroup label="<?php echo utf8_encode($row_nuts['nome']); ?>">
 
@@ -39,18 +39,16 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
                         $sql = "SELECT * FROM regiao WHERE regiao.id_nuts = " . $row_nuts['id'];
                         $result_regiao = mysql_query($sql);
                         ?>
-                        <?php while ($row_regiao = mysql_fetch_assoc($result_regiao)): ?>
+                        <?php while ($row_regiao = mysql_fetch_assoc($result_regiao)) { ?>
 
                             <option value="<?php echo $row_regiao['id']; ?>"><?php echo utf8_encode($row_regiao['nome']); ?></option>
 
-                        <?php endwhile; ?>
+                        <?php } ?>
 
-                    <?php endwhile; ?>
+                    <?php } ?>
             </select>
 
         </p>
-
-        <input type="hidden" name="u" value="<?php echo $_SESSION['id_utilizador']; ?>"></label></p>
 
 
         <p>
@@ -102,30 +100,28 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
                 <?php } ?>
             </p>
         </fieldset>
-
-
-
+        
         <p>
             <label for="descricao">Descrição:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao" placeholder="Insira uma breve descrição sobre o roteiro...">
+            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao">
             </textarea>
         </p>
 
         <p>
             <label for="como_chegar">Como Chegar:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="como_chegar" id="como_chegar" placeholder="Insira uma breve indicação de como chegar ao local...">
+            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="como_chegar" id="como_chegar">
             </textarea>
         </p>
 
         <p>
             <label for="sobre">Sobre:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="sobre" id="sobre" placeholder="Insira uma descrição mais detalhada sobre o roteiro...">
+            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="sobre" id="sobre">
             </textarea>
         </p>
 
         <p>
             <label for="infos_uteis">Informações Úteis:</label>
-            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="infos_uteis" id="infos_uteis" placeholder="Insira um conjunto de informações úteis sobre o roteiro...">
+            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="infos_uteis" id="infos_uteis">
             </textarea>
         </p>
 
@@ -139,19 +135,49 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
 
     </form>
 
-    <script>
-        $(function() {
-            $('#palavras_chave').tagsInput({width: 'auto'});
-        });
-
-    </script>
-
-    <script>
+    <script type="text/javascript" src="<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../js/plugin.tags.js' : 'js/plugin.tags.js'; ?>"></script>
+</div>
+<script>
+    $(document).ready(function() {
         CKEDITOR.replace('descricao');
         CKEDITOR.replace('como_chegar');
         CKEDITOR.replace('sobre');
         CKEDITOR.replace('infos_uteis');
-    </script>
 
-    <script type="text/javascript" src="<?php echo ($_SESSION['tipo_utilizador'] == 'admin')? '../js/plugin.tags.js' : 'js/plugin.tags.js'; ?>"></script>
-</div>
+        $(function() {
+            $('#palavras_chave').tagsInput({width: 'auto'});
+        });
+
+
+        /*$("#formInserirRoteiro").validate({
+            rules: {
+                nome: "required",
+                regiao: "required",
+                tempo: "required",
+                tipoPercurso: "required",
+                descricao: "required"
+            },
+            messages: {
+                nome: "Por favor preencha o nome do roteiro.",
+                regiao: "Por favor selecione a regi&#227;o do roteiro.",
+                tempo: "Por favor preencha o tempo do roteiro.",
+                tipoPercurso: "Por favor escolha o tipo de percurso do roteiro.",
+                descricao: "Por favor preencha a descri&#231;&#227;o do roteiro."
+            },
+            submitHandler: function(form) {
+                $.ajax({
+                 type: form.method,
+                 url: form.action,
+                 data: $(form).serialize(),
+                 success: function(response) {
+                 dialogMessageNormal('#dialog_mensage', 'Registo');
+                 $('#dialog_text').html(response);
+                 }
+                 });
+                return false;
+            }
+        });
+        */
+
+    });
+</script>

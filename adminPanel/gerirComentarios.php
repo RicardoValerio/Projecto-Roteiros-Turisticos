@@ -42,9 +42,9 @@ $result_comentarios = mysql_query($sql);
 
                 <?php while ($row_comentario = mysql_fetch_assoc($result_comentarios)){ ?>
                     <tr>
-                        <td class="linhasCentradasTabela"><?php echo $row_comentario['titulo']; ?></td>
-                        <td class="linhasCentradasTabela"><?php echo $row_comentario['nome']; ?></td>
-                        <td class="linhasCentradasTabela"><?php echo $row_comentario['comentario']; ?></td>
+                        <td class="linhasCentradasTabela"><?php echo utf8_encode($row_comentario['titulo']); ?></td>
+                        <td class="linhasCentradasTabela"><?php echo utf8_encode($row_comentario['nome']); ?></td>
+                        <td class="linhasCentradasTabela"><?php echo utf8_encode($row_comentario['comentario']); ?></td>
                         <td class="linhasCentradasTabela"><?php echo $row_comentario['data']; ?></td>
                         <td class="linhasCentradasTabela"><a href="index.php?area=editar_comentario&id=<?php echo $row_comentario['id']; ?>" class="editarRoteiro">Editar</a></td>
                     </tr>
@@ -52,11 +52,8 @@ $result_comentarios = mysql_query($sql);
 
             </tbody>
         </table>
-
-
     </div>
-</section>
-</div>
+</body>
 
 <script type="text/javascript" language="javascript" class="init">
 

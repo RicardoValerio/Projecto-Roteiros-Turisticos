@@ -7,10 +7,10 @@
         <?php if (isset($_SESSION['nome'])) { ?>
 
             <?php if ($_SESSION['tipo_utilizador'] == "admin") { ?>
-                <li style="color: yellow;">Olá administrador <?php echo utf8_encode($_SESSION['nome']); ?></li>
+                <li style="color: yellow;">Olá administrador <?php echo $_SESSION['nome']; ?></li>
                 <li><a href="adminPanel/">Zona Admin</a></li>
             <?php } else { ?>
-                <li style="color: yellow;">Olá <?php echo utf8_encode($_SESSION['nome']); ?></li>
+                <li style="color: yellow;">Olá <?php echo $_SESSION['nome']; ?></li>
                 <li><a href="index.php?area=inserir_roteiro">Inserir Roteiro</a></li>
             <?php } ?>
 

@@ -1,5 +1,4 @@
 <h1 style="font-size: 3em;
-    color:#D3109F;
     text-align: center;
     margin-top: 75px;
     ">Editar Comentário</h1>
@@ -43,27 +42,27 @@
             <hr>
             <p>
                 <label for="utilizador">Autor do Comentário:</label>
-            <h5><?php echo $row_comentario['nome']; ?></h5>
-            <h5><?php echo $row_comentario['email']; ?></h5>
+            <h5><?php echo utf8_encode($row_comentario['nome']); ?></h5>
+            <h5><?php echo utf8_encode($row_comentario['email']); ?></h5>
             </p>
             <hr>
 
             <p>
                 <label for="nome">Nome/Título do Roteiro:</label>
-            <h3><?php echo $row_comentario['titulo']; ?></h3>
+            <h3><?php echo utf8_encode($row_comentario['titulo']); ?></h3>
             </p>
 
             <hr>
             <p>
                 <label for="utilizador">Data do Comentário:</label>
-            <h5><?php echo $row_comentario['data']; ?></h5>
+            <h5><?php echo utf8_encode($row_comentario['data']); ?></h5>
             </p>
             <hr>
 
             <p>
                 <label for="comentario">Comentário:</label>
-                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="comentario" id="comentario" placeholder="Insira uma breve descrição sobre o roteiro...">
-                    <?php echo $row_comentario['comentario']; ?>
+                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="comentario" id="comentario">
+                    <?php echo utf8_encode($row_comentario['comentario']); ?>
                 </textarea>
             </p>
 
@@ -80,6 +79,6 @@
 
 <?php
 } else {
-    echo "Bazinga!, Esse id não existe na BD";
+    echo "Esse id não existe na BD";
 }
 ?>

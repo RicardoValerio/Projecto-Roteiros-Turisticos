@@ -43,8 +43,8 @@
 
                         <div style="background-image: url('<?php echo 'img/gd_' . $row['imagem']; ?>');" class="ultimosRoteiros"></div>
                         <div class="descricao">
-                            <h3><?php echo utf8_decode($row['titulo']); ?></h3>
-                            <?php echo utf8_decode($row['descricao']); ?>
+                            <h3><?php echo utf8_encode($row['titulo']); ?></h3>
+                            <?php echo utf8_encode($row['descricao']); ?>
                         </div>
                         <div class="saibaMais">
                             <a href="index.php?area=destinos&roteiro=<?php echo $row['id']; ?>">Saiba mais</a>

@@ -21,11 +21,10 @@ if (!mysql_num_rows($result_verificaId)) {
 
     if (mysql_num_rows($result_verificaId)) {
         $linha = mysql_fetch_assoc($result_verificaId);
-        
-        $url = 'index.php?area=destinos&roteiro='.$linha['id'];
+
+        $url = 'index.php?area=destinos&roteiro=' . $linha['id'];
         header("Location: $url");
         exit();
-        
     } else {
         header('Location: index.php?area=destinos');
         exit();
@@ -66,7 +65,7 @@ $_SESSION['roteiro'] = $get_parametro;
                 if (mysql_num_rows($result_comentarios)) {
                     while ($row = mysql_fetch_assoc($result_comentarios)) {
                         ?>
-                        <li><p><?php echo utf8_encode($row['comentario']); ?></p><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
+                <li><p><?php echo utf8_encode($row['comentario']); ?></p><p><?php echo utf8_encode($row['nome']) . ', ' ?><span><?php echo date("d-m-Y", strtotime($row['data'])); ?></span></p></li>
                         <?php
                     }
                 }
@@ -88,13 +87,13 @@ $_SESSION['roteiro'] = $get_parametro;
             if (mysql_num_rows($resultado_palavrasChave)) {
                 ?><ul class="clearfix"><?php
                 while ($row = mysql_fetch_assoc($resultado_palavrasChave)) {
-                    ?><li class="borda"><a href="index.php?area=o_que_procura&pesquisa=<?php echo $row['palavra']; ?>"><?php echo $row['palavra']; ?></a></li><?php
-                    }
-                    ?></ul><?php
-                    } else {
-                        ?><p>Não existem palavras chave para este roteiro.</p><?php
+                    ?><li class="borda"><a href="index.php?area=o_que_procura&pesquisa=<?php echo urlencode(utf8_encode($row['palavra'])); ?>"><?php echo utf8_encode($row['palavra']); ?></a></li><?php
                 }
-                ?>
+                    ?></ul><?php
+            } else {
+                    ?><p>Não existem palavras chave para este roteiro.</p><?php
+            }
+            ?>
 
         </div>
 
@@ -153,6 +152,7 @@ $_SESSION['roteiro'] = $get_parametro;
             roteiro.informacoes_uteis,
             roteiro.como_chegar,
             roteiro.descricao,
+            roteiro.data,
             regiao.nome AS 'regiao',
             categoria.nome AS 'categoria',
             utilizador.nome AS 'autor'
@@ -174,33 +174,33 @@ $_SESSION['roteiro'] = $get_parametro;
             ?>
 
             <div style="text-align: center;" id="detalheRoteiro" class="mainContent dir">
-                <h1><?php echo utf8_decode($row['titulo']); ?></h1>
-                <h2><?php echo $row['categoria']; ?></h2>
-                <!-- <h2><?php echo $row['regiao']; ?></h2> -->
+                <h1><?php echo utf8_encode($row['titulo']); ?></h1>
+                <h2><?php echo utf8_encode($row['categoria']); ?></h2>
+                <!-- <h2><?php echo utf8_encode($row['regiao']); ?></h2> -->
                 <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" />
-                <p><?php echo utf8_decode($row['descricao']); ?></p>
+                <p><?php echo utf8_encode($row['descricao']); ?></p>
                 <div style="margin-top: 10px;" id="tabs">
                     <ul>
                         <li><a href="#tabs-1">Sobre</a></li>
                         <li><a href="#tabs-2">Informações Úteis</a></li>
                         <li><a href="#tabs-3">Como Chegar</a></li>
-                        <li><a href="#tabs-4">Galeria</a></li>
+                        <li><a href="#tabs-4">Data</a></li>
                         <li><a href="#tabs-5">Autor</a></li>
                     </ul>
                     <div id="tabs-1">
-                        <p><?php echo utf8_decode($row['sobre']); ?></p>
+                        <p><?php echo utf8_encode($row['sobre']); ?></p>
                     </div>
                     <div id="tabs-2">
-                        <p><?php echo utf8_decode($row['informacoes_uteis']); ?></p>
+                        <p><?php echo utf8_encode($row['informacoes_uteis']); ?></p>
                     </div>
                     <div id="tabs-3">
-                        <p><?php echo utf8_decode($row['como_chegar']); ?></p>
+                        <p><?php echo utf8_encode($row['como_chegar']); ?></p>
                     </div>
                     <div id="tabs-4">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, qui, deleniti, provident, repellendus officiis corrupti nisi unde laudantium delectus dolorem dignissimos assumenda voluptas optio illo quasi voluptates iure fugiat distinctio.</p>
+                        <p><?php echo date("d-m-Y H:i:s", strtotime($row['data'])); ?></p>
                     </div>
                     <div id="tabs-5">
-                        <p><?php echo utf8_decode($row['autor']); ?></p>
+                        <p><?php echo utf8_encode($row['autor']); ?></p>
                     </div>
                 </div>
                 <?php

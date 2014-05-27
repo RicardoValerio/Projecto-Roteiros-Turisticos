@@ -1,5 +1,4 @@
 <h1 style="font-size: 3em;
-    color:#D3109F;
     text-align: center;
     margin-top: 75px;
     ">Editar Utilizador</h1>
@@ -34,7 +33,6 @@
 
 
             <h2> Utilizador com Id # <?php echo $row_utilizador['id']; ?></h2>
-            <input type="hidden" name="i" value="<?php echo $row_utilizador['id']; ?>">
 
             <hr>
 
@@ -46,17 +44,17 @@
             <p>
                 <label for="tipo_utilizador">Tipo de Utilizador:</label>
                 <select name="tipo_utilizador" id="utilizador">
-    <?php while ($row_tipos = mysql_fetch_assoc($result_tipos)) { ?>
+                    <?php while ($row_tipos = mysql_fetch_assoc($result_tipos)) { ?>
 
                         <option value="<?php echo $row_tipos['id']; ?>" <?php if ($row_tipos['tipo'] == $row_utilizador['tipo']) echo "selected"; ?>>
-                        <?php echo $row_tipos['tipo']; ?></option>
-    <?php } ?>
+                            <?php echo $row_tipos['tipo']; ?></option>
+                    <?php } ?>
                 </select>
             </p>
             <hr>
             <p>
                 <label for="nome_utilizador">Nome do Utilizador:</label>
-                <input type="text" name="nome_utilizador" id="nome_utilizador" value="<?php echo $row_utilizador['nome']; ?>">
+                <input type="text" name="nome_utilizador" id="nome_utilizador" value="<?php echo utf8_encode($row_utilizador['nome']); ?>">
             </p>
             <hr>
             <p>
@@ -72,7 +70,7 @@
     </div>
 
 
-<?php
+    <?php
 } else {
     echo "Esse id não existe na BD";
 }

@@ -1,11 +1,11 @@
 <?php
-
+session_start();
 include '../includes/config.php';
 
 
-$post_parametro_id_utilizador = mysql_real_escape_string($_POST['i']);
+$post_parametro_id_utilizador = $_SESSION['id_utilizador'];
 $post_parametro_id_tipo_utilizador = mysql_real_escape_string($_POST['tipo_utilizador']);
-$post_parametro_nome_utilizador = mysql_real_escape_string($_POST['nome_utilizador']);
+$post_parametro_nome_utilizador = mysql_real_escape_string(utf8_decode($_POST['nome_utilizador']));
 $post_parametro_email_utilizador = mysql_real_escape_string($_POST['email_utilizador']);
 
 
