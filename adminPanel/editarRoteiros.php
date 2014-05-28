@@ -41,7 +41,7 @@
             </p>
             <hr>
             <p>
-                <label for="nome">Nome do Roteiro:</label>
+                <label for="nome">Nome/Título do Roteiro:</label>
                 <input type="text" id="nome" name="titulo" value="<?php echo utf8_encode($roteiros_array['titulo']); ?>" />
             </p>
             <hr>
@@ -188,15 +188,39 @@
         </form>
 
         <script>
-            
+
             $(function() {
                 $('#palavras_chave').tagsInput({width: 'auto'});
             });
-
             CKEDITOR.replace('descricao');
             CKEDITOR.replace('como_chegar');
             CKEDITOR.replace('sobre');
             CKEDITOR.replace('infos_uteis');
+
+            $(document).ready(function() {
+                $('#formEditarRoteiro').bind('submit', function(event) {
+                    var formData = new FormData($(this)[0]);
+                    formData.append('descricao', CKEDITOR.instances['descricao'].getData());
+                    formData.append('como_chegar', CKEDITOR.instances['como_chegar'].getData());
+                    formData.append('sobre', CKEDITOR.instances['sobre'].getData());
+                    formData.append('infos_uteis', CKEDITOR.instances['infos_uteis'].getData());
+
+                    event.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: 'processaEditarRoteiro.php',
+                        data: formData,
+                        async: false,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(response) {
+                            dialogMessageNormal('#dialog_mensage', 'Inserir roteiro');
+                            $('#dialog_text').html(response);
+                        }
+                    });
+                });
+            });
         </script>
         <script type="text/javascript" src="../js/plugin.tags.js"></script>
 

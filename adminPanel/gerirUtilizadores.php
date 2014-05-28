@@ -63,9 +63,7 @@ $result_utilizadores = mysql_query($sql);
 <script type="text/javascript" language="javascript" class="init">
 
     $(document).ready(function() {
-        $('#example').dataTable({
-            "scrollX": true
-        });
+        $('#example').dataTable();
 
         $('#example').DataTable()
                 .order([2, 'desc'])

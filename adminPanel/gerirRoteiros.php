@@ -14,7 +14,7 @@ WHERE
 $result_roteiros = mysql_query($sql);
 ?>
 
-<body class="dt-example">
+
     <div class="container">
 
 
@@ -54,14 +54,12 @@ $result_roteiros = mysql_query($sql);
             </tbody>
         </table>
     </div>
-</body>
+
 
 <script type="text/javascript" language="javascript" class="init">
 
     $(document).ready(function() {
-        $('#example').dataTable({
-            "scrollX": true
-        });
+        $('#example').dataTable();
 
         $('#example').DataTable()
                 .order([2, 'desc'])

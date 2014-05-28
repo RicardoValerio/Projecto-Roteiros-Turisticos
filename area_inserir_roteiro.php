@@ -75,15 +75,6 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
             <input type="file" id="imagem" name="imagem" />
         </p>
 
-
-<!-- 	<p>
-                <label for="tempo" >Tempo:</label>
-                <input type="text" id="tempo" name="tempo" />
-        </p>
-        -->
-
-        <!-- TODO: fazer um ciclo e colocar o id dentro dos indices dos arrays do percurso bem como os values e id-->
-
         <?php
         $sql_percursos = "SELECT * FROM tipo";
         $result_percursos = mysql_query($sql_percursos);
@@ -149,6 +140,31 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
 
         $(function() {
             $('#palavras_chave').tagsInput({width: 'auto'});
+        });
+
+        $(document).ready(function() {
+            $('#formInserirRoteiro').bind('submit', function(event) {
+                var formData = new FormData($(this)[0]);
+                formData.append('descricao', CKEDITOR.instances['descricao'].getData());
+                formData.append('como_chegar', CKEDITOR.instances['como_chegar'].getData());
+                formData.append('sobre', CKEDITOR.instances['sobre'].getData());
+                formData.append('infos_uteis', CKEDITOR.instances['infos_uteis'].getData());
+
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../processaInserirRoteiro.php' : 'processaInserirRoteiro.php'; ?>',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        dialogMessageNormal('#dialog_mensage', 'Inserir roteiro');
+                        $('#dialog_text').html(response);
+                    }
+                });
+            });
         });
     });
 </script>

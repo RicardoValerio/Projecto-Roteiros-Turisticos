@@ -77,8 +77,34 @@
     </div>
 
 
-<?php
+    <?php
 } else {
     echo "Esse id não existe na BD";
 }
 ?>
+<script>
+    $(document).ready(function() {
+        $(document).ready(function() {
+            $('#formEditarComentario').bind('submit', function(event) {
+                var formData = new FormData($(this)[0]);
+                formData.append('comentario', CKEDITOR.instances['comentario'].getData());
+
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'processaEditarComentario.php',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function(response) {
+                        dialogMessageNormal('#dialog_mensage', 'Editar comentário');
+                        $('#dialog_text').html(response.mensagem);
+                    }
+                });
+            });
+        });
+    });
+</script>

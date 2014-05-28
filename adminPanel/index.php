@@ -18,25 +18,21 @@ require_once 'includes/funcoes_areas_back_office.php'
         <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/estilosAdminPanel.css">
         <link rel="stylesheet" type="text/css" href="../css/plugin.tags.css" />
-        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
         <link rel="stylesheet" type="text/css" href="css/shCore.css">
         <link rel="stylesheet" type="text/css" href="css/demo.css">
         
-        <script type="text/javascript" src="js/dialogMessage.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/dialogStyle.css" />
-
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-
-        <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" language="javascript" src="js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" language="javascript" src="js/shCore.js"></script>
         <script type="text/javascript" language="javascript" src="js/demo.js"></script>
+        <script type="text/javascript" language="javascript" src="../ckeditor/ckeditor.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="../css/dialogStyle.css" />
+        <script type="text/javascript" src="../js/dialogMessage.js"></script>
 
-        <script src="../ckeditor/ckeditor.js"></script>
-
+        <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     </head>
 
     <body>
@@ -51,5 +47,7 @@ require_once 'includes/funcoes_areas_back_office.php'
         <div class="right">
             <?php include verificaAreaIndexBackOffice(); ?>
         </div>
+        
+        <?php include '../includes/dialogMessage.php'; ?>
     </body>
 </html>

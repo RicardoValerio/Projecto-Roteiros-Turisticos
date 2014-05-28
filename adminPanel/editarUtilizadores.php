@@ -28,9 +28,7 @@
         $row_utilizador = mysql_fetch_assoc($result_utilizadores);
         ?>
 
-        <form id="formEditarComentario" action="processaEditarUtilizador.php" method="post">
-
-
+        <form id="formEditarUtilizador" action="processaEditarUtilizador.php" method="post">
 
             <h2> Utilizador com Id # <?php echo $row_utilizador['id']; ?></h2>
             <input type="hidden" name="i" value="<?php echo $row_utilizador['id']; ?>">
@@ -68,7 +66,6 @@
         </form>
 
     </div>
-
 
     <?php
 } else {

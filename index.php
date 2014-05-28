@@ -19,21 +19,17 @@ $_SESSION['url'] = devolveUrlActual();
 
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        
         <link rel="stylesheet" type="text/css" href="css/plugin.tags.css" />
         <link rel="stylesheet" type="text/css" href="css/dialogStyle.css" />
-
-        <link href="css/estilos.css" rel="stylesheet" type="text/css">
-        <link href="css/dialogStyle.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/dialogMessage.js"></script>
         <script type="text/javascript" src="js/galeria.js"></script>
-
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-        <script type="text/javascript" src="js/dialogMessage.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script type="text/javascript" src="js/votacao.js"></script>
         <script type="text/javascript" src="js/newsletter.js"></script>
         <script type="text/javascript" src="js/login.js"></script>
@@ -41,7 +37,7 @@ $_SESSION['url'] = devolveUrlActual();
         <script type="text/javascript" src="js/search.js"></script>
         <script type="text/javascript" src="js/slideshow.js"></script>
 
-        <script src="ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 
     </head>
 

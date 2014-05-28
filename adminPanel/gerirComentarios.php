@@ -40,7 +40,7 @@ $result_comentarios = mysql_query($sql);
 
             <tbody>
 
-                <?php while ($row_comentario = mysql_fetch_assoc($result_comentarios)){ ?>
+                <?php while ($row_comentario = mysql_fetch_assoc($result_comentarios)) { ?>
                     <tr>
                         <td class="linhasCentradasTabela"><?php echo utf8_encode($row_comentario['titulo']); ?></td>
                         <td class="linhasCentradasTabela"><?php echo utf8_encode($row_comentario['nome']); ?></td>
@@ -58,9 +58,7 @@ $result_comentarios = mysql_query($sql);
 <script type="text/javascript" language="javascript" class="init">
 
     $(document).ready(function() {
-        $('#example').dataTable({
-            "scrollX": true
-        });
+        $('#example').dataTable();
 
         // tive de adicionar isto pois foi a unica forma de conseguir com que a tabela
         // fica-se ordenada pela data de forma descendente - pelo sql não deu, deve ser
