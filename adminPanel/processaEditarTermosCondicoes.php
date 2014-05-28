@@ -1,12 +1,20 @@
 <?php
+
 include '../includes/config.php';
 
-$post_parametro_id_termos = mysql_real_escape_string($_POST['i']);
-$post_parametro_texto_termo = mysql_real_escape_string($_POST['termos']);
+$post_parametro_texto_termo = mysql_real_escape_string(utf8_decode($_POST['termos']));
 
-$sql = "UPDATE texto
+$local = "termos_condicoes";
+
+$sql_verificaExiste = "SELECT local FROM texto WHERE local = '$local'";
+$result_verificaExiste = mysql_query($sql_verificaExiste);
+if (@mysql_num_rows($result_verificaExiste)) {
+    $sql = "UPDATE texto
 		SET texto.texto = '$post_parametro_texto_termo'
-		WHERE texto.id = $post_parametro_id_termos";
+		WHERE texto.local = '$local'";
+} else {
+    $sql = "INSERT INTO texto (local, texto) VALUES ('$local', '$post_parametro_texto_termo')";
+}
 
 if (mysql_query($sql)) {
     echo "sucesso, foi tudo actualizado com tranquilidade xD - redirrecionar no futuro...<br><br>";

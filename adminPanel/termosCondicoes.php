@@ -6,41 +6,31 @@
 <div style="margin-left: 69px;" id="editarRoteiro">
 
     <?php
-    $sql = "SELECT * FROM texto";
+    $local = "termos_condicoes";
+
+    $sql = "SELECT * FROM texto WHERE local = '$local'";
 
     $result_termos = mysql_query($sql);
+    ?>
+    <form id="formEditarTermos" action="processaEditarTermosCondicoes.php" method="post">
+        <p>
+            <label for="termos">Termos e Condições:</label>
+            <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="termos" id="termos">
+                <?php
+                if (@mysql_num_rows($result_termos)) {
+                    $row_termos = mysql_fetch_assoc($result_termos);
+                    echo utf8_encode($row_termos['texto']);
+                }
+                ?>
+            </textarea>
+        </p>
 
-    if (@mysql_num_rows($result_termos)) {
-        $row_termos = mysql_fetch_assoc($result_termos);
-        ?>
+        <input class="mySubmitButton" type="submit" value="Atualizar Termos e Condições" />
 
-        <form id="formEditarTermos" action="processaEditarTermosCondicoes.php" method="post">
+    </form>
+    <?php ?>
+</div>
 
-
-            <input type="hidden" name="i" value="<?php echo $row_termos['id']; ?>">
-
-            <p>
-                <label for="termos">Termos e Condições:</label>
-                <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="termos" id="termos" placeholder="Insira uma breve descrição sobre o roteiro...">
-                    <?php echo $row_termos['texto']; ?>
-                </textarea>
-            </p>
-
-            <input class="mySubmitButton" type="submit" value="Atualizar Termos e Condições" />
-
-        </form>
-
-    </script>
-
-    <script>
-        CKEDITOR.replace('termos');
-    </script>
-
-    </div>
-
-
-<?php
-} else {
-    echo "Não existe nada nesta tabela!";
-}
-?>
+<script>
+    CKEDITOR.replace('termos');
+</script>
