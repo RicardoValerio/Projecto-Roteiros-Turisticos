@@ -132,11 +132,11 @@ $_SESSION['roteiro'] = $get_parametro;
             </div>
             <div id="estrelas">
                 <ul class="clearfix">
-                    <li class="estrelaVazia"></li>
-                    <li class="estrelaVazia"></li>
-                    <li class="estrelaVazia"></li>
-                    <li class="estrelaVazia"></li>
-                    <li class="estrelaVazia"></li>
+                    <li title="1" class="estrelaVazia"></li>
+                    <li title="2" class="estrelaVazia"></li>
+                    <li title="3" class="estrelaVazia"></li>
+                    <li title="4" class="estrelaVazia"></li>
+                    <li title="5" class="estrelaVazia"></li>
                 </ul>
             </div>
             <p><span id="classificacaoEstrelas"><?php echo number_format($media, 2, ",", '.'); ?></span> <span id="classificacaoTexto"><?php echo $texto; ?></span></p>
@@ -182,10 +182,10 @@ $_SESSION['roteiro'] = $get_parametro;
                     <?php
                     $sql = "SELECT * FROM tipo INNER JOIN roteiro_tem_tipo on id=id_tipo WHERE id_roteiro=$get_parametro";
                     $result = mysql_query($sql);
-                    while ($row = mysql_fetch_assoc($result)) {
+                    while ($linha = mysql_fetch_assoc($result)) {
                         ?>
                         <li>
-                            <img src="<?php echo 'img/' . $row['imagem']; ?>" alt="<?php echo utf8_encode($row['tipo']) ?>" title="<?php echo utf8_encode($row['tipo']) ?>" />
+                            <img src="<?php echo 'img/' . $linha['imagem']; ?>" alt="<?php echo utf8_encode($linha['tipo']) ?>" title="<?php echo utf8_encode($linha['tipo']) ?>" />
                         </li>
                         <?php
                     }
