@@ -75,11 +75,7 @@
         </script>
 
     </div>
-
-
     <?php
-} else {
-    echo "Esse id não existe na BD";
 }
 ?>
 <script>
