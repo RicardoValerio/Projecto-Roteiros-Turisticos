@@ -23,16 +23,12 @@ if (@mysql_num_rows($result)) {
                 url: 'processaEliminarComentario.php?id=<?php echo $id_get_parametro ?>',
                 dataType: "json",
                 success: function(response) {
-                    if (response.erro) {
-                        dialogMessageNormal('#dialog_mensage', 'Eliminar comentário');
-                        $('#dialog_text').html(response.mensagem);
-                    } else {
-                        dialogMessageNormal('#dialog_mensage', 'Eliminar comentário');
-                        $('#dialog_text').html("O comentário foi eliminado com sucesso.");
-                        $('.ui-dialog-buttonset').on('click', function(){
-                            window.location.href = "index.php?area=gerir_comentarios&eliminado=sucesso";
+                    dialogMessageNormal('#dialog_mensage', 'Eliminar comentário');
+                    $('#dialog_text').html(response.mensagem);
+                    if (!response.erro) {
+                        $('.ui-dialog-buttonset').on('click', function() {
+                            window.location.href = "index.php?area=gerir_comentarios";
                         });
-                        
                     }
                 }
             });

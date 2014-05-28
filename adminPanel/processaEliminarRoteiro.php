@@ -8,8 +8,6 @@ $sql_file = "SELECT imagem FROM roteiro WHERE id = " . $id_get_parametro;
 $filename = @mysql_fetch_assoc(mysql_query($sql_file));
 $filename = $filename['imagem'];
 
-
-
 $sql = "DELETE FROM roteiro WHERE id = " . $id_get_parametro;
 
 if (mysql_query($sql)) {
@@ -27,11 +25,8 @@ if (mysql_query($sql)) {
             unlink($target);
         }
     }
-
-
-
-    echo "roteiro eliminado com sucesso! redireccionar";
+    echo json_encode(array("erro" => false, "mensagem" => "O roteiro foi eliminado com sucesso."));
 } else {
-    echo "insucesso! redireccionar " . mysql_error();
+    echo json_encode(array("erro" => true, "mensagem" => "Não foi possível eliminar o roteiro."));
 }
 ?>

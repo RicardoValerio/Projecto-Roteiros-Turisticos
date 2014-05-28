@@ -60,8 +60,25 @@ if (@mysql_num_rows($result_estado_do_roteiro)) {
 
         }, 100);
 
-        $('#myEliminarRoteiro').on('click', function() {
-            return confirm("Tem a certeza que pretende eliminar este roteiro?");
+        $('#myEliminarRoteiro').on('click', function(event) {
+            //return confirm("Tem a certeza que pretende eliminar este roteiro?");
+
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'processaEliminarRoteiro.php?id=<?php echo $id_get_parametro ?>',
+                dataType: "json",
+                success: function(response) {
+                    dialogMessageNormal('#dialog_mensage', 'Eliminar roteiro');
+                    $('#dialog_text').html(response.mensagem);
+                    if (!response.erro) {
+                        $('.ui-dialog-buttonset').on('click', function() {
+                            window.location.href = "index.php?area=gerir_roteiros";
+                        });
+
+                    }
+                }
+            });
         });
 
     });
