@@ -33,4 +33,29 @@
 
 <script>
     CKEDITOR.replace('termos');
+
+    $(document).ready(function() {
+        $(document).ready(function() {
+            $('#formEditarTermos').bind('submit', function(event) {
+                var formData = new FormData($(this)[0]);
+                formData.append('termos', CKEDITOR.instances['termos'].getData());
+
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'processaEditarTermosCondicoes.php',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function(response) {
+                        dialogMessageNormal('#dialog_mensage', 'Editar termos e condições');
+                        $('#dialog_text').html(response.mensagem);
+                    }
+                });
+            });
+        });
+    });
 </script>

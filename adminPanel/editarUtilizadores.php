@@ -68,7 +68,31 @@
     </div>
 
     <?php
-} else {
-    echo "Esse id não existe na BD";
 }
 ?>
+
+<script>
+    $(document).ready(function() {
+        $(document).ready(function() {
+            $('#formEditarUtilizador').bind('submit', function(event) {
+                var formData = new FormData($(this)[0]);
+                
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: 'processaEditarUtilizador.php',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function(response) {
+                        dialogMessageNormal('#dialog_mensage', 'Editar utilizador');
+                        $('#dialog_text').html(response.mensagem);
+                    }
+                });
+            });
+        });
+    });
+</script>
