@@ -1,6 +1,6 @@
 <?php
 
-include '../includes/config.php';
+require_once '../includes/config.php';
 
 //Nao verificar se está em branco. Se tiver em branco é como se estivesse apagado
 $post_parametro_texto_termo = mysql_real_escape_string(utf8_decode($_POST['termos']));

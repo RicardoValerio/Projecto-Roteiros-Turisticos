@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 /* * *******
@@ -31,7 +30,7 @@ if (!strlen(trim($_POST['titulo'])) || empty($_FILES['imagem']['name']) || !isse
     exit();
 } else {
 
-    include 'includes/funcoes_imagens.php';
+    require_once 'includes/funcoes_imagens.php';
 
     $extensao = getExtensaoDaImagem($_FILES['imagem']['type']);
     $extensao_valida = verificaSeExtensaoDaImagemSeraValida($extensao);
@@ -41,7 +40,7 @@ if (!strlen(trim($_POST['titulo'])) || empty($_FILES['imagem']['name']) || !isse
         echo json_encode(array("erro" => true, "mensagem" => "A imagem inserida não é válida.<br/><br/>Insira uma imagem num dos seguintes formatos .jpg, .png, .gif"));
         exit();
     } else {
-        include 'includes/config.php';
+        require_once 'includes/config.php';
 
         $nomeImagem = mysql_real_escape_string(utf8_decode($_FILES['imagem']['name']));
 
@@ -49,11 +48,11 @@ if (!strlen(trim($_POST['titulo'])) || empty($_FILES['imagem']['name']) || !isse
         $nomeImagem = hash('sha256', $nomeImagem . $date->getTimestamp());
         $nomeImagem .= '.' . $extensao;
 
-        $titulo = mysql_real_escape_string(utf8_decode($_POST['titulo']));
-        $descricao = mysql_real_escape_string(utf8_decode($_POST['descricao']));
-        $sobre = mysql_real_escape_string(utf8_decode($_POST['sobre']));
-        $infos_uteis = mysql_real_escape_string(utf8_decode($_POST['infos_uteis']));
-        $como_chegar = mysql_real_escape_string(utf8_decode($_POST['como_chegar']));
+        $titulo = htmlentities(utf8_decode($_POST['titulo']));
+        $descricao = htmlentities(utf8_decode($_POST['descricao']));
+        $sobre = htmlentities(utf8_decode($_POST['sobre']));
+        $infos_uteis = htmlentities(utf8_decode($_POST['infos_uteis']));
+        $como_chegar = htmlentities(utf8_decode($_POST['como_chegar']));
 
         $sql = "INSERT INTO roteiro
             (

@@ -1,4 +1,5 @@
 <?php
+
 require 'includes/config.php';
 
 // Define Output HTML Formating
@@ -35,38 +36,34 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
             LEFT JOIN categoria ON roteiro.id_categoria = categoria.id
         WHERE
             roteiro.ativo = 1
-            AND titulo LIKE "%' . $search_string . '%"
+            AND (titulo LIKE "%' . $search_string . '%"
             OR categoria.nome LIKE "%' . $search_string . '%"
             OR roteiro.descricao LIKE "%' . $search_string . '%"
             OR regiao.nome LIKE "%' . $search_string . '%"
-            OR palavra_chave.palavra LIKE "%' . $search_string . '%"
+            OR palavra_chave.palavra LIKE "%' . $search_string . '%")
         GROUP BY roteiro.id';
 
     // Do Search
     $result = mysql_query($query);
 
 
-    if(mysql_num_rows($result)) {
-        while($row =  mysql_fetch_assoc($result)) {
+    if (@mysql_num_rows($result)) {
+        while ($row = mysql_fetch_assoc($result)) {
             $displayTitulo = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['titulo']));
 
             $displayCategoria = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['categoria']));
 
             $displayRegiao = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['regiao']));
 
-            $displayDescricao = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['descricao']));
+            $displayDescricao = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", strip_tags(utf8_encode($row['descricao'])));
 
             $displayPalavraChave = preg_replace("/" . $search_string . "/i", "<b class='highlight'>" . $search_string . "</b>", utf8_encode($row['palavra']));
 
             $display_url = 'index.php?area=destinos&roteiro=' . $row['id'];
 
-
-            // Insert Name
-            $output = str_replace('descricaoString', $displayDescricao, $html);
-
             // Insert Function
-            $output = str_replace('tituloString', $displayTitulo, $output);
-
+            $output = str_replace('tituloString', $displayTitulo, $html);
+            $output = str_replace('descricaoString', $displayDescricao, $output);
             $output = str_replace('categoriaString', $displayCategoria, $output);
             $output = str_replace('regiaoString', $displayRegiao, $output);
             $output = str_replace('palavraChaveString', $displayPalavraChave, $output);
@@ -82,7 +79,7 @@ if (strlen($search_string) >= 1 && $search_string !== ' ') {
 
         $output = '<li class="result">';
         $output .= '<a target="_blank" href="javascript:void(0);">';
-        $output .= '<h3>Desculpe =(</h3>';
+        $output .= '<h3>Sem resultados</h3>';
         $output .= '<h4><b>Nenhum resultado encontrado...</b></h4>';
         $output .= '</a>';
         $output .= '</li>';

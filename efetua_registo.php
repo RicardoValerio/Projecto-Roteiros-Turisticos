@@ -11,7 +11,7 @@ define('MENSAGEM_ERRO_REGISTO', 'Pedimos desculpa mas de momento não foi possí
 define('SUBJECT', 'Registo '.NOME_EMPRESA);
 
 
-$nome = mysql_real_escape_string($_POST['nome']);
+$nome = mysql_real_escape_string(utf8_decode($_POST['nome']));
 $email = mysql_real_escape_string($_POST['email']);
 $password = hash('sha512', mysql_real_escape_string($_POST['password']));
 

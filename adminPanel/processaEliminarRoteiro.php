@@ -1,6 +1,6 @@
 <?php
 
-include '../includes/config.php';
+require_once '../includes/config.php';
 
 $id_get_parametro = mysql_real_escape_string($_GET['id']);
 

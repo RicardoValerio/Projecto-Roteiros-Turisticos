@@ -9,7 +9,7 @@ $sql_verificaId = "SELECT id
 
 $result_verificaId = mysql_query($sql_verificaId);
 
-if (!mysql_num_rows($result_verificaId)) {
+if (!@mysql_num_rows($result_verificaId)) {
     $sql_verificaId = "SELECT id
         FROM
             roteiro
@@ -19,11 +19,11 @@ if (!mysql_num_rows($result_verificaId)) {
 
     $result_verificaId = mysql_query($sql_verificaId);
 
-    if (mysql_num_rows($result_verificaId)) {
+    if (@mysql_num_rows($result_verificaId)) {
         $linha = mysql_fetch_assoc($result_verificaId);
 
         $url = 'index.php?area=destinos&roteiro=' . $linha['id'];
-        header("Location: $url");
+        header("location: $url");
         exit();
     } else {
         header('Location: index.php?area=destinos');
@@ -177,7 +177,7 @@ $_SESSION['roteiro'] = $get_parametro;
                 <h1><?php echo utf8_encode($row['titulo']); ?></h1>
                 <h2><?php echo utf8_encode($row['categoria']); ?></h2>
                 <img src="<?php echo 'img/gd_' . $row['imagem']; ?>" />
-                <div id="descricaoDetalheRoteiro"><?php echo utf8_encode($row['descricao']); ?></div>
+                <div id="descricaoDetalheRoteiro"><?php echo html_entity_decode(utf8_encode($row['descricao'])); ?></div>
                 <ul id="imagensTipoTransporte">
                     <?php
                     $sql = "SELECT * FROM tipo INNER JOIN roteiro_tem_tipo on id=id_tipo WHERE id_roteiro=$get_parametro";
@@ -201,13 +201,13 @@ $_SESSION['roteiro'] = $get_parametro;
                         <li><a href="#tabs-6">Autor</a></li>
                     </ul>
                     <div id="tabs-1">
-                        <p><?php echo utf8_encode($row['sobre']); ?></p>
+                        <p><?php echo html_entity_decode(utf8_encode($row['sobre'])); ?></p>
                     </div>
                     <div id="tabs-2">
-                        <p><?php echo utf8_encode($row['informacoes_uteis']); ?></p>
+                        <p><?php echo html_entity_decode(utf8_encode($row['informacoes_uteis'])); ?></p>
                     </div>
                     <div id="tabs-3">
-                        <p><?php echo utf8_encode($row['como_chegar']); ?></p>
+                        <p><?php echo html_entity_decode(utf8_encode($row['como_chegar'])); ?></p>
                     </div>
                     <div id="tabs-4">
                         <p><?php echo utf8_encode($row['regiao']); ?></p>

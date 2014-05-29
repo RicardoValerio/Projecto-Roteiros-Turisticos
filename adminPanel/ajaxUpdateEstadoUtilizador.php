@@ -1,6 +1,6 @@
 <?php
 
-include '../includes/config.php';
+require_once '../includes/config.php';
 
 $estadoUpdate = ($_POST['estado']) ? 0 : 1;
 

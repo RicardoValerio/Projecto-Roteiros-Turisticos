@@ -1,5 +1,5 @@
 <?php
-include '../includes/config.php';
+require_once '../includes/config.php';
 
 $post_parametro_id_comentario = mysql_real_escape_string($_POST['i']);
 $post_parametro_comentario = mysql_real_escape_string(utf8_decode($_POST['comentario']));

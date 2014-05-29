@@ -31,7 +31,7 @@ $imagem_existe = false;
 $nomeImagem = '';
 if (!empty($_FILES['imagem']['name'])) {
 
-    include '../includes/funcoes_imagens.php';
+    require_once '../includes/funcoes_imagens.php';
 
     $extensao = getExtensaoDaImagem($_FILES['imagem']['type']);
     $extensao_valida = verificaSeExtensaoDaImagemSeraValida($extensao);
@@ -75,7 +75,7 @@ if (!empty($_FILES['imagem']['name'])) {
     }
 }
 
-include '../includes/config.php';
+require_once '../includes/config.php';
 
 ////////////////////////////////////////////////////////////////////////////////
 // ID do roteiro
@@ -88,12 +88,10 @@ $post_parametro_categoria = mysql_real_escape_string(utf8_decode($_POST['categor
 $post_parametro_titulo = mysql_real_escape_string(utf8_decode($_POST['titulo']));
 
 
-$post_parametro_descricao = mysql_real_escape_string(utf8_decode($_POST['descricao']));
-$post_parametro_sobre = mysql_real_escape_string(utf8_decode($_POST['sobre']));
-$post_parametro_infos_uteis = mysql_real_escape_string(utf8_decode($_POST['infos_uteis']));
-$post_parametro_como_chegar = mysql_real_escape_string(utf8_decode($_POST['como_chegar']));
-
-
+$post_parametro_descricao = htmlentities(utf8_decode($_POST['descricao']));
+$post_parametro_sobre = htmlentities(utf8_decode($_POST['sobre']));
+$post_parametro_infos_uteis = htmlentities(utf8_decode($_POST['infos_uteis']));
+$post_parametro_como_chegar = htmlentities(utf8_decode($_POST['como_chegar']));
 
 $sql = "UPDATE roteiro SET  id_regiao          = $post_parametro_regiao,
                                     id_categoria       = $post_parametro_categoria,

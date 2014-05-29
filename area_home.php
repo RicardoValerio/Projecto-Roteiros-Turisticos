@@ -8,7 +8,6 @@
     $numBotoesPag = 3;
     $limit = 6;
 
-
     $sql_roteirosTodos = "SELECT  count(id) as total
 			FROM
 			    roteiro
@@ -21,7 +20,8 @@
 
 
     $pag = (isset($_GET['pag']) && is_numeric($_GET['pag'])) ? $_GET['pag'] : 1;
-    if($pag > $totalPaginas) $pag = $totalPaginas;
+    if ($pag > $totalPaginas)
+        $pag = $totalPaginas;
 
     $offset = (($pag - 1) * $limit);
 
@@ -33,7 +33,7 @@
 			ORDER BY roteiro.data DESC limit $offset, $limit";
 
     $result_roteirosPag = mysql_query($sql_roteirosPag);
-
+    ?><a name="roteiros"></a><?php
     if (@mysql_num_rows($result_roteirosPag)) {
         ?><div class="clearfix">
             <ul id="roteiroBox" class="clearfix"><?php
@@ -44,7 +44,8 @@
                         <div style="background-image: url('<?php echo 'img/gd_' . $row['imagem']; ?>');" class="ultimosRoteiros"></div>
                         <div class="descricao">
                             <h3><?php echo utf8_encode($row['titulo']); ?></h3>
-                            <?php echo utf8_encode($row['descricao']); ?>
+                            <?php echo limit_words(html_entity_decode(utf8_encode($row['descricao'])), 50); ?>                            
+
                         </div>
                         <div class="saibaMais">
                             <a href="index.php?area=destinos&roteiro=<?php echo $row['id']; ?>">Saiba mais</a>
@@ -58,42 +59,42 @@
         <div id="paginas" class="clearfix">
             <ul>
                 <?php if ($pag >= $numBotoesPag) { ?>
-                    <li><a href="?pag=1"><<</a></li>
-                    <li><a href="?pag=<?php echo $pag - 1; ?>"><</a></li>
-                    <li><a href="?pag=<?php echo (($pag - $numBotoesPag) < 1)  ? 1 : ($pag - $numBotoesPag);?>" class="reticencias">...</a></li>
+                    <li><a href="?pag=1#roteiros"><<</a></li>
+                    <li><a href="?pag=<?php echo $pag - 1; ?>#roteiros"><</a></li>
+                    <li><a href="?pag=<?php echo (($pag - $numBotoesPag) < 1) ? 1 : ($pag - $numBotoesPag); ?>#roteiros" class="reticencias">...</a></li>
                     <?php
                 }
 
                 if ($pag == 1) {
                     ?>
-                    <li><a href="?pag=<?php echo $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
-                    <?php if( ($pag + 1) <= $totalPaginas) { ?>
-                    <li><a href="?pag=<?php echo $pag + 1; ?>"><?php echo $pag + 1; ?></a></li>
+                    <li><a href="?pag=<?php echo $pag; ?>#roteiros" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                    <?php if (($pag + 1) <= $totalPaginas) { ?>
+                        <li><a href="?pag=<?php echo $pag + 1; ?>#roteiros"><?php echo $pag + 1; ?></a></li>
                     <?php } ?>
-                    <?php if( ($pag + 2) <= $totalPaginas) { ?>
-                    <li><a href="?pag=<?php echo $pag + 2; ?>"><?php echo $pag + 2; ?></a></li>
+                    <?php if (($pag + 2) <= $totalPaginas) { ?>
+                        <li><a href="?pag=<?php echo $pag + 2; ?>roteiros"><?php echo $pag + 2; ?></a></li>
                     <?php } ?>
 
                 <?php } else if ($pag > 1 && $pag < $totalPaginas) { ?>
-                    <li><a href="?pag=<?php echo $pag - 1; ?>"><?php echo $pag - 1; ?></a></li>
-                    <li><a href="?pag=<?php echo $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
-                    <li><a href="?pag=<?php echo $pag + 1; ?>"><?php echo $pag + 1; ?></a></li>
+                    <li><a href="?pag=<?php echo $pag - 1; ?>#roteiros"><?php echo $pag - 1; ?></a></li>
+                    <li><a href="?pag=<?php echo $pag; ?>#roteiros" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                    <li><a href="?pag=<?php echo $pag + 1; ?>#roteiros"><?php echo $pag + 1; ?></a></li>
                 <?php } else if ($pag == $totalPaginas) { ?>
-                    <?php if( ($pag - 2) >= 1) { ?>
-                    <li><a href="?pag=<?php echo $pag - 2; ?>"><?php echo $pag - 2; ?></a></li>
+                    <?php if (($pag - 2) >= 1) { ?>
+                        <li><a href="?pag=<?php echo $pag - 2; ?>#roteiros"><?php echo $pag - 2; ?></a></li>
                     <?php } ?>
-                    <?php if( ($pag - 1) >= 1) { ?>
-                    <li><a href="?pag=<?php echo $pag - 1; ?>"><?php echo $pag - 1; ?></a></li>
+                    <?php if (($pag - 1) >= 1) { ?>
+                        <li><a href="?pag=<?php echo $pag - 1; ?>roteiros"><?php echo $pag - 1; ?></a></li>
                     <?php } ?>
-                    <li><a href="?pag=<?php echo $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                    <li><a href="?pag=<?php echo $pag; ?>#roteiros" class="paginaAtiva"><?php echo $pag; ?></a></li>
                     <?php
                 }
 
                 if ($pag <= ($totalPaginas - $numBotoesPag + 1)) {
                     ?>
-                    <li><a href="?pag=<?php echo (($pag + $numBotoesPag) > $totalPaginas)  ? $totalPaginas : ($pag + $numBotoesPag); ?>" class="reticencias">...</a></li>
-                    <li><a href="?pag=<?php echo $pag + 1 ?>">></a></li>
-                    <li><a href="?pag=<?php echo $totalPaginas; ?>">>></a></li>
+                    <li><a href="?pag=<?php echo (($pag + $numBotoesPag) > $totalPaginas) ? $totalPaginas : ($pag + $numBotoesPag); ?>#roteiros" class="reticencias">...</a></li>
+                    <li><a href="?pag=<?php echo $pag + 1 ?>#roteiros">></a></li>
+                    <li><a href="?pag=<?php echo $totalPaginas; ?>#roteiros">>></a></li>
                 <?php } ?>
 
             </ul>

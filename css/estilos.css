@@ -1315,3 +1315,7 @@ b.highlight{
     margin-top:16px;
     margin-bottom:16px;
 }
+
+.ui-tabs-panel a {
+    color: blue !important;
+}

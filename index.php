@@ -4,7 +4,7 @@ require_once 'includes/config.php';
 require_once 'includes/funcoes_areas.php';
 require_once 'includes/funcoes_email.php';
 require_once 'includes/funcoes.php';
-
+ob_start();
 
 $_SESSION['url'] = devolveUrlActual();
 ?>
@@ -18,11 +18,11 @@ $_SESSION['url'] = devolveUrlActual();
         <meta name="viewport" content="width=device-width">
 
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         
         <link rel="stylesheet" type="text/css" href="css/plugin.tags.css" />
         <link rel="stylesheet" type="text/css" href="css/dialogStyle.css" />
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.validate.js"></script>

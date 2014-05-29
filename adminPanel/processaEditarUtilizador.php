@@ -1,6 +1,6 @@
 <?php
 
-include '../includes/config.php';
+require_once '../includes/config.php';
 
 
 $post_parametro_id_utilizador = mysql_real_escape_string($_POST['i']);

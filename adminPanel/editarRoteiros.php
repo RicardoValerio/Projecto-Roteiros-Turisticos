@@ -138,28 +138,28 @@
             <p>
                 <label for="descricao">Descrição:</label>
                 <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="descricao" id="descricao">
-                    <?php echo utf8_encode($roteiros_array['descricao']); ?>
+                    <?php echo html_entity_decode(utf8_encode($roteiros_array['descricao'])); ?>
                 </textarea>
             </p>
 
             <p>
                 <label for="como_chegar">Como Chegar:</label>
                 <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="como_chegar" id="como_chegar">
-                    <?php echo utf8_encode($roteiros_array['como_chegar']); ?>
+                    <?php echo html_entity_decode(utf8_encode($roteiros_array['como_chegar'])); ?>
                 </textarea>
             </p>
 
             <p>
                 <label for="sobre">Sobre:</label>
                 <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="sobre" id="sobre">
-                    <?php echo utf8_encode($roteiros_array['sobre']); ?>
+                    <?php echo html_entity_decode(utf8_encode($roteiros_array['sobre'])); ?>
                 </textarea>
             </p>
 
             <p>
                 <label for="infos_uteis">Informações Úteis:</label>
                 <textarea style="margin: 2px; height: 157px; width: 843px; resize: none;" name="infos_uteis" id="infos_uteis">
-                    <?php echo utf8_encode($roteiros_array['informacoes_uteis']); ?>
+                    <?php echo html_entity_decode(utf8_encode($roteiros_array['informacoes_uteis'])); ?>
                 </textarea>
             </p>
 

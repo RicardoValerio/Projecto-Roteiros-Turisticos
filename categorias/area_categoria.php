@@ -52,6 +52,7 @@ $get_parametro = mysql_real_escape_string(urlencode($_GET['categoria']));
         </div>
     </div>
 
+    <a name="roteiros"></a>
     <div id="rightContent" class="dir">
         <?php
         $numBotoesPag = 3;
@@ -103,42 +104,42 @@ $get_parametro = mysql_real_escape_string(urlencode($_GET['categoria']));
             <div id="paginas" class="clearfix">
                 <ul>
                     <?php if ($pag >= $numBotoesPag) { ?>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=$get_parametro&pag=1'; ?>"><<</a></li>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 1); ?>"><</a></li>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . (($pag - $numBotoesPag) < 1) ? 1 : ($pag - $numBotoesPag); ?>" class="reticencias">...</a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=$get_parametro&pag=1#roteiros'; ?>"><<</a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 1); ?>#roteiros"><</a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . (($pag - $numBotoesPag) < 1) ? 1 : ($pag - $numBotoesPag); ?>#roteiros" class="reticencias">...</a></li>
                         <?php
                     }
 
                     if ($pag == 1) {
                         ?>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $pag; ?>#roteiros" class="paginaAtiva"><?php echo $pag; ?></a></li>
                         <?php if (($pag + 1) <= $totalPaginas) { ?>
-                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 1); ?>"><?php echo $pag + 1; ?></a></li>
+                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 1); ?>#roteiros"><?php echo $pag + 1; ?></a></li>
                         <?php } ?>
                         <?php if (($pag + 2) <= $totalPaginas) { ?>
-                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 2); ?>"><?php echo $pag + 2; ?></a></li>
+                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 2); ?>#roteiros"><?php echo $pag + 2; ?></a></li>
                         <?php } ?>
 
                     <?php } else if ($pag > 1 && $pag < $totalPaginas) { ?>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 1); ?>"><?php echo $pag - 1; ?></a></li>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 1); ?>"><?php echo $pag + 1; ?></a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 1); ?>#roteiros"><?php echo $pag - 1; ?></a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $pag; ?>#roteiros" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 1); ?>#roteiros"><?php echo $pag + 1; ?></a></li>
                     <?php } else if ($pag == $totalPaginas) { ?>
                         <?php if (($pag - 2) >= 1) { ?>
-                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 2); ?>"><?php echo $pag - 2; ?></a></li>
+                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 2); ?>#roteiros"><?php echo $pag - 2; ?></a></li>
                         <?php } ?>
                         <?php if (($pag - 1) >= 1) { ?>
-                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 1); ?>"><?php echo $pag - 1; ?></a></li>
+                            <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag - 1); ?>#roteiros"><?php echo $pag - 1; ?></a></li>
                         <?php } ?>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $pag; ?>" class="paginaAtiva"><?php echo $pag; ?></a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $pag; ?>#roteiros" class="paginaAtiva"><?php echo $pag; ?></a></li>
                         <?php
                     }
 
                     if ($pag <= ($totalPaginas - $numBotoesPag + 1)) {
                         ?>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . (($pag + $numBotoesPag) > $totalPaginas) ? $totalPaginas : ($pag + $numBotoesPag); ?>" class="reticencias">...</a></li>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 1) ?>">></a></li>
-                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $totalPaginas; ?>">>></a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . (($pag + $numBotoesPag) > $totalPaginas) ? $totalPaginas : ($pag + $numBotoesPag); ?>#roteiros" class="reticencias">...</a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . ($pag + 1) ?>#roteiros">></a></li>
+                        <li><a href="<?php echo 'index.php?area=destinos&categoria=' . $get_parametro . '&pag=' . $totalPaginas; ?>#roteiros">>></a></li>
                     <?php } ?>
 
                 </ul>

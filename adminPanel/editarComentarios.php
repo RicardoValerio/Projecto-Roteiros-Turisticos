@@ -98,6 +98,12 @@
                     success: function(response) {
                         dialogMessageNormal('#dialog_mensage', 'Editar comentário');
                         $('#dialog_text').html(response.mensagem);
+
+                        if (!response.erro) {
+                            $('.ui-dialog-buttonset').on('click', function() {
+                                window.location.href = "index.php?area=gerir_comentarios";
+                            });
+                        }
                     }
                 });
             });
