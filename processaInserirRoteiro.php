@@ -1,32 +1,47 @@
 <?php
+
 session_start();
 
-if (empty($_FILES['imagem']['name'])) {
+/* * *******
+ *  VERIFICAÇÃO DE DADOS
+ * ******* */
 
-    echo "a imagem não está definida!";
-    die();
+if (!strlen(trim($_POST['titulo'])) || empty($_FILES['imagem']['name']) || !isset($_POST['percurso']) || !strlen(trim($_POST['descricao'])) || !strlen(trim($_POST['sobre'])) || !strlen(trim($_POST['infos_uteis'])) || !strlen(trim($_POST['como_chegar'])) || !strlen(trim($_POST['palavras_chave']))) {
+    $arrayMensagem = array();
+
+    if (!strlen(trim($_POST['titulo'])))
+        array_push($arrayMensagem, "Insira o título do roteiro.");
+    if (empty($_FILES['imagem']['name']))
+        array_push($arrayMensagem, "Insira uma imagem.");
+    if (!isset($_POST['percurso']))
+      array_push($arrayMensagem, "Insira as formas de percursos.");
+    if (!strlen(trim($_POST['descricao'])))
+        array_push($arrayMensagem, "Insira a descrição do roteiro.");
+    if (!strlen(trim($_POST['sobre'])))
+        array_push($arrayMensagem, "Insira informação sobre o roteiro.");
+    if (!strlen(trim($_POST['infos_uteis'])))
+        array_push($arrayMensagem, "Insira as informações úteis do roteiro.");
+    if (!strlen(trim($_POST['como_chegar'])))
+        array_push($arrayMensagem, "Insira a forma de chegar ao local do roteiro.");
+    if (!strlen(trim($_POST['palavras_chave'])))
+        array_push($arrayMensagem, "Insira as palavras-chave do roteiro.");
+    
+    $mensagem = implode("<br/><br/>", $arrayMensagem);
+    echo json_encode(array("erro" => true, "mensagem" => $mensagem));
+    exit();
 } else {
 
     include 'includes/funcoes_imagens.php';
-    
+
     $extensao = getExtensaoDaImagem($_FILES['imagem']['type']);
     $extensao_valida = verificaSeExtensaoDaImagemSeraValida($extensao);
 
 
     if (!$extensao_valida) {
-
-        echo "a extensão do ficheiro n é uma imagem válida para a aplicação";
-
-        echo " extensão: $extensao";
-        echo "<br />";
-        print_r($_FILES);
-
-        die();
+        echo json_encode(array("erro" => true, "mensagem" => "A imagem inserida não é válida.<br/><br/>Insira uma imagem num dos seguintes formatos .jpg, .png, .gif"));
+        exit();
     } else {
-
         include 'includes/config.php';
-
-        $titulo = mysql_real_escape_string(utf8_decode($_POST['titulo']));
 
         $nomeImagem = mysql_real_escape_string(utf8_decode($_FILES['imagem']['name']));
 
@@ -34,6 +49,7 @@ if (empty($_FILES['imagem']['name'])) {
         $nomeImagem = hash('sha256', $nomeImagem . $date->getTimestamp());
         $nomeImagem .= '.' . $extensao;
 
+        $titulo = mysql_real_escape_string(utf8_decode($_POST['titulo']));
         $descricao = mysql_real_escape_string(utf8_decode($_POST['descricao']));
         $sobre = mysql_real_escape_string(utf8_decode($_POST['sobre']));
         $infos_uteis = mysql_real_escape_string(utf8_decode($_POST['infos_uteis']));
@@ -76,7 +92,7 @@ if (empty($_FILES['imagem']['name'])) {
 
             move_uploaded_file($source, $target);
 
-            // create the '400' and '100' versions of the image
+            // create the versions of the image
             process_image($image_dir_path, $nomeImagem);
 
             // inserir tipos de percurso do roteiro
@@ -97,9 +113,12 @@ if (empty($_FILES['imagem']['name'])) {
             }
 
             // redireccionar
-            echo "sucesso, inserido com tranquilidade, falta agora redireccionar!";
+            $textoRoteiro = ($_SESSION['tipo_utilizador'] != 'admin') ? 'Obrigado pela sua contribuição.<br/><br/>O seu roteiro foi adicionado com sucesso.<br/><br/>Poderá consultar o roteiro após aprovação do administrador.' : 'O roteiro foi adicionado com sucesso.<br/><br/>Confirme a informação e faça a aprovação do roteiro em seguida.';
+            $user = $_SESSION['tipo_utilizador'];
+            $url = ($_SESSION['tipo_utilizador'] != 'admin') ? '' : "index.php?area=editar_roteiro&id=$id_ultimo_roteiro_inserido";
+            echo json_encode(array("erro" => false, "mensagem" => $textoRoteiro, "url" => $url, "user" => '$user'));
         } else {
-            echo "erro, por favor contacte a empresa onde pagou pela porcaria de software xD...";
+            echo json_encode(array("erro" => true, "mensagem" => "Não foi possível adicionar o roteiro."));
         }
     }
 }

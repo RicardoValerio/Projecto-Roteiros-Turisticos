@@ -5,8 +5,8 @@ include '../includes/config.php';
 $id_get_parametro = mysql_real_escape_string($_GET['id']);
 
 $sql_file = "SELECT imagem FROM roteiro WHERE id = " . $id_get_parametro;
-$filename = @mysql_fetch_assoc(mysql_query($sql_file));
-$filename = $filename['imagem'];
+$result = @mysql_fetch_assoc(mysql_query($sql_file));
+$filename = $result['imagem'];
 
 $sql = "DELETE FROM roteiro WHERE id = " . $id_get_parametro;
 

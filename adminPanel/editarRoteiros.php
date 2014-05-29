@@ -214,9 +214,16 @@
                         cache: false,
                         contentType: false,
                         processData: false,
+                        dataType: "json",
                         success: function(response) {
-                            dialogMessageNormal('#dialog_mensage', 'Inserir roteiro');
-                            $('#dialog_text').html(response);
+                            dialogMessageNormal('#dialog_mensage', 'Editar roteiro');
+                            $('#dialog_text').html(response.mensagem);
+
+                            if (!response.erro) {
+                                $('.ui-dialog-buttonset').on('click', function() {
+                                    window.location.href = "index.php?area=gerir_roteiros";
+                                });
+                            }
                         }
                     });
                 });

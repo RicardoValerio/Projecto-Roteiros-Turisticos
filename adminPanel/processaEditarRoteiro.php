@@ -1,9 +1,34 @@
 <?php
 
-//  TODO ::   tratar do update da imagem
+/* * *******
+ *  VERIFICAÇÃO DE DADOS
+ * ******* */
+
+if (!strlen(trim($_POST['titulo'])) || !isset($_POST['percurso']) || !strlen(trim($_POST['descricao'])) || !strlen(trim($_POST['sobre'])) || !strlen(trim($_POST['infos_uteis'])) || !strlen(trim($_POST['como_chegar'])) || !strlen(trim($_POST['palavras_chave']))) {
+    $arrayMensagem = array();
+
+    if (!strlen(trim($_POST['titulo'])))
+        array_push($arrayMensagem, "Insira o título do roteiro.");
+    if (!isset($_POST['percurso']))
+        array_push($arrayMensagem, "Insira as formas de percursos.");
+    if (!strlen(trim($_POST['descricao'])))
+        array_push($arrayMensagem, "Insira a descrição do roteiro.");
+    if (!strlen(trim($_POST['sobre'])))
+        array_push($arrayMensagem, "Insira informação sobre o roteiro.");
+    if (!strlen(trim($_POST['infos_uteis'])))
+        array_push($arrayMensagem, "Insira as informações úteis do roteiro.");
+    if (!strlen(trim($_POST['como_chegar'])))
+        array_push($arrayMensagem, "Insira a forma de chegar ao local do roteiro.");
+    if (!strlen(trim($_POST['palavras_chave'])))
+        array_push($arrayMensagem, "Insira as palavras-chave do roteiro.");
+
+    $mensagem = implode("<br/><br/>", $arrayMensagem);
+    echo json_encode(array("erro" => true, "mensagem" => $mensagem));
+    exit();
+}
+
 $imagem_existe = false;
 $nomeImagem = '';
-
 if (!empty($_FILES['imagem']['name'])) {
 
     include '../includes/funcoes_imagens.php';
@@ -11,14 +36,10 @@ if (!empty($_FILES['imagem']['name'])) {
     $extensao = getExtensaoDaImagem($_FILES['imagem']['type']);
     $extensao_valida = verificaSeExtensaoDaImagemSeraValida($extensao);
 
-
     if (!$extensao_valida) {
-
-        echo "A extensão do ficheiro não é uma imagem válida para a aplicação";
-        print_r($_FILES);
-        die;
+        echo json_encode(array("erro" => true, "mensagem" => "A imagem inserida não é válida.<br/><br/>Insira uma imagem num dos seguintes formatos .jpg, .png, .gif"));
+        exit();
     } else {
-
         $_GLOBALS['imagem_existe'] = true;
         $date = new DateTime();
         $_GLOBALS['nomeImagem'] = $_FILES['imagem']['name'];
@@ -87,8 +108,6 @@ $sql .=" descricao          = '$post_parametro_descricao',
               WHERE id                 = $post_parametro_id_roteiro";
 
 
-
-
 if (mysql_query($sql)) {
 
     //////////////////////////// TABELA roteiro_tem_tipo ////////////////////////////////////////////////////////////////////
@@ -116,11 +135,9 @@ if (mysql_query($sql)) {
         mysql_query("INSERT INTO palavra_chave (id_roteiro, palavra) VALUES ($post_parametro_id_roteiro, '$palavra')");
     }
 
-
     // redirecionar no futuro
-    echo "sucesso, foi tudo actualizado com tranquilidade xD <br><br>";
-    print_r($_POST);
+    echo json_encode(array("erro" => false, "mensagem" => "O roteiro foi alterado com suceso."));
 } else {
-    echo "erro! contacte a empresa a quem pagou por esta porcaria de software..." . mysql_error();
+    echo json_encode(array("erro" => true, "mensagem" => "Não foi possível alterar o roteiro."));
 }
 ?>

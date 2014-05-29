@@ -60,11 +60,11 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
             ?>
 
             <select id="categoria" name="categoria">
-                <?php while ($row_cat = @mysql_fetch_assoc($result_cat)): ?>
+                <?php while ($row_cat = @mysql_fetch_assoc($result_cat)) { ?>
 
                     <option value="<?php echo $row_cat['id']; ?>"><?php echo utf8_encode($row_cat['nome']); ?></option>
 
-                <?php endwhile; ?>
+                <?php } ?>
             </select>
 
         </p>
@@ -137,33 +137,43 @@ if ($_SESSION["tipo_utilizador"] == 'admin') {
         CKEDITOR.replace('como_chegar');
         CKEDITOR.replace('sobre');
         CKEDITOR.replace('infos_uteis');
-
         $(function() {
             $('#palavras_chave').tagsInput({width: 'auto'});
         });
-
-        $(document).ready(function() {
-            $('#formInserirRoteiro').bind('submit', function(event) {
-                var formData = new FormData($(this)[0]);
-                formData.append('descricao', CKEDITOR.instances['descricao'].getData());
-                formData.append('como_chegar', CKEDITOR.instances['como_chegar'].getData());
-                formData.append('sobre', CKEDITOR.instances['sobre'].getData());
-                formData.append('infos_uteis', CKEDITOR.instances['infos_uteis'].getData());
-
-                event.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../processaInserirRoteiro.php' : 'processaInserirRoteiro.php'; ?>',
-                    data: formData,
-                    async: false,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        dialogMessageNormal('#dialog_mensage', 'Inserir roteiro');
-                        $('#dialog_text').html(response);
+        $('#formInserirRoteiro').bind('submit', function(event) {
+            var formData = new FormData($(this)[0]);
+            formData.append('descricao', CKEDITOR.instances['descricao'].getData());
+            formData.append('como_chegar', CKEDITOR.instances['como_chegar'].getData());
+            formData.append('sobre', CKEDITOR.instances['sobre'].getData());
+            formData.append('infos_uteis', CKEDITOR.instances['infos_uteis'].getData());
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo ($_SESSION['tipo_utilizador'] == 'admin') ? '../processaInserirRoteiro.php' : 'processaInserirRoteiro.php'; ?>',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(response) {
+                    dialogMessageNormal('#dialog_mensage', 'Inserir roteiro');
+                    $('#dialog_text').html(response.mensagem);
+                    if (!response.erro) {
+                        if (response.user == 'admin') {
+                            $('.ui-dialog-buttonset').on('click', function() {
+                                window.location.href = response.url;
+                            });
+                        } else {
+                            $('#formInserirRoteiro')[0].reset();
+                            CKEDITOR.instances['descricao'].setData('');
+                            CKEDITOR.instances['como_chegar'].setData('');
+                            CKEDITOR.instances['sobre'].setData('');
+                            CKEDITOR.instances['infos_uteis'].setData('');
+                            $('#palavras_chave').importTags('');
+                        }
                     }
-                });
+                }
             });
         });
     });

@@ -25,6 +25,7 @@ function toggleLightbox() {
     }
 }
 function updateLightBox(elem) {
+    $('#borda span').html();
     var newSrc = elem.src.replace("mini_", "");
     var newTitle = elem.title;
     var newAlt = elem.alt;
