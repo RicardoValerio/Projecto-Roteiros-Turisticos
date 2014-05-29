@@ -36,7 +36,7 @@
             </ul>
         </div>
     </div>
-    <div class="mainContent dir borda">
+    <div class="mainContent dir">
 
         <?php
         $sql_categorias = 'SELECT * FROM categoria';

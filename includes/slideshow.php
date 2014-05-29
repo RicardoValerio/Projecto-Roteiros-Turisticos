@@ -28,9 +28,9 @@
             </li>
         </ul>
         <ul id="saberMais">
-            <li><a href="detalheRoteiro.html">Saber mais</a></li>
-            <li><a href="detalheRoteiro.html">Saber mais</a></li>
-            <li><a href="detalheRoteiro.html">Saber mais</a></li>
+            <li><a href="index.php?area=destinos&roteiro">Saber mais</a></li>
+            <li><a href="index.php?area=destinos&roteiro">Saber mais</a></li>
+            <li><a href="index.php?area=destinos&roteiro">Saber mais</a></li>
         </ul>
     </div>
 </div>

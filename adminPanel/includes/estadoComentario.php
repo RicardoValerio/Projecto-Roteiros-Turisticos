@@ -15,22 +15,26 @@ if (@mysql_num_rows($result)) {
 <script>
     $(document).ready(function() {
         $('#myEliminarRoteiro').on('click', function(event) {
-            //return confirm("Tem a certeza que pretende eliminar este comentário?");
-
             event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: 'processaEliminarComentario.php?id=<?php echo $id_get_parametro ?>',
-                dataType: "json",
-                success: function(response) {
-                    dialogMessageNormal('#dialog_mensage', 'Eliminar comentário');
-                    $('#dialog_text').html(response.mensagem);
-                    if (!response.erro) {
-                        $('.ui-dialog-buttonset').on('click', function() {
-                            window.location.href = "index.php?area=gerir_comentarios";
-                        });
+
+            dialogMessageConfirm('#dialog_mensage', 'Eliminar comentário');
+            $('#dialog_text').html("Tem a certeza que deseja apagar este comentário?");
+            
+            $(':button:contains("Sim")').on('click', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'processaEliminarComentario.php?id=<?php echo $id_get_parametro ?>',
+                    dataType: "json",
+                    success: function(response) {
+                        dialogMessageNormal('#dialog_mensage', 'Eliminar comentário');
+                        $('#dialog_text').html(response.mensagem);
+                        if (!response.erro) {
+                            $('.ui-dialog-buttonset').on('click', function() {
+                                window.location.href = "index.php?area=gerir_comentarios";
+                            });
+                        }
                     }
-                }
+                });
             });
         });
     });
