@@ -13,6 +13,15 @@ function verificaAreaIndexBackOffice() {
     $area_escolhida = verificaAreaExiste();
 
     switch ($area_escolhida) {
+        case 'criar_categoria':
+            $areaEscolhida = 'criarCategoria.php';
+            break;
+        case 'gerir_categorias':
+            $areaEscolhida = 'gerirCategorias.php';
+            break;
+        case 'editar_categoria':
+            $areaEscolhida = 'editarCategorias.php';
+            break;
         case 'gerir_roteiros':
             $areaEscolhida = 'gerirRoteiros.php';
             break;

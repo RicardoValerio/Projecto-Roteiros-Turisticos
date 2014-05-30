@@ -134,7 +134,7 @@ if (mysql_query($sql)) {
     }
 
     // redirecionar no futuro
-    echo json_encode(array("erro" => false, "mensagem" => "O roteiro foi alterado com suceso."));
+    echo json_encode(array("erro" => false, "mensagem" => "O roteiro foi alterado com sucesso."));
 } else {
     echo json_encode(array("erro" => true, "mensagem" => "Não foi possível alterar o roteiro."));
 }

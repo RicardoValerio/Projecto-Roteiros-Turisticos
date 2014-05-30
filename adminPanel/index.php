@@ -24,13 +24,13 @@ ob_start();
         <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
         <link rel="stylesheet" type="text/css" href="css/shCore.css">
         <link rel="stylesheet" type="text/css" href="css/demo.css">
-        
+
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript" language="javascript" src="js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" language="javascript" src="js/shCore.js"></script>
         <script type="text/javascript" language="javascript" src="js/demo.js"></script>
         <script type="text/javascript" language="javascript" src="../ckeditor/ckeditor.js"></script>
-        
+
         <link rel="stylesheet" type="text/css" href="../css/dialogStyle.css" />
         <script type="text/javascript" src="../js/dialogMessage.js"></script>
 
@@ -49,7 +49,7 @@ ob_start();
         <div class="right">
             <?php include verificaAreaIndexBackOffice(); ?>
         </div>
-        
+
         <?php include '../includes/dialogMessage.php'; ?>
     </body>
 </html>
